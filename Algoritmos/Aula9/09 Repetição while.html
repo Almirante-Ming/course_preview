@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom>thead>tr>th,
+        table.custom>tbody>tr>td,
+        table.custom>tbody>tr>th {
+            /* tabela centralizada e com bordas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        table pre {
+            /* Remove a margem interna de tags pre dentro de tabelas */
+            margin: 0;
+            padding: 0;
+        }
+
+        table.align-left th,
+        table.align-left td {
+            /* alinha à esquerda as células da tabela */
+            text-align: left;
+        }
+
+        ol.excs {
+            /* lista de exercícios */
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            /* lista de exercícios */
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="while">
+    <h1>Repetição while</h1>
+    <q>Quantas maçãs não caíram na cabeça de Newton antes de ele ter percebido a pista! &ndash; Robert Frost</q>
+
+    <p>Se determinado código precisa ser executado várias vezes, você pode usar estrutura de controle chamada de <b>repetição</b>, também conhecida como <b>laço</b> ou <b>loop</b>. Cada vez que um código é executado em uma estrutura de repetição, ocorre uma <b>iteração</b>, ou <b>ciclo</b>. Uma propriedade da repetição na programação, é que em um momento ela deve parar. Se não parar, acontece o que chamamos de <b>loop infinito</b>. (cuidado para não ficar preso no loop infinito!).</p>
+    <p>Bohm e Jacopini demonstraram que todos os programas poderiam ser escritos com apenas três tipos de estruturas de controle (ou instruções de controle) — a estrutura de sequência, a estrutura de seleção e a estrutura de repetição.</p>
+    <p>O Python possui dois tipos de repetições, <code>while</code> e <code>for</code>. Vamos começar com o <code>while</code>.</p>
+    <pre><code class="python"># instruções que vão
+# antes do while
+# são executadas
+# normalmente
+
+while condicao:
+    # corpo da repeticao
+    # será executado
+    # enquanto a condição
+    # for verdadeira
+
+# instrução que vão
+# depois do while
+# são executadas
+# normalmente</code></pre>
+    <p>Observe sua semelhança com o <code>if</code>. O corpo do <code>if</code> executa apenas uma vez, já o corpo do <code>while</code> pode executar muitas vezes.</p>
+    <p>Enquanto a <code>condição</code> do <code>while</code> for verdadeira (isto é, qualquer valor diferente de <code>False</code>), o código do corpo do <code>while</code> será executado (isto é, o que estiver recuado depois do <code>while</code>).</p>
+    <p>Assim como qualquer estrutura que tem um corpo, quando houver apenas uma instrução, ela pode ir na mesma linha do <code>while</code>. Mesmo assim, é recomendável abrir um recuo na linha de baixo para explicitar o corpo do <code>while</code>.</p>
+    <p>Atenção para não esquecer o dois-pontos no final do <code>while</code>!</p>
+    <p>Certifique-se de que o corpo do <code>while</code> altere algo na condição para que, eventualmente, a condição se torne falsa e o programa continue com as instruções que seguem o <code>while</code> (não caia no loop infinito!).</p>
+    <p>Assim como o <code>if</code>, o <code>while</code> pode nunca ser executado! Se a condição for falsa pela a primeira vez, o corpo do <code>while</code> não será executado.</p>
+    <p>Os seguintes exercícios propõem que você execute o código manualmente, sem uso do computador, para entender o fluxo de execução do <code>while</code>.</p>
+    <p>Qual a saída de cada trecho de código a seguir?</p>
+    <table class="custom align-left">
+        <tr>
+            <td>
+                <pre><code class="python">print("\nversão 1")
+i = 10
+if i &lt; 20:
+    print(i, end=" ")
+    i = i + 1
+print(i)</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">print("\nversão 2")
+i = 10
+while i &lt; 20:
+    print(i, end=" ")
+    i = i + 1
+print(i)</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre><code class="python">print("\nversão 3")
+i = 100
+if i &lt; 20:
+    print(i, end=" ")
+    i = i + 1
+print(i)</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">print("\nversão 4")
+i = 100
+while i &lt; 20:
+    print(i, end=" ")
+    i = i + 1
+print(i)</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre><code class="python">print("\nversão 5")
+i = 1
+if i &lt; 20:
+    print(i, end=" ")
+print(i)</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">print("\nversão 6")
+i = 1
+while i &lt; 20:
+    print(i, end=" ")
+print(i)</code></pre>
+            </td>
+        </tr>
+    </table>
+
+    <p>Qual a saída de cada trecho de código a seguir?</p>
+    <table class="custom align-left">
+        <tr>
+            <td>
+                <pre><code class="python">i = 1
+soma = 0
+while i &lt; 5:
+    print("+", i, end=" ")
+    soma = soma + i
+    i = i + 1
+print("=", soma)</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">bit = 512
+p = 0
+while bit > 1:
+    print(bit)
+    p = p + 1
+    bit = bit // 2
+print("=", p)</code></pre>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Repetição controlada por contador</h2>
+    <!-- retirado do livro do deitel de java, edição 10, capítulo 4 -->
+    <p>A repetição controlada por contador utiliza uma variável chamada <b>contador</b> para controlar o número de vezes que as instruções são executadas.</p>
+    <p>A repetição controlada por contador costuma ser chamada de repetição definida, porque o número de repetições é conhecido antes de o loop começar a executar.</p>
+    <p>Considere o seguinte problema: Dadas as notas (reais entre 0 e 10) de cinco estudantes de uma classe, qual a média da classe?</p>
+    <pre><code class="python"># Inicialize as variáveis
+total = 0
+contador = 1
+
+# Use um loop para ler as notas dos cinco estudantes
+while contador &lt;= 5:
+    nota = float(input(f"Digite a nota do {contador}º estudante (entre 0 e 10): "))
+    total = total + nota
+    contador = contador + 1
+
+# Calcule a média
+media = total / 5
+
+# Escreve a média da classe
+print("A média da classe é:", media)</code></pre>
+    <p>O <code>total</code> é uma variável utilizada para acumular a soma de vários valores. Variáveis utilizadas para armazenar totais normalmente são inicializadas com zero antes de serem utilizadas em um programa.</p>
+    <p>Antes de utilizar uma variável você deve declará-la, isto é, atribuir um valor a ela.</p>
+
+    <h2>Repetição controlada por sentinela</h2>
+    <!-- retirado do livro do deitel de java, edição 10, capítulo 4 -->
+    <p>Considere o seguinte problema: Dadas as notas (reais entre 0 e 10) de um número arbitrário de estudantes de uma classe, qual a média da classe?</p>
+    <p>Como podemos determinar quando parar de ler as notas? Como saber quando calcular e imprimir a média da classe? Uma maneira de resolver esse problema é utilizar uma variável especial chamado <b>sentinela</b> (também chamada de variável de sinal, variável fictícia ou <b>flag</b>) para indicar “final de entrada de dados”. Deve-se escolher uma sentinela que não possa ser confundida com um valor aceitável de entrada.</p>
+    <pre><code class="python">total = 0
+contador = 0
+nota = float(input("Digite a nota do estudante (ou -1 para encerrar): "))
+
+while nota != -1:
+    if 0 &lt;= nota &lt;= 10:
+        total = total + nota
+        contador = contador + 1
+    else:
+        print("A nota deve estar entre 0 e 10. Tente novamente.")
+
+    nota = float(input("Digite a nota do estudante (ou -1 para encerrar): "))
+
+if contador > 0:
+    media = total / contador
+    print("A média da classe é:", media)
+else:
+    print("Nenhuma nota válida foi inserida.")</code></pre>
+
+    <h2>Atribuição composta</h2>
+    <p>É muito comum em um programa atualizar o valor de uma variável. Por exemplo, você ainda vai usar bastante essa expressão:</p>
+    <pre><code class="python">i = i + 1</code></pre>
+    <p>A expressão anterior não significa que <code>i</code> é igual a <code>i+1</code>. Significa que o valor de <code>i</code> é alterado para seu valor atual mais 1.</p>
+    <p>Suponha que queiramos adicionar 25% ao valor de uma variável. Podemos fazer:</p>
+    <pre><code class="python">salario = salario * 1.25</code></pre>
+    <p>Como essas operações são comuns no dia-a-dia de um programador, o Python fornece os operadores de <b>atribuição composta</b> (<i>augmented assignment</i>):</p>
+    <table class="custom">
+        <thead>
+            <tr>
+                <th>Operador</th>
+                <th>Exemplo</th>
+                <th>Equivalente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>+=</code></td>
+                <td><code>x += y</code></td>
+                <td><code>x = x + y</code></td>
+            </tr>
+            <tr>
+                <td><code>-=</code></td>
+                <td><code>x -= y</code></td>
+                <td><code>x = x - y</code></td>
+            </tr>
+            <tr>
+                <td><code>*=</code></td>
+                <td><code>x *= y</code></td>
+                <td><code>x = x * y</code></td>
+            </tr>
+            <tr>
+                <td><code>/=</code></td>
+                <td><code>x /= y</code></td>
+                <td><code>x = x / y</code></td>
+            </tr>
+            <tr>
+                <td><code>//=</code></td>
+                <td><code>x //= y</code></td>
+                <td><code>x = x // y</code></td>
+            </tr>
+            <tr>
+                <td><code>%=</code></td>
+                <td><code>x %= y</code></td>
+                <td><code>x = x % y</code></td>
+            </tr>
+            <tr>
+                <td><code>**=</code></td>
+                <td><code>x **= y</code></td>
+                <td><code>x = x ** y</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Os operadores de atribuição composta possuem a mesma prioridade que o operador de atribuição simples (<code>=</code>), que possui a menor prioridade entre os operadores.</p>
+    <p>No Python não há os operadores de incremento <code>++</code> e decremento <code>--</code>.</p>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>
+            Uma faculdade oferece um curso que prepara os candidatos a obter licença estadual para corretores de imóveis. No ano passado, dez estudantes que concluíram esse curso prestaram o exame. A universidade quer saber como foi o desempenho dos seus estudantes nesse exame. Você foi contratado para escrever um programa que resuma os resultados.
+
+            <p>Ler o nome e o resultado de cada estudante, sendo o resultado um valor que indica se o estudante foi aprovado ou reprovado no exame. Escrever a quantidade de estudantes aprovados, a quantidade de reprovados, e se mais de oito estudantes foram aprovados, escrever “Bônus ao instrutor!”.</p>
+        </li>
+        <pre><code class="python"># Inicialize as variáveis para contar os aprovados e reprovados
+aprovados = 0
+reprovados = 0
+
+# Inicialize a variável para contar o número de estudantes
+contador = 0
+
+# Use um loop while para ler os resultados de cada estudante
+while contador &lt; 10:
+    nome = input("Digite o nome do estudante: ")
+    resultado = input("Digite o resultado do estudante ('a' para aprovado ou 'r' para reprovado): ")
+
+    # Verifique o resultado e atualize as contagens
+    if resultado == "a":
+        aprovados = aprovados + 1
+    else:
+        reprovados = reprovados + 1
+
+    contador = contador + 1
+
+# Escreva a quantidade de estudantes aprovados e reprovados
+print("Quantidade de estudantes aprovados:", aprovados)
+print("Quantidade de estudantes reprovados:", reprovados)
+
+# Verifique se mais de oito estudantes foram aprovados
+if aprovados > 8:
+    print("Bônus ao instrutor!")
+</code></pre>
+
+        <li>Qual o intervalo de inteiros de cada item a seguir? (escrever cada intervalo em uma linha)
+            <ol type="a">
+                <li>[0, 10[</li>
+                <li>]10, 0]</li>
+                <li>[-10, 10]</li>
+                <li>[100, 1]</li>
+            </ol>
+        </li>
+        <li>Dado um natural $n$, qual a soma dos pares entre 1 e $n$?</li>
+        <li>Dada a quantidade de estudantes da turma de Algoritmos, seguida pelas notas das provas de cada estudante, qual a maior nota e a média das notas dessa turma?</li>
+        <li>Um natural é dito triangular se ele é produto de três naturais consecutivos. Exemplo: $120$ é triangular, pois $4\cdot5\cdot6 = 120$. Dado um natural, ele é triangular?</li>
+        <li>Dada uma sequência de números seguida pelo número zero, qual a soma dos números?</li>
+        <li>Dada uma sequência de números que termina quando sua soma ultrapassar 1000, qual o maior número?</li>
+        <li>Dada uma sequência de inteiros seguida por um múltiplo de 6, qual a soma dos múltiplos de 3 e a soma dos múltiplos de 2? Múltiplos de 6 não devem ser contabilizados na soma. Exemplo: Dada a sequência 5 3 9 11 14 7 4 12, as somas dos múltiplos de 3 e 2 respectivamente são 12 e 18.</li>
+        <li>Dado um inteiro, quantos dígitos ele tem? (dica: vai dividindo por 10 até chegar no zero)</li>
+        <li>Dado um natural, ele é primo?</li>
+    </ol>
+</div>
+
+<!--
+Substituir:
+<=→&lt;=
+ < → &lt; 
+^\s+$→
+`(\w+)`→<code>$1</code>
+`(\w+)(\(\))`→<code>$1</code>
+-->
