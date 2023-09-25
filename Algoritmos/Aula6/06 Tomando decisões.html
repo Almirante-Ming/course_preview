@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom td,
+        table.custom th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        ol.excs {
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="tomando-decisoes">
+    <h1>Tomando decisões</h1>
+    <q>É nos momentos de decisão que o seu destino é traçado. Anthony Robbins</q>
+    <h3>Estruturas de seleção</h3>
+    <p>Em geral, as instruções em um programa são executadas sequencialmente, uma após a outra, seguindo a ordem em que são escritas. Esse fluxo é conhecido como <b>estrutura sequencial</b>.</p>
+    <p>No entanto, existem situações em que é necessário especificar que a próxima instrução a ser executada não seja necessariamente a próxima na sequência. Para lidar com essas situações, utilizamos a <b>estrutura de seleção</b>.</p>
+
+    <p>As instruções <code>if</code> e <code>else</code> tornam seus programas mais inteligentes, permitindo a eles tomar decisões baseadas em certas condições.</p>
+    <p>Você também aprenderá a usar os <b>operadores relacionais</b>, que servem para comparar valores, e são usados em conjunto com a instrução <code>if</code>.</p>
+    <p>As instruções <code>if</code> e <code>else</code> funcionam como na linguagem falada: <b>se</b> algo é verdadeiro, <b>faça</b> uma coisa; <b>caso contrário</b>, <b>faça</b> outra coisa.</p>
+    <ul>
+        <li>SE eu ganhar na loteria, ENTÃO irei para a Itália; SENÃO, continuarei em 3L</li>
+        <li>SE chover, ENTÃO leve um guarda-chuva</li>
+        <li>SE tua nota for menor que 7, ENTÃO você ficou de recuperação; SENÃO, você foi aprovado</li>
+    </ul>
+
+    <h3>Operadores relacionais</h3>
+    <p>Os operadores relacionais comparam dois valores. Você sempre coloca uma variável, literal ou expressão - ou uma combinação delas - em ambos os lados de um operador relacional.</p>
+    <table class="custom">
+        <thead>
+            <tr>
+                <th>Operador</th>
+                <th>Descrição</th>
+                <th>Exemplo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&gt;</td>
+                <td>Maior que</td>
+                <td>numero &gt; 10</td>
+            </tr>
+            <tr>
+                <td>&lt;</td>
+                <td>Menor que</td>
+                <td>10 * x &lt; 8 – y</td>
+            </tr>
+            <tr>
+                <td>&gt;=</td>
+                <td>Maior ou igual a</td>
+                <td>9 &gt;= 19.7</td>
+            </tr>
+            <tr>
+                <td>&lt;=</td>
+                <td>Menor ou igual a</td>
+                <td>c &lt;= &#39;e&#39;</td>
+            </tr>
+            <tr>
+                <td>==</td>
+                <td>Igual a</td>
+                <td>i == j</td>
+            </tr>
+            <tr>
+                <td>!=</td>
+                <td>Diferente de</td>
+                <td>&#39;z&#39; != &#39;g&#39;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Um operador sempre resulta em um valor. Um operador relacional resulta no valor <code>True</code> quando o resultado da comparação é verdadeiro e resulta no valor <code>False</code> quando o resultado da comparação é falso.</p>
+    <p><b>ATENÇÃO:</b></p>
+    <ul>
+        <li>Não confunda <code>=</code> com <code>==</code>, lembre-se que um sinal de igual é <b>atribuição</b> e dois sinais de igual é <b>comparação</b>.</li>
+        <li>Somente valores equivalentes (mesmo tipo) devem ir em ambos os lados do operador relacional*. Ou seja, não compare um caractere com um número sem um <b>typecast**</b>!</li>
+        <li>Não inverta os caracteres dos operadores (<code>=></code>, <code>=&lt;</code>,<code>=!</code>, ..., é errado!).
+        </li>
+        <!-- <li>NÃO FAÇA OPERAÇÕES RELACIONAIS COMPARANDO MAIS DE DOIS VALORES: (<code>X &lt; Y &lt; Z</code> não funciona como imaginas). Operações relacionais como essa não funcionam como na matemática.</li> -->
+    </ul>
+    <p>*Com exceção, booleanos podem ser operados junto com números. Neste caso, o valor booleano <code>True</code> é equivalente ao número 1 e o valor booleano <code>False</code> é equivalente ao número 0.</p>
+    <p>**Typecast é um recurso da linguagem para converter um tipo de dado em outro.</p>
+
+    <p>A associatividade de operadores relacionais em Python é diferente de outras linguagens de programação. Por exemplo, <code>x &lt; y &lt; z</code> não significa nem <code>(x &lt; y) &lt; z</code>, nem <code>x &lt; (y &lt; z)</code>, mas é equivalente a <code>x &lt; y and y &lt; z</code>, que usa o operador lógico <code>and</code>. Mais para frente estudaremos sobre operadores lógicos. Por hora, evite expressões com mais de um operador relacional.</p>
+
+    <p>Qual a saída do seguinte código?</p>
+    <pre><code class="python">x = 5
+y = 10
+z = 15
+w = 10
+
+print(y == w)
+print(y &lt;= w)
+print(y >= z)
+print(y &lt; w)
+print(y > x)
+print(y != x)
+print(z &lt; y &lt; w)</code></pre>
+
+    <p>Qual a saída do seguinte código?</p>
+    <pre><code class="python">a = 15 &lt; 10
+b = a &lt; 10
+c = True &lt; 2
+d = 0 == False
+print(a, b, c, d)</code></pre>
+
+    <h3>Seleção simples</h3>
+
+    <pre><b>if</b> condição<b>:</b>
+    sequência de instruções
+    que compõem o bloco do if</pre>
+
+    <p>A <b>condição</b> é uma expressão cujo resultado deve ser booleano.</p>
+    <p>O dois-pontos é obrigatório.</p>
+    <p>Um <b>bloco</b> de código é uma sequência de instruções recuadas após o dois-pontos. Também chamamos o bloco de <b>corpo</b>.</p>
+    <p>Um <b>recuo</b>, ou <b>indentação</b>, se refere a uma certa quantidade de espaços ou tabulação que se coloca no início da instrução. Por convenção, no Python, se usa recuos de 4 espaços.</p>
+    <p>Caso a <b>condição</b> seja <code>True</code>, o corpo do <code>if</code> é executado. Caso contrário, o corpo do <code>if</code> não é executado, e o programa continua da próxima instrução depois do corpo do <code>if</code>.</p>
+    <p>Caso um bloco de código for composto por apenas uma linha, esta pode ficar logo após o dois-pontos.</p>
+    <p>Execute esse código e teste tanto com valores que atendam às condições do <code>if</code> quanto que não atendam. Procure entender o que está acontecendo no código:</p>
+
+    <pre><code class="python">salario = float(input("informe teu salario: "))
+nota = float(input("informe tua nota: "))
+numero = int(input("informe teu numero da sorte: "))
+idade = int(input("informe tua idade: "))
+
+print("\nvoce ganha", salario)
+if salario > 5000:
+    print("vc ta bem ein!")
+
+print("\nvoce tirou nota", nota)
+if nota &lt; 7:
+    print("vc esta de recuperacao!")
+
+print("\nteu numero da sorte eh", numero)
+if numero % 2 == 0: print("numero par")
+if numero % 5 == 0: print("numero multiplo de 5.")
+
+print("\ntua idade eh", idade)
+if idade >= 18:
+    # Obrigatório usar indentação para indicar o bloco
+    print("vc eh maior de idade,")
+    print("ja eh responsavel legalmente.")
+
+print("\nfim do programa.")</code></pre>
+
+    <h3>Seleção composta</h3>
+
+    <p>A instrução <code>else</code> é o irmão que complementa o <code>if</code>.</p>
+    <p>Todo <code>else</code> deve vir acompanhado de um <code>if</code>.</p>
+    <p>O corpo do <code>if</code> é executado caso a condição seja verdadeira. Caso a condição do <code>if</code> seja falsa, aí é o corpo do <code>else</code> que é executado.</p>
+    <p>Se existem vários níveis de recuo, cada nível deve ser recuado pela mesma quantidade adicional de espaço.</p>
+
+    <p>Execute esse código e teste com valores que explorem tanto o <code>if</code> quanto o <code>else</code>. Procure entender o que está acontecendo no código:</p>
+    <pre><code class="python">salario = float(input("informe teu salario: "))
+nota = float(input("informe tua nota: "))
+numero = int(input("informe teu numero da sorte: "))
+idade = int(input("informe tua idade: "))
+
+print("\nvoce ganha", salario)
+if salario > 5000:
+    print("vc ta bem ein!")
+else:
+    print("vc ainda chega la!")
+
+print("\nvoce tirou nota", nota)
+if nota &lt; 7:
+    print("vc esta de recuperacao!")
+else: print("vc passou de ano!")
+
+print("\nteu numero da sorte eh", numero)
+if numero % 2 == 0: print("numero par")
+else:
+    print("numero impar")
+
+if numero % 5 == 0: print("numero multiplo de 5.")
+else: print("numero nao multiplo de 5")
+
+print("\ntua idade eh", idade)
+if idade >= 18:
+    print("vc eh maior de idade,")
+    print("ja eh responsavel legalmente.")
+else:
+    print("vc ainda eh menor de idade")
+    print("aguarde",18-idade,"anos")
+
+print("\nfim do programa.")</code></pre>
+
+    <p>Apesar de eu ter feito variações de blocos na mesma linha e na linha de baixo, a convenção é sempre iniciar o bloco na linha de baixo, mesmo que seja composto por apenas uma linha.</p>
+
+    <h3>Instruções aninhadas</h3>
+
+    <p>Você pode colocar ifs e elses dentro de ifs e elses.</p>
+    <p>Quando colocamos instruções dentro de instruções, chamamos de <b>instruções aninhadas</b>.</p>
+    <p>Considere o seguinte programa: ler três números e escrever se o maior número é par ou ímpar.</p>
+
+    <h4>Solução 1</h4>
+    <pre><code class="python">print("digite 3 numeros...")
+x = int(input())
+y = int(input())
+z = int(input())
+
+if x > y:
+    if x > z:
+        print(x, "é o maior numero")
+        if x % 2 != 0:
+            print("e também é ímpar")
+        else:
+            print("e também é par")
+    else:
+        print(z, "é o maior numero")
+        if z % 2 != 0:
+            print("e também é ímpar")
+        else:
+            print("e também é par")
+else:
+    if y > z:
+        print(y, "é o maior numero")
+        if y % 2 != 0:
+            print("e também é ímpar")
+        else:
+            print("e também é par")
+    else:
+        print(z, "é o maior numero")
+        if z % 2 != 0:
+            print("e também é ímpar")
+        else:
+            print("e também é par")</code></pre>
+
+    <p>Observe que o if da linha 9 está dentro do if da linha 7 que por sua vez está dentro do if da linha 6. Isso quer dizer que para a linha 10 ser executada, os ifs das linhas 6, 7 e 9 devem ser verdadeiros.</p>
+
+    <p>Há várias formas de fazer um programa. Nesta, optei por usar ifs e elses. Daria para fazer apenas com ifs, porém ficaria mais complexo.</p>
+
+    <h4>Solução 2</h4>
+    <pre><code class="python">print("digite 3 numeros...")
+x = int(input())
+y = int(input())
+z = int(input())
+
+maior = 0  # Inicializando a variável 'maior'
+
+if x > y:
+    if x > z:
+        maior = x
+    else:
+        maior = z
+else:
+    if y > z:
+        maior = y
+    else:
+        maior = z
+
+print(maior, "é o maior número")
+if maior % 2 != 0:
+    print("e também é ímpar")
+else:
+    print("e também é par")</code></pre>
+
+    <p>Aqui está o mesmo programa feito de forma diferente. Para economizar linhas, armazenei o maior número numa variável e no final verifiquei se essa variável é par ou ímpar, ao invés de fazer a verificação várias vezes.</p>
+
+    <h4>Solução 3</h4>
+    <pre><code class="python">print("digite 3 numeros...")
+x = int(input())
+y = int(input())
+z = int(input())
+
+if x > y: maior = x
+else: maior = z
+
+if z > maior: maior = z
+
+print(maior, "é o maior numero")
+if maior % 2 != 0:
+    print("e tambem é ímpar")
+else:
+    print("e tambem é par")</code></pre>
+    <p>O mesmo exercício resolvido de mais outra forma. Dessa vez, usando ainda menos if-else’s.</p>
+
+    <h3>Atenção para a indentação!</h3>
+    <p>Neste exemplo, o <code>else</code> corresponde ao <code>if</code> logo antes dele:</p>
+    <pre><code class="python">if x > 5:
+    if y > 5:
+        print("x e y são maiores que 5")
+    else:
+        print("x é maior que 5")
+</code></pre>
+
+    <p>Já neste exemplo, o <code>else</code> corresponde ao <code>if</code> mais distante:</p>
+    <pre><code class="python">if x > 5:
+    if y > 5:
+        print("x e y são maiores que 5")
+else:
+    print("x NÃO é maior que 5")
+</code></pre>
+
+    <h3>Seleção encadeada</h3>
+    <p>Considere o seguinte exercício:</p>
+    <p>A nota final de um estudante é calculada a partir de três notas atribuídas, respectivamente, a um trabalho, a um seminário e a uma prova. A média das três notas mencionadas obedece aos pesos da tabela A. Dadas as três notas de um estudante, qual sua média ponderada e seu conceito conforme a tabela B?</p>
+    <div style="display:flex;">
+        <table class="custom">
+            <caption>Tabela A</caption>
+            <thead>
+                <tr>
+                    <th>Nota</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Trabalho</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Seminário</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Prova</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="custom">
+            <caption>Tabela B</caption>
+            <thead>
+                <tr>
+                    <th>MÉDIA PONDERADA</th>
+                    <th>CONCEITO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Maior ou igual a 8,5</td>
+                    <td>A, aprovado :D</td>
+                </tr>
+                <tr>
+                    <td>Maior ou igual a 7 e menor que 8,5</td>
+                    <td>B, aprovado :)</td>
+                </tr>
+                <tr>
+                    <td>Maior ou igual a 5 e menor que 7</td>
+                    <td>C, recuperação :|</td>
+                </tr>
+                <tr>
+                    <td>Maior ou igual a 2,5 e menor que 5</td>
+                    <td>D, recuperação :(</td>
+                </tr>
+                <tr>
+                    <td>Menor que 2,5</td>
+                    <td>E, reprovado :O</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Solução 1:</p>
+    <pre><code class="python">print("Boletim Digital")
+print("###############\n")
+
+t = float(input("Trabalho: "))
+s = float(input("Seminário: "))
+p = float(input("Prova: "))
+m = (t * 2 + s * 3 + p * 5) / 10
+
+print("\nMédia:", m)
+
+if m >= 8.5:
+    print("Conceito A, aprovado :D")
+else:
+    if m >= 7:
+        print("Conceito B, aprovado :)")
+    else:
+        if m >= 5:
+            print("Conceito C, recuperação :|")
+        else:
+            if m >= 2.5:
+                print("Conceito D, recuperação :(")
+            else:
+                print("Conceito E, reprovado :O")
+</code></pre>
+
+    <p>Embora esse código funcione, ele cria um aninhamento desnecessário de instruções <code>if</code> e <code>else</code>, o que torna o código menos legível e mais difícil de manter. A utilização do aninhamento excessivo pode ser evitada usando a estrutura <code>elif</code>.</p>
+
+    <p>Solução 2:</p>
+    <pre><code class="python">print("Boletim Digital")
+print("###############\n")
+
+t = float(input("Trabalho: "))
+s = float(input("Seminário: "))
+p = float(input("Prova: "))
+m = (t * 2 + s * 3 + p * 5) / 10
+
+print("\nMédia:", m)
+if m >= 8.5:
+    print("Conceito A, aprovado :D")
+elif m >= 7:
+    print("Conceito B, aprovado :)")
+elif m >= 5:
+    print("Conceito C, recuperação :|")
+elif m >= 2.5:
+    print("Conceito D, recuperação :(")
+else:
+    print("Conceito E, reprovado :O")</code></pre>
+
+    <p>As instruções combinadas <code>if</code>, <code>elif</code> e <code>else</code> são mutuamente exclusivas. Isto é, apenas o corpo da primeira instrução verdadeira é executado. Se nenhuma for verdadeira, e houver um <code>else</code>, apenas o corpo do <code>else</code> é executado.</p>
+
+    <h3>Operador ternário</h3>
+    <p>Em Python, assim como em algumas outras linguagens de programação, você pode usar o operador ternário para expressar uma operação condicional de forma mais concisa. O operador ternário é uma forma compacta de escrever um <code>if</code>-<code>else</code> de uma linha.</p>
+    <p>A sintaxe básica do operador ternário em Python é a seguinte:</p>
+    <pre>valor_se_verdadeiro <b>if</b> condicao <b>else</b> valor_se_falso</pre>
+    <p>A <code>condicao</code> é a expressão que será avaliada. Se for verdadeira, o resultado da expressão é <code>valor_se_verdadeiro</code>; caso contrário, o resultado da expressão é <code>valor_se_falso</code>.</p>
+    <p>Aqui está um exemplo de código que utiliza um <code>if</code>-<code>else</code> para determinar o maior entre dois números:</p>
+    <pre><code class="python">a = 10
+b = 5
+
+maior = a if a > b else b
+print(maior)</code></pre>
+    <p>Neste caso, o operador ternário <code>a if a > b else b</code> verifica se <code>a</code> é maior que <code>b</code>. Se for verdadeiro, resulta no valor de <code>a</code>; caso contrário, resulta no valor de <code>b</code>. Isto é equivalente a escrever:</p>
+    <pre><code class="python">if a > b:
+    maior = a
+else:
+    maior = b</code></pre>
+    <p>Considere também este exemplo:</p>
+    <pre><code class="python">nota = float(input("Qual é a tua nota? "))
+print("Aprovado!" if nota >= 6 else "Reprovado!")</code></pre>
+    <p>O operador ternário é útil para expressões condicionais simples, mas deve ser usado com moderação para não comprometer a legibilidade do código.</p>
+
+    <h3>Valores Verdadeiros e Falsos em Python</h3>
+    <p>Enquanto os valores booleanos <code>True</code> e <code>False</code> correspondem diretamente aos números 1 e 0, respectivamente, o Python oferece uma abordagem flexível para considerar outros valores como verdadeiros ou falsos em contextos condicionais. Isso acontece quando esses valores são avaliados de forma isolada dentro de estruturas como <code>if</code> ou <code>while</code>, sem o uso de operadores relacionais, ou quando são passados como argumentos para a função <code>bool()</code>.</p>
+    <p>Considere o exemplo abaixo, em que a variável <code>var</code> é avaliada isoladamente no contexto do <code>if</code>:</p>
+    <pre><code class="python">var = -1
+print(var, "é", "verdadeiro" if var else "falso")
+
+var = 0
+print(var, "é", "verdadeiro" if var else "falso")
+
+var = 3
+print(var, "é", "verdadeiro" if var else "falso")
+
+var = "0"
+print(var, "é", "verdadeiro" if var else "falso")</code></pre>
+    <p>Quando avaliados isoladamente em um contexto condicional, os seguintes valores são considerados falsos:</p>
+    <ul>
+        <li>As constantes <code>None</code> e <code>False</code></li>
+        <li>O número zero</li>
+        <li>Objetos cujo comprimento é zero, como uma string vazia <code>""</code></li>
+    </ul>
+    <p>Para todos os outros valores, a avaliação resulta em <code>True</code>, inclusive para a string <code>"False"</code>. Apesar de seu conteúdo ser "False", ela não está vazia, portanto, é considerada <code>True</code>.</p>
+
+    <h3>Erros</h3>
+    <p>Um <b>erro de sintaxe</b> ocorre quando o código que você escreve não segue a gramática definida pela linguagem de programação. Esses erros são detectados durante a análise do código, antes de ser executado. Eles geralmente resultam em mensagens de erro que indicam a linha e o local onde a violação ocorreu. Erros de sintaxe incluem coisas como escrever palavras-chave erradas, omitir parênteses de fechamento, usar operadores de forma incorreta e outros problemas que violam as regras da linguagem.</p>
+    <p>Quantos erros de sintaxe você consegue encontrar a seguir?</p>
+    <pre>nota1 = float(input("qual tua nota? ))
+    if nota2 >= 6
+    print("aprovado"
+    else:
+    print(reprovado)</pre>
+    <p>Erros de sintaxe também podem ser chamados de <b>erros em tempo de compilação</b> ou simplesmente <b>erros de compilação</b>, porque eles são detectados pelo compilador antes da execução do programa, impedindo o programa de ser executado, mesmo que apenas algumas instruções estejam erradas.</p>
+    <p>Um <b>erro em tempo de execução</b> ou simplesmente <b>erro de execução</b> ocorre quando o programa está em execução e encontra uma situação imprevista que impede seu funcionamento normal. Isso pode ser causado por vários motivos, como entradas inválidas, tentativas de acesso a variáveis inexistentes, divisões por zero, entre outros. Esses erros são frequentemente chamados de <b>exceções</b> e interrompem a execução do programa a partir de onde ocorreram, geralmente exibindo uma mensagem de erro para o usuário.</p>
+    <p>Tente digitar uma palavra em vez de um número para ver um exemplo de erro de execução:</p>
+    <pre><code class="python">print("Programa para calcular o quadrado de um número...")
+numero = int(input("Digite um número: "))
+quadrado = numero * numero
+print("O quadrado do número é", quadrado)</code></pre>
+    <p>Um <b>erro de lógica</b> ocorre quando um programa produz resultados indesejados devido a problemas em sua lógica interna ou na implementação do algoritmo. Esse tipo de erro não é detectado pelo interpretador ou compilador como um erro, porque o código está sintaticamente correto e não resulta em falhas de compilação ou execução. No entanto, o programa pode não realizar as operações desejadas ou pode produzir resultados incorretos.</p>
+    <p>Considere o seguinte programa que não calcula corretamente o quadrado de um número, resultando em um erro de lógica:</p>
+    <pre><code class="python">print("Programa para calcular o quadrado de um número...")
+numero = int(input("Digite um número: "))
+quadrado = numero * 2
+print("O quadrado do número é", quadrado)</code></pre>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Dado um inteiro, ele é par ou ímpar?</li>
+        <li>Dados dois números, o primeiro é o dobro do segundo?</li>
+        <li>Dados dois inteiros, algum deles é ímpar?</li>
+        <li>Dados dois inteiros, ambos são pares?</li>
+        <li>Dados três inteiros, a soma deles é ímpar?</li>
+        <li>Dados dois números, qual o maior deles e a diferença absoluta entre eles? (a diferença absoluta é o maior menos o menor).</li>
+        <li>Dados três números, qual o maior?</li>
+        <li>Dados três números representando os lados de um triângulo, ele é equilátero, isósceles ou escaleno? (como seria esse exercício sem o else?)</li>
+        <li>Em certa região, o preço pelo fornecimento de energia elétrica depende do consumo em kWh, conforme a seguinte tabela:
+            <table class="custom">
+                <tr>
+                    <th>Faixa (kWh)</th>
+                    <th>Preço (R$\$$)</th>
+                </tr>
+                <tr>
+                    <td>Até 500</td>
+                    <td>0,40</td>
+                </tr>
+                <tr>
+                    <td>Acima de 500</td>
+                    <td>0,65</td>
+                </tr>
+            </table>
+        </li>
+        <li>Determinar as raízes ou zero de uma função do 2º grau consiste em determinar os pontos de intersecção da parábola com o eixo das abscissas no plano cartesiano. Dada a função $f(x) = ax^2 + bx + c$, podemos determinar sua raiz considerando $f(x) = 0$, dessa forma obtemos a equação do 2º grau $ax^2 + bx + c = 0$, que pode ser resolvida pelo método resolutivo de Bháskara. Neste, as raízes são $x_1=-b+\sqrt{\Delta}/2a$ e $x_2=-b-\sqrt{\Delta}/2a$, onde $\Delta = b² - 4ac$. Dados os valores das constantes $a$, $b$ e $c$, quais as raízes da equação? Caso $a=0$, escrever "Não é equação de segundo grau". Caso $\Delta &lt; 0$, escrever "Não existe raiz". Caso $\Delta=0$, escrever a raiz e a mensagem "Raiz única". Caso $\Delta \gt 0$, escrever as duas raízes.</li>
+        <li>Dado o código de determinado produto, qual a sua classificação? Utilize a seguinte tabela de referência:
+            <table class="custom">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Classificação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Alimento não perecível</td>
+                    </tr>
+                    <tr>
+                        <td>2, 3 ou 4</td>
+                        <td>Alimento perecível</td>
+                    </tr>
+                    <tr>
+                        <td>5 ou 6</td>
+                        <td>Vestuário</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Higiene pessoal</td>
+                    </tr>
+                    <tr>
+                        <td>8 até 15</td>
+                        <td>Limpeza e utensílios domésticos</td>
+                    </tr>
+                    <tr>
+                        <td>Qualquer outro código</td>
+                        <td>Inválido</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>Dado o preço da etiqueta de um produto e o código da condição de pagamento, qual o valor a ser pago pelo produto? Utilize a seguinte tabela de referência:
+            <table class="custom">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Condição de pagamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>À vista em dinheiro ou cheque, recebe 10% de desconto</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>No cartão de débito ou PIX, recebe 5% de desconto</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Em duas vezes, preço normal de etiqueta sem juros</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Em três vezes, preço normal de etiqueta mais juros de 10%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>Para descobrir o peso ideal de uma pessoa, calcula-se o Índice de Massa Corporal (IMC) utilizando a seguinte fórmula: $imc=peso/altura^2$. Dados o peso e a altura de uma pessoa, de acordo com a tabela a seguir, qual é o seu IMC e a sua condição atual?
+            <table class="custom">
+                <tr>
+                    <th>Condição</th>
+                    <th>IMC em mulheres</th>
+                    <th>IMC em homens</th>
+                <tr>
+                    <td>Abaixo do peso</td>
+                    <td>$IMC\lt 19.1$</td>
+                    <td>$IMC\lt 20.7$</td>
+                </tr>
+                <tr>
+                    <td>No peso ideal</td>
+                    <td>$19.1\leq IMC\lt 25.8$</td>
+                    <td>$20.7\leq IMC\lt 26.4$</td>
+                </tr>
+                <tr>
+                    <td>Acima do peso</td>
+                    <td>$25.8\leq IMC$</td>
+                    <td>$26.4\leq IMC$</td>
+                </tr>
+                </tr>
+            </table>
+        </li>
+    </ol>
+</div>
+
+<!--
+Substituir:
+ < → &lt; 
+`(\w+)`→
+-->
+
+
+<!-- Bohm e Jacopini demonstraram que todos os programas poderiam ser escritos em termos de somente três tipos de estruturas de controle (ou instruções de controle) — a estrutura de sequência, a estrutura de seleção e a estrutura de repetição. -->

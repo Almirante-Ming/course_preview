@@ -195,7 +195,7 @@ print(i)</code></pre>
                 <pre><code class="python">i = 1
 soma = 0
 while i &lt; 5:
-    print("+", i, end=" ")
+    print("+", i, end=' ')
     soma = soma + i
     i = i + 1
 print("=", soma)</code></pre>
@@ -320,7 +320,7 @@ else:
         <li>
             Uma faculdade oferece um curso que prepara os candidatos a obter licença estadual para corretores de imóveis. No ano passado, dez estudantes que concluíram esse curso prestaram o exame. A universidade quer saber como foi o desempenho dos seus estudantes nesse exame. Você foi contratado para escrever um programa que resuma os resultados.
 
-            <p>Ler o nome e o resultado de cada estudante, sendo o resultado um valor que indica se o estudante foi aprovado ou reprovado no exame. Escrever a quantidade de estudantes aprovados, a quantidade de reprovados, e se mais de oito estudantes foram aprovados, escrever “Bônus ao instrutor!”.</p>
+            <p>Ler o nome e o resultado de cada estudante, sendo o resultado um valor booleano (True ou False) que indica se o estudante foi aprovado ou reprovado no exame. Escrever a quantidade de estudantes aprovados, a quantidade de reprovados, e se mais de oito estudantes foram aprovados, escrever “Bônus ao instrutor!”.</p>
         </li>
         <pre><code class="python"># Inicialize as variáveis para contar os aprovados e reprovados
 aprovados = 0
@@ -332,24 +332,23 @@ contador = 0
 # Use um loop while para ler os resultados de cada estudante
 while contador &lt; 10:
     nome = input("Digite o nome do estudante: ")
-    resultado = input("Digite o resultado do estudante ('a' para aprovado ou 'r' para reprovado): ")
+    resultado = input("Digite o resultado do estudante (True para aprovado, False para reprovado): ").lower() == 'true'
 
     # Verifique o resultado e atualize as contagens
-    if resultado == "a":
+    if resultado:
         aprovados = aprovados + 1
     else:
         reprovados = reprovados + 1
 
     contador = contador + 1
 
-# Escreva a quantidade de estudantes aprovados e reprovados
+# Escreve a quantidade de estudantes aprovados e reprovados
 print("Quantidade de estudantes aprovados:", aprovados)
 print("Quantidade de estudantes reprovados:", reprovados)
 
 # Verifique se mais de oito estudantes foram aprovados
 if aprovados > 8:
-    print("Bônus ao instrutor!")
-</code></pre>
+    print("Bônus ao instrutor!")</code></pre>
 
         <li>Qual o intervalo de inteiros de cada item a seguir? (escrever cada intervalo em uma linha)
             <ol type="a">
@@ -365,7 +364,7 @@ if aprovados > 8:
         <li>Dada uma sequência de números seguida pelo número zero, qual a soma dos números?</li>
         <li>Dada uma sequência de números que termina quando sua soma ultrapassar 1000, qual o maior número?</li>
         <li>Dada uma sequência de inteiros seguida por um múltiplo de 6, qual a soma dos múltiplos de 3 e a soma dos múltiplos de 2? Múltiplos de 6 não devem ser contabilizados na soma. Exemplo: Dada a sequência 5 3 9 11 14 7 4 12, as somas dos múltiplos de 3 e 2 respectivamente são 12 e 18.</li>
-        <li>Dado um inteiro, quantos dígitos ele tem? (dica: vai dividindo por 10 até chegar no zero)</li>
+        <li>Dado um inteiro, quantos dígitos ele tem? (dica: vai dividindo por 10)</li>
         <li>Dado um natural, ele é primo?</li>
     </ol>
 </div>

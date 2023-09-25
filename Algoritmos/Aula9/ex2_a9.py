@@ -1,24 +1,30 @@
-a= 0
-b= 9
-c= -10
-d= 100
+a= -1
+b= 10
+c= -11
+d= 101
 
 while a < 9:
+    a+=1
     print(a, end=" ")
-    a+= 1
-print(a)
+    
+print("\n")
 
 while b > 0:
-    print(b, end=" ")
-    b-= 1
-print(b)
+    b-=1
+    print(b,end=" ")
+
+print("\n")
 
 while c < 10:
-    print(c, end=" ")
-    c+= 1
-print(c)
+    c+=1
+    print(c,end=" ")
+    
+print("\n")
 
 while d > 1:
-    print(d, end=" ")
-    d-= 1
-print(d)
+    d-=1
+    print(d,end=" ")
+    
+
+
+    

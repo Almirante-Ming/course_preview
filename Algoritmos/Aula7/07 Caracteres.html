@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom td,
+        table.custom th {
+            /* tabela centralizada e com bordas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        ol.excs {
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="caracteres">
+    <h1>Caracteres e letras</h1>
+    <h2>Modelos matemáticos</h2>
+    <p>Antes de entrar na pauta de caracteres, vamos falar um pouco sobre modelos matemáticos. O filósofo e matemático Pitágoras dizia que “tudo é número”. Essa frase traz a ideia de que podemos explicar a realidade e o mundo que nos cerca através de modelos matemáticos. Um modelo matemático é uma simplificação de um sistema real.</p>
+    <p>Usamos letras como símbolos que expressam sons, e assim, podemos nos comunicar através da escrita. E pelo simples fato de podermos quantificar e ordenar as letras do alfabeto, podemos imaginar que há matemática por detrás delas.</p>
+    <p>A propósito, um computador nada mais faz do que processar números, como seu nome indica. O processador, que executa todas as instruções de um programa, o faz através de sua Unidade Lógica Aritmética, responsável por realizar operações lógicas e aritméticas. Portanto, qualquer sistema computacional é um modelo matemático que traduz algum conceito da vida real. Por exemplo, qualquer cor pode ser formada pela combinação de três cores, vermelha (R), verde (G) e azul (B). Se atribuirmos uma escala de 0 a 255 (1 byte de dados) para cada uma das três cores, sendo 0 a total ausência de uma cor, e 255 a sua intensidade máxima, podemos representar numericamente (quase) qualquer cor. Assim, a cor roxa poderia ser representada pelos valores (127,0,127) para RGB. Esse é o modelo de cores RGB. Daí, para representar uma imagem, podemos ter uma sequência de valores RGB, cada uma formando um pixel da imagem. Claro, esse não é um modelo perfeito, pois a quantidade de cores existentes é infinita. Mas é o suficiente para muitas situações. Por isso que dizemos que um modelo matemático é uma simplificação, pois selecionamos algumas das infinitas variáveis que podem compor um sistema real, para modelá-lo conforme as limitações e necessidades que tivermos.</p>
+
+    <h2>Tabela ASCII</h2>
+    <p>No caso das letras, como nosso alfabeto possui 26 letras, poderíamos representar cada letra como um número, já que o computador só entende de números. As letras variariam de 1 a 26, sendo 1 a letra ‘a’, e 26 a letra ‘z’, por exemplo. Mas há também os sinais, como @ e #, e os próprios dígitos que compõem os números. A esses símbolos gráficos chamamos de caracteres.</p>
+    <p>Portanto, foi criado um modelo de representação de caracteres, chamado de tabela ASCII. Nela, podemos representar até 127 diferentes caracteres, que podemos dividir em <a href="https://www.ionos.com/digitalguide/server/know-how/ascii-codes-overview-of-all-characters-on-the-ascii-table/">quatro categorias</a>:</p>
+    <ul>
+        <li>Caracteres de controle (0–32 e 127): Os caracteres de controle não são visíveis. Eles são usados para enviar comandos ao PC ou à impressora. Com esses caracteres, você pode definir quebras de linha ou tabulações.</li>
+        <li>Caracteres Especiais (33–47 / 58–64 / 91–96 / 123–126): Caracteres especiais incluem todos os caracteres visíveis que não são letras nem números. Estes incluem sinais de pontuação ou caracteres técnicos e matemáticos.</li>
+        <li>Dígitos (30–39): Esses dígitos incluem os dez algarismos arábicos de 0 a 9.</li>
+        <li>Letras(65–90 / 97–122): As letras são divididas em dois blocos, com o primeiro grupo contendo as letras maiúsculas e o segundo grupo contendo as minúsculas.</li>
+    </ul>
+    <p>A tabela a seguir apresenta os códigos de cada caractere:</p>
+    <table class="custom">
+        <thead>
+            <tr>
+                <th></th>
+                <th>0</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>0</th>
+                <td>nul</td>
+                <td>soh</td>
+                <td>stx</td>
+                <td>etx</td>
+                <td>eot</td>
+                <td>enq</td>
+                <td>ack</td>
+                <td>bel</td>
+                <td>bs</td>
+                <td>ht</td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td>nl</td>
+                <td>vt</td>
+                <td>ff</td>
+                <td>cr</td>
+                <td>so</td>
+                <td>si</td>
+                <td>dle</td>
+                <td>dc1</td>
+                <td>dc2</td>
+                <td>dc3</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>dc4</td>
+                <td>nak</td>
+                <td>syn</td>
+                <td>etb</td>
+                <td>can</td>
+                <td>em</td>
+                <td>sub</td>
+                <td>esc</td>
+                <td>fs</td>
+                <td>gs</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>rs</td>
+                <td>us</td>
+                <td>sp</td>
+                <td>!</td>
+                <td>&quot;</td>
+                <td>#</td>
+                <td>$</td>
+                <td>%</td>
+                <td>&amp;</td>
+                <td>&#39;</td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td>(</td>
+                <td>)</td>
+                <td>*</td>
+                <td>+</td>
+                <td>,</td>
+                <td>-</td>
+                <td>.</td>
+                <td>/</td>
+                <td>0</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>:</td>
+                <td>;</td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td>&lt;</td>
+                <td>=</td>
+                <td>&gt;</td>
+                <td>?</td>
+                <td>@</td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>E</td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td>F</td>
+                <td>G</td>
+                <td>H</td>
+                <td>I</td>
+                <td>J</td>
+                <td>K</td>
+                <td>L</td>
+                <td>M</td>
+                <td>N</td>
+                <td>O</td>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td>P</td>
+                <td>Q</td>
+                <td>R</td>
+                <td>S</td>
+                <td>T</td>
+                <td>U</td>
+                <td>V</td>
+                <td>W</td>
+                <td>X</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <th>9</th>
+                <td>Z</td>
+                <td>[</td>
+                <td>\</td>
+                <td>]</td>
+                <td>^</td>
+                <td>_</td>
+                <td>`</td>
+                <td>a</td>
+                <td>b</td>
+                <td>c</td>
+            </tr>
+            <tr>
+                <th>10</th>
+                <td>d</td>
+                <td>e</td>
+                <td>f</td>
+                <td>g</td>
+                <td>h</td>
+                <td>i</td>
+                <td>j</td>
+                <td>k</td>
+                <td>l</td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <th>11</th>
+                <td>n</td>
+                <td>o</td>
+                <td>p</td>
+                <td>q</td>
+                <td>r</td>
+                <td>s</td>
+                <td>t</td>
+                <td>u</td>
+                <td>v</td>
+                <td>w</td>
+            </tr>
+            <tr>
+                <th>12</th>
+                <td>x</td>
+                <td>y</td>
+                <td>z</td>
+                <td>{</td>
+                <td>|</td>
+                <td>}</td>
+                <td>~</td>
+                <td>del</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Leia a tabela da seguinte forma: os números nas linhas representam a casa das dezenas, e os números nas colunas, a casa das unidades. Assim, a letra ‘A’ possui o código 65, e a letra ‘a’ o código 97.</p>
+    <p>Claro, há muito mais caracteres do que 127, como as letras do alfabeto cirílico (Д, Ђ, Э, Ю), e as letras acentuadas (à é î õ ü). Para representar mais caracteres, são usados outros modelos, como o sistema Unicode, que usa a tabela ASCII como base.</p>
+
+    <h2>Programação</h2>
+    <p>Um caractere (ou caracter) representa apenas um símbolo, como a letra 'e', o dígito '5', ou o símbolo '&'. Uma sequência de um ou mais caracteres é chamada de <code>string</code>. Diferentemente de outras linguagens de programação, o Python não possui um tipo de dados específico para caracteres, ele trata tudo como strings, que no Python, são consideradas como do tipo <code>str</code>.</p>
+    <!-- <p>Os caracteres possuem um tipo de dados específico, chamado <code>char</code>. Para um valor ser do tipo <code>char</code>, ele deve estar entre aspas simples. Logo, ‘9’ é definido como um caractere, e não um número, apesar de representar um número. E ‘ab’ seria um erro, pois caractere deve ser composto de apenas um único símbolo. E para imprimir um <code>char</code> com printf, usamos o %c, que é capaz de imprimir qualquer caractere da tabela Unicode, um superconjunto da tabela ASCII.</p> -->
+    <p>Alguns dos caracteres de controle são chamados de <b>whitespaces</b> e podem ser armazenados em variáveis e imprimidos com <code>print</code>. São esses:</p>
+    <table class="custom">
+        <thead>
+            <tr>
+                <th>Código ASCII</th>
+                <th>Código char</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>\0</td>
+                <td>Byte nulo. Usado para representar o final de uma string.</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>\a</td>
+                <td>Apito.</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>\b</td>
+                <td>Backspace.</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>\t</td>
+                <td>Tabulação.</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>\n</td>
+                <td>Quebra de linha.</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>\v</td>
+                <td>Tabulação vertical.</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>\f</td>
+                <td>Fim de página.</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>\r</td>
+                <td>Retorno de carro.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Você pode saber o código de um caractere usando a função <code>ord</code>. E também pode saber o caractere correspondente a um número usando a função <code>chr</code>:</p>
+    <pre><code class="python">a = 97
+U = 85
+cifrao = 36
+maior = ">"
+arroba = "@"
+dois = "2"
+
+print(a, chr(a))
+print(U, chr(U))
+print(cifrao, chr(cifrao))
+print(maior, ord(maior))
+print(arroba, ord(arroba))
+print(dois, ord(dois))</code></pre>
+
+    <p>No Python não é possível realizar operações aritméticas entre números e caracteres, mas se você combinar as funções <code>chr</code> e <code>ord</code>, pode realizar coisas interessantes:</p>
+
+    <pre><code class="python">c1 = "d"
+c2 = "h"
+n1 = 7
+
+c3 = chr(n1 + ord(c1))
+print(n1, "letras depois de", c1, "é", c3)
+
+n2 = ord(c2) - ord(c1) - 1
+print("há", n2, "letras entre", c1, "e", c2)
+
+c4 = ord(c1) * ord(c2)
+print(c1, "*", c2, "=", c4)
+
+n3 = ord(c1) + ord(c2)
+print(c1, "+", c2, "=", n3)</code></pre>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Dado um caractere, qual o seu valor na tabela ASCII?</li>
+        <li>Dado um caractere, ele é uma letra?</li>
+        <li>Dada uma letra, qual a sua posição no alfabeto, sendo ‘a’ a posição 1 e ‘z’ a posição 26?</li>
+        <li>Dada uma letra, ela é maiúscula ou minúscula?</li>
+        <li>Dada uma letra, ela é vogal ou consoante?</li>
+        <li>Dado um caractere, ele é um número?</li>
+        <li>Dada uma letra maiúscula, qual sua correspondente em minúsculo?</li>
+        <li>Dada uma letra minúscula, qual sua correspondente em maiúsculo?</li>
+        <li>Dada uma letra e um inteiro N, qual a letra correspondente ao andar N casas à frente da letra lida (ou atrás, se o N for negativo).</li>
+        <li>Dadas duas letras, quantas letras há entre as duas?</li>
+    </ol>
+</div>
+
+<!--
+Substituir:
+ < → &lt; 
+`(\w+)`→<code>$1</code>
+`(\w+)(\(\))`→<code>$1</code>
+-->

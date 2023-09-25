@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom td,
+        table.custom th {
+            /* tabela centralizada e com bordas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        ol.excs {
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="caracteres">
+    <h1>Aleatoriedade</h1>
+    <p>Considere o seguinte trecho de código para gerar números aleatórios. Preste atenção aos comentários para entender o que está se passando.</p>
+    <pre><code class="python">import random
+
+# sorteia um float no intervalo [0,1)
+sorteado = random.random()
+print(sorteado)
+
+# transforma em um float entre [0,10)
+sorteado = sorteado * 10
+print(sorteado)
+
+# descarta a parte decimal
+int_sorteado = int(sorteado)
+print(int_sorteado)</code></pre>
+
+    <p>O Python é uma linguagem extensível, permitindo a incorporação de diversos códigos desenvolvidos por terceiros. Ao instalar o Python, uma biblioteca padrão de <b>módulos</b> já está disponível para uso. Módulos são arquivos que contém diversas <b>funções</b> e outros recursos para você agregar ao seu código conforme necessidade. Para usar os recursos de algum módulo, é necessário inicialmente importá-lo em seu programa por meio do comando <code>import</code>, seguido pelo nome correspondente ao módulo desejado. Neste caso, importamos (carregamos) o módulo <code>random</code>, que disponibiliza uma gama de funções voltadas à geração de números aleatórios. Você importa o módulo apenas uma vez no script que pretende utilizar, tipicamente no início do código.</p>
+    <p>Sempre que utilizar uma função de um módulo, preceda o nome da função pelo nome do módulo seguido por um ponto, como em <code>random.random()</code>. Neste caso, o primeiro <code>random</code> se refere ao módulo e o segundo <code>random</code> se refere à função. Observe que sempre que usarmos funções, elas precisarão estar entre aspas. A notação matemática [0,1) significa o intervalo de números entre o 0 inclusivo e o 1 exclusivo, isto é, números maiores ou iguais a 0 e menores que 1.</p>
+    <p>O trecho de código anterior gerou um inteiro aleatório entre [0,10). Podemos simplificar em apenas uma instrução a geração de um inteiro aleatório entre [0,n):</p>
+
+    <pre><code class="python">import random
+
+n = 20
+sorteado = int(random.random()*n)
+print(sorteado)</code></pre>
+
+    <p>Se você não quiser começar do zero, pode usar um valor de deslocamento. Por exemplo, para gerar um número aleatório entre [10,20], você pode fazer:</p>
+
+    <pre><code class="python">primeiro = 10
+ultimo = 20
+quantidade = ultimo - primeiro + 1
+sorteado = primeiro + int(random.random() * quantidade)</code></pre>
+
+    <p>Você também pode gerar um número aleatório dentro de um intervalo discreto. Por exemplo, para gerar um múltiplo de 5 entre [50,100], você pode fazer:</p>
+
+    <pre><code class="python">primeiro = 50
+ultimo = 100
+diferenca = 5
+quantidade = (ultimo - primeiro) / diferenca + 1
+sorteado = primeiro + diferenca * int(random.random() * quantidade)</code></pre>
+
+    <p>Essa é a fórmula geral para gerar números inteiros. Você pode ajustá-la conforme sua necessidade. Apenas altere as variáveis <code>primeiro</code>, <code>ultimo</code> e <code>diferenca</code>. Elas representam, respectivamente, o primeiro número inclusivo do intervalo, o último número inclusivo do intervalo, e a diferença entre dois números consecutivos do intervalo.</p>
+
+    <h2>Semente</h2>
+    <p>As funções presentes no módulo <code>random</code> utilizam uma semente para gerar uma sequência de números aleatórios. Isso faz elas se comportarem de modo determinístico, isto é, para uma mesma semente, a mesma sequência de números aleatórios será gerada. Isso implica que esses números são considerados "pseudoaleatórios", uma vez que a aleatoriedade é comprometida se a semente utilizada for conhecida, permitindo a previsão dos valores que serão produzidos.</p>
+
+    <p>Essa geração de números inteiros com aparência de aleatoriedade tem diversas aplicações científicas, como simulações de sistemas complexos. A característica determinística na geração de tais números muitas vezes é vantajosa, pois a capacidade de reproduzir um experimento científico desempenha um papel crucial na validação do estudo.</p>
+
+    <p>Caso você necessite de geração de números verdadeiramente não determinística, o módulo <code>secrets</code> está disponível para esse propósito, seguindo um padrão de uso semelhante ao módulo <code>random</code>.</p>
+
+    <p>Se não informar a semente, o Python utiliza o horário atual como semente. Para informar a semente:</p>
+    <pre><code class="python">import random
+        
+random.seed(2)
+
+print(random.random())
+print(random.random())
+print(random.random())
+print(random.random())
+print(random.random())</code></pre>
+
+    <p>Execute várias vezes esse programa com e sem a instrução de <code>seed</code> para entender seu comportamento.</p>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Dado um inteiro como semente, gerar três inteiros aleatórios.</li>
+        <li>Dado um inteiro $n$, gerar três inteiros aleatórios entre 0 e $n$.</li>
+        <li>Dado um inteiro $n$, gerar três inteiros aleatórios entre $-n$ e $n$.</li>
+        <li>Dados dois inteiros $m$ e $n$, gerar três inteiros aleatórios entre $m$ e $n$.</li>
+        <li>Dados dois inteiros $m$ e $n$, gerar três inteiros aleatórios múltiplos de $m$ entre $0$ e $n$.</li>
+        <li>Gerar dois inteiros aleatórios cuja soma esteja entre [0 e 100).</li>
+        <li>Gerar uma letra aleatória entre 'a' e 'z'.</li>
+        <li>Gerar uma senha aleatória de 8 dígitos com letras maiúsculas, minúsculas e inteiros.</li>
+        <li>Gerar três decimais aleatórios entre [-100 e 100], com até duas casas decimais.</li>
+        <li>Ler um número inteiro e escrever um valor aleatório com base nesse número: uma letra maiúscula se o usuário inseriu 1, uma letra minúscula se o usuário inseriu 2 e um dígito se o usuário inseriu qualquer valor que não seja 1 ou 2.</li>
+
+    </ol>
+</div>
+
+<!--
+Substituir:
+ < → &lt; 
+`(\w+)`→<code>$1</code>
+`(\w+)(\(\))`→<code>$1</code>
+-->
+
+
+<!-- Bohm e Jacopini demonstraram que todos os programas poderiam ser escritos em termos de somente três tipos de estruturas de controle (ou instruções de controle) — a estrutura de sequência, a estrutura de seleção e a estrutura de repetição. -->
