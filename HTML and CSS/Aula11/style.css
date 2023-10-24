@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.sideMenu{
+    height: 100%;
+    width: 100px;
+    background: lemonchiffon;
+}
+
+.menu{
+    height: 100%;
+    width: 300px;
+    background: yellowgreen;
+
+}
+
+.menu  ul li{
+    height: 50%;
+    width: 300px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    list-style: none;
+}
+
+.menu .options {
+    height: 50%;
+}
+
+.menu .otherOpitions {
+    display: flex;
+    height: 50%;
+    align-items: flex-end;
+}
+
+
+
+
+
+.main{
+    height: 100%;
+    width: 100%;
+    background: gray;
+}

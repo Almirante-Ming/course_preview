@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.red, .blue #fff
+.red {
+    background: tomato;
+}
+
+.blue{
+    background: rgb(60,60,255);
+}
+
+.green{
+    background: green;
+}
+
+.orange{
+    background: orangered; 
+}
+.container {
+    border: 1.5px, solid #000;
+    height: 200px;
+    display: flex;
+    /* flex-direction: column-reverse;
+    flex-wrap: wrap;
+    flex-flow: column wrap; */
+    justify-content: space-around;
+    align-items: flex-end
+}
