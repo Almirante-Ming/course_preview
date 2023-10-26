@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,500&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container{
@@ -11,42 +14,108 @@
 
 .sideMenu{
     height: 100%;
-    width: 100px;
-    background: lemonchiffon;
+    width: 80px;
+    border-right: 30px black;
 }
 
-.menu{
+.container .sideMenu .topMenu {
+    display: flex;
+    height: 33%;
+    width: 80px;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20%;
+    gap: 25px;
+    
+}
+.container .sideMenu .midMenu {
+    display: flex;
+    height: 25%;
+    width: 80px;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around;
+    
+}
+.container .sideMenu .botMenu {
+    display: flex;
+    height: 33%;
+    width: 80px;
+    flex-flow: column;
+    justify-content:flex-end;
+    align-items:center;
+    gap: 25px;
+}
+
+
+.container .menu {
     height: 100%;
-    width: 300px;
-    background: yellowgreen;
-
+    width: 250px;
 }
 
-.menu  ul li{
+.container .menu  ul li{
     height: 50%;
-    width: 300px;
+    width: 250px;
     margin: 10px;
     font-size: 18px;
     font-weight: bold;
     list-style: none;
 }
 
-.menu .options {
+.container .menu .opt1 {
+    display: flex;
+    align-items: flex-start;
     height: 50%;
+    width: 250px;
 }
 
-.menu .otherOpitions {
+.container .menu .opt2 {
     display: flex;
     height: 50%;
     align-items: flex-end;
 }
 
-
-
-
-
 .main{
     height: 100%;
     width: 100%;
-    background: gray;
+    background-color: aquamarine;
 }
+
+.container .main .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1%;
+}
+.container .main .top .topLFT {
+    display: flex;
+    padding-left: 5%;
+}
+.container .main .top .topRGT {
+    display: flex;
+    padding-right: 5%;
+    
+}
+
+.container .main .top .topRGT .rgt-icons {
+    width: 40px;
+    height: 40px;
+    background-color : white;
+    display: flex;
+    gap: 25px;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.container .main .top .topRGT .rgt-search input {
+    background-color : transparent;
+    width: 200px;
+    height: 20px;
+    display: flex;
+    gap: 25px;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+}
+

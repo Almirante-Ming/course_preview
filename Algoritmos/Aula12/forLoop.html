@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["python"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom>thead>tr>th,
+        table.custom>tbody>tr>td,
+        table.custom>tbody>tr>th {
+            /* tabela centralizada e com bordas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        table pre {
+            /* Remove a margem interna de tags pre dentro de tabelas */
+            margin: 0;
+            padding: 0;
+        }
+
+        table.align-left th,
+        table.align-left td {
+            /* alinha à esquerda as células da tabela */
+            text-align: left;
+        }
+
+        ol.excs {
+            /* lista de exercícios */
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            /* lista de exercícios */
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="for">
+    <h1>Repetição <code>for</code></h1>
+    <q>A roda já deu uma volta completa. — William Shakespeare</q>
+
+    <h2>Principios da repetição controlada por contador</h2>
+    <p>Na repetição controlada por <b>contador</b>, sabemos de antemão quantas vezes o corpo da repetição será executado. O contador começa de um valor <b>inicial</b> e é <b>atualizado</b> a cada <b>iteração</b> (ciclo) até alcançar um valor <b>final</b>.</p>
+
+    <p>Em vez de usarmos o <code>while</code> para repetição por contador, podemos usar o <code>for</code>:</p>
+
+    <table class="custom align-left">
+        <tr>
+            <td>
+                <pre><code class="python">inicio = 1
+fim = 11
+print("Contando até 10...")
+
+cont = inicio
+while cont &lt; fim:
+    print(cont)
+    cont += 1
+
+print("Fim!")
+print("Valor final:", cont)</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">inicio = 1
+fim = 11
+print("Contando até 10...")
+
+
+for cont in range(inicio, fim):
+    print(cont)
+
+
+print("Fim!")
+print("Valor final:", cont)</code></pre>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+    <p>No Python, definimos um intervalo de valores inteiros para o loop <code>for</code> através da função <code>range</code>. Note que este intervalo é semiaberto, ou seja, o valor inicial está incluído, enquanto o valor final não está. Observação: a função <code>range</code> aceita apenas números inteiros.</p>
+
+    <p>Observe que no <code>for</code> o contador termina com um valor a menos que o final do intervalo, enquanto que no <code>while</code> o contador termina com o valor final do intervalo, apesar de ambos executarem o corpo da repetição a mesma quantidade de vezes.</p>
+
+    <h2>Diferenças e semelhanças entre <code>for</code> e <code>while</code></h2>
+
+    <p>Tudo o que dá para fazer usando <code>while</code> também dá usando <code>for</code> e vice-versa.
+        Porém dependendo da situação, um pode ser mais adequado que outro.
+        Em geral, as instruções <code>for</code> são utilizadas para repetição controlada por contador: quando sabemos quantas vezes queremos repetir determinado trecho de código…
+        E as instruções <code>while</code>, para repetição controlada por sentinela (flag): quando não sabemos o número de vezes que queremos repetir determinado trecho de código.</p>
+
+    <table class="custom align-left">
+        <tr>
+            <td>
+                <pre><code class="python">i = 1
+soma = 0
+while i < 5:
+    print("+", i, end=" ")
+    soma += i
+    i += 1
+print("= ", soma)</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">
+soma = 0
+for i in range(1, 5):
+    print("+", i, end=" ")
+    soma += i
+
+print("= ", soma)</code></pre>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Mais possibilidades com o <code>for</code></h2>
+    <p>Você pode omitir o valor inicial se quiser começar do zero:</p>
+    <pre><code class="python">print("Contando do 0 até o 9...")
+for cont in range(10):
+    print(cont)</code></pre>
+
+    <p>Você pode especificar o tamanho do teu "passo" na contagem:</p>
+    <pre><code class="python">print("Contagem de 5 em 5...")
+inicio = 0
+fim = 50
+passo = 5
+for cont in range(inicio, fim, passo):
+    print(cont)</code></pre>
+
+    <p>Se o teu passo for negativo e o valor inicial for maior que o valor final, a contagem será regressiva:</p>
+    <pre><code class="python">print("Contagem regressiva...")
+for cont in range(10, 0, -1):
+    print(cont)</code></pre>
+
+    <p>Assim como qualquer estrutura que possui corpo, se este for composto por apenas uma linha de código, pode ir na mesma linha que a estrutura:</p>
+    <pre><code class="python">print("Contagem regressiva...")
+for cont in range(10, 0, -1): print(cont)</code></pre>
+    <p>Assim como qualquer estrutura que possui corpo, não se esqueça do dois-pontos separando a declaração da estrutura do seu corpo!</p>
+
+    <p>Observação: Assim como no <code>while</code>, o <code>for</code> pode nunca ser executado!</p>
+    <pre><code class="python">print("Valendo!")
+for cont in range(0, 10, -1):
+    print(cont)
+print("Fim!")</code></pre>
+
+    <h2 id="mais-exemplos">Mais exemplos de <code>for</code></h2>
+
+    <p>Contando de 1 a 100 em incrementos de 1:</p>
+    <pre><code class="python">for i in range(1, 101): print(i)</code></pre>
+
+    <p>Contando de 100 a 1 em decrementos de 1:</p>
+    <pre><code class="python">for i in range(100, 0, -1): print(i)</code></pre>
+
+    <p>Contando de 7 a 77 em incrementos de 7:</p>
+    <pre><code class="python">for i in range(7, 78, 7): print(i)</code></pre>
+
+    <p>Contando de 20 a 2 em decrementos de 2:</p>
+    <pre><code class="python">for i in range(20, 1, -2): print(i)</code></pre>
+
+    <p>Incrementando entre os valores 2, 5, 8, 11, 14, 17, 20:</p>
+    <pre><code class="python">for i in range(2, 21, 3): print(i)</code></pre>
+
+    <p>Decrementando entre os valores 99, 88, 77, 66, 55, 44, 33, 22, 11, 0:</p>
+    <pre><code class="python">for i in range(99, -1, -11): print(i)</code></pre>
+
+    <!-- <p>Qual a saída de cada versão a seguir?</p>
+
+    <table class="custom align-left">
+        <tr>
+            <td>
+                <pre><code class="python">print("\nVersão 1:")
+for i in range(10):
+    print(i, end=" ")</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">print("\nVersão 2:")
+for i in range(11):
+    print(i, end=" ")</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre><code class="python">print("\nVersão 3:")
+for i in range(10):
+    print(i, end=" ")
+print(i)</code></pre>
+            </td>
+            <td>
+                <pre><code class="python">print("\nVersão 4:")
+for i in range(11):
+    print(i, end=" ")
+print(i)</code></pre>
+            </td>
+        </tr>
+    </table> -->
+
+    <h2>Laços aninhados</h2>
+    <p>Seja estruturas de seleção ou de repetição, podemos colocá-las umas dentro das outras. Veja este exemplo de um <code>for</code> dentro de outro <code>for</code>.</p>
+
+    <p>Veja esse exemplo de <code>if-else</code> dentro de <code>for</code>. Qual a saída?</p>
+    <pre><code class="python">i = 12
+for j in range(1, i + 1):
+    print("", j, end="")
+    if j % 5 == 0 or j % 3 == 0:
+        print(" A", end="")
+    if i % j == 0:
+        print(" B", end="")
+    else:
+        print(" C", end="")</code></pre>
+
+    <p>Vamos examinar um exemplo de laço <code>for</code> simples:</p>
+    <pre><code>i = 1
+print("(", end=" ")
+for j in range(0, 5):
+    print(j, end=" ")
+print(")")</code></pre>
+
+    <p>A linha 4 é executada 5 vezes. Agora, vamos colocar esse laço dentro de outro laço:</p>
+
+    <pre><code>for i in range(0, 3):
+    print("(", end=" ")
+    for j in range(0, 5):
+        print(j, end=" ")
+    print(")")</code></pre>
+
+    <p>Neste novo código, devido ao laço da linha 1, as linhas 2 a 5 são executadas 3 vezes. A linha 4, que já era executada 5 vezes no laço interno, agora é executada um total de 3 * 5 = 15 vezes!</p>
+
+    <p>O laço interno repete a mesma quantidade de vezes a cada ciclo do laço externo. Mas poderíamos alterar esse comportamento:</p>
+
+    <pre><code>for i in range(0, 3):
+    print("(", end=" ")
+    for j in range(i, 5):
+        print(j, end=" ")
+    print(")")</code></pre>
+
+    <p>Qual a saída do seguinte código?</p>
+    <pre><code class="python">print("Início")
+for externo in range(1, 4):
+    print(">", end=" ")
+    for interno in range(1, 6):
+        print(externo, interno, sep="", end=" ")
+    print()  # Adiciona uma quebra de linha após a conclusão de cada linha interna
+print("Fim")</code></pre>
+
+<p>Qual a saída do seguinte código?</p>
+<pre><code>for i in range(0, 3):
+    for j in range(0, 4):
+        for k in range(0, 2):
+            print("3", end="")
+        print("2", end="")
+    print("1", end="")</code></pre>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Refaça os exemplos da seção <a href="#mais-exemplos">Mais exemplos de <code>for</code></a> usando <code>while</code> em vez de <code>for</code>.</li>
+
+        <p><b>Obs. 1: Para os seguintes exercícios, use o mais adequado entre o <code>for</code> ou o <code>while</code>.</b></p>
+        <p><b>Obs. 2: Para os seguintes exercícios, não utilize strings para processar números.</b></p>
+
+        <li>Programa de cálculo de juros compostos. Imagine que você está investindo teu dinheiro em um ativo financeiro que te proporciona juros compostos. A fórmula dos juros compostos é $$M=C(1+i)^t$$, onde: $C$ é o valor inicial do investimento (o capital); $i$ é a taxa de juros por período (por exemplo, utilize $0.05$ para $5\%$ de juros); $t$ é a quantidade de períodos investidos; $M$ é o montante total ao final de $t$ períodos. Por exemplo, ao investir $\$1000$ em um ativo que rende $5\%$ ao ano, ao final de 10 anos você terá acumulado $M=\$1000(1+0.05)^{10}=\$1628.89$.
+            <p>Dado o capital investido, a taxa de juros anual e a quantidade de anos de investimento, qual o montante ao final de cada ano?</p>
+        </li>
+        <pre><code class="python">C = float(input("Informe o capital inicial: $"))
+i = float(input("Informe a taxa de juros anual (por exemplo, 5% como 0.05): "))
+t = int(input("Informe a quantidade de anos de investimento: "))
+
+for ano in range(1, t + 1):
+    M = C * (1 + i) ** ano
+    print(f"Ao final do ano {ano}, o montante será de ${M:.2f}")</code></pre>
+        <li>Dados dois números inteiros, multiplicá-los usando somas repetidas. Não pode usar o operador de multiplicação "*". Sugestão: usar um laço e o operador de soma (+).</li>
+        <li>Qual a tabuada dos número de 1 a 10?</li>
+        <li>Dado um natural, quais seus divisores? Por exemplo, os divisores de 90 são 1, 2, 3, 5, 6, 9, 10, 15, 18, 30, 45, 90.</li>
+        <li>Programa de caixa de loja. Ler uma sequência de triplas que correspondem às informações dos produtos comprados: quantidade, preço unitário, nome do produto. A sequência termina quando for lida uma tripla de zeros. Escrever, em uma linha para cada produto, seu nome e o preço total. Escrever na última linha o preço total da compra.</li>
+        <li>Dada uma sequência de duplas de números, representando valores e seus respectivos pesos, seguida por uma dupla de zeros, qual a média ponderada desconsiderando a dupla de zeros?</li>
+        <li>Dada uma sequência de inteiros seguida por um múltiplo de 11, 13 ou 17, qual o menor número?</li>
+        <li>Dado um inteiro $n$ e um dígito $d$, quantas vezes $d$ ocorre em $n$? Por exemplo, o dígito $2$ ocorre $3$ vezes em $762021192$.</li>
+        <li>Dado um inteiro, qual o seu reverso? Exemplo de entrada→saída: 5837→7385.</li>
+        <li>Dado um natural no sistema decimal, qual seu equivalente no sistema binário? Para realizar a conversão do sistema decimal para binário, realiza-se a divisão sucessiva por 2. O resultado da conversão será dado pelo último quociente (MSB) e o agrupamento dos restos das divisões.</li>
+        <li>Dado um natural menor que 10000, qual sua forma por extenso? Por exemplo, dado o número 9243, sua forma por extenso é "nove mil duzentos e quarenta e três".</li>
+        <li>Decompor um número em fatores primos ou, fatorá-lo, é escrever este número como uma multiplicação de números primos. Os fatores são termos da multiplicação que, neste caso, são números primos. A fatoração é uma técnica usada em muitos algoritmos de criptografia sem os quais a internet não existiria da forma como a conhecemos. A fatoração de um número natural qualquer se dá pela seguinte forma: Divida o número pelo seu menor divisor primo. O quociente será o novo número. Continue dividindo o número pelo seu menor divisor primo até chegar em 1. A multiplicação de todos os divisores dará o valor do número original. Exemplo, os fatores primos de $180$ são $2\cdot 2\cdot 3\cdot 3\cdot 5 = 180$:
+            <table style="border-spacing: 0; text-align: center;">
+                <tr>
+                    <td>180</td>
+                    <td style="text-align: left; border-left: solid;">2</td>
+                </tr>
+                <tr>
+                    <td>90</td>
+                    <td style="text-align: left; border-left: solid;">2</td>
+                </tr>
+                <tr>
+                    <td>45</td>
+                    <td style="text-align: left; border-left: solid;">3</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td style="text-align: left; border-left: solid;">3</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td style="text-align: left; border-left: solid;">3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td style="border-left: solid; border-top: solid;">$2\cdot 2\cdot 3\cdot 3\cdot 5 = 180$</td>
+                </tr>
+            </table>
+            <p>Dado um natural $n$, quais seus fatores primos?</p>
+        </li>
+        <li>Dado um natural, qual seu fatorial?</li>
+        <li>Sejam dois naturais $n\geq p$, podemos calcular seu número binomial como $\binom n p = \dfrac {n!} {p!(n-p)!}$. Dados dois naturais $n\geq p$, qual seu número binomial?</li>
+
+    </ol>
+</div>
+
+<!--
+Substituir:
+×→\times
+ → 
+–→-
+Θ→\Theta
+Ω→\Omega
+ < → \lt 
+ < → &lt; 
+<=→&lt;=
+\s+$→
+`(\w+)`→<code>$1</code>
+`(\w+)(\(\))`→<code>$1</code>
+-->
