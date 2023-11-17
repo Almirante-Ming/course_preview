@@ -11,6 +11,7 @@ if val > 0 && val != 1;
 
   res = Math.log(val, bas)
   puts "o logarítmo de #{val}, na base #{bas}, é:  #{res}"
+  puts "f(X)=Log² #{val})"
 
 else
   puts "digite valores válidos !"
