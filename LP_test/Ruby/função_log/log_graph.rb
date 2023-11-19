@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require 'ascii_charts.rb'
 
 puts "digite o valor do logaritimando: "
