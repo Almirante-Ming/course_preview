@@ -1,10 +1,113 @@
 *{
     margin: 0;
-    padding: 0;   
+    padding: 0;
+    box-sizing: border-box;  
 }
 
 .container {
     display: grid;
+    width: 1360px;
+    height: 768px;
+    border: 1px solid black;
+    grid-template-columns: 180px auto auto auto;
+    grid-template-rows: 70px 130px 130px 130px 130px 130px;
+    gap: 10px
+}
+
+.container .topBar {
+    grid-column: 2/7;
+    grid-row: 1/1;
+    border: 1px solid orange;
+    background: orangered;
+}
+
+.container .topBar .srhBar {
+    display: flex;
     width: 100%;
     height: 100%;
+    justify-content: right;
+    align-items: center;
+    padding-right: 30px;
 }
+.container .topBar .srhBar input {
+    border: 10px;
+    border-radius: 40px;
+    border-color: whitesmoke;
+}
+.container .topBar .srhBar span {
+    color: white;
+}
+.container .sideMenu {
+    grid-row: 1/7;
+    background: greenyellow;
+}
+
+.container .sideMenu .profile {
+    /* grid-row: 1/3; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    border: 1px solid goldenrod;
+    background: orange;
+}
+/* .container .sideMenu .profile span { */
+    /* width: 100px; */
+    /* height: 100px; */
+/* } */
+
+.container .sideMenu .opt {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 23px;
+}
+.container .sideMenu .opt ul li {
+    list-style: none;
+    gap: 10px;
+    display: flex;
+}
+
+.container .contentArea {
+    grid-column: 2/7;
+    grid-row: 2/7;
+}
+
+.container .contentArea .sqr1 {
+    grid-column: 2/2;
+    grid-row: 2/3 ;
+    background-color: aquamarine;
+    justify-content: space-around;
+}
+.container .contentArea .sqr2 {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    background-color: paleturquoise;
+    justify-content: space-around;
+}
+.container .contentArea .sqr3 {
+    grid-column: 5/5;
+    grid-row: 2/3;
+    background-color: green;
+    justify-content: space-around;
+}
+.container .contentArea .sqr4 {
+    grid-column: 2/4;
+    grid-row: 4/7;
+    background-color: purple;
+    justify-content: space-around;
+}
+.container .contentArea .sqr5 {
+    grid-column: 5/7;
+    grid-row: 4/5;
+    background-color: violet;
+    justify-content: space-around;
+}
+.container .contentArea .sqr6 {
+    grid-column: 5/7;
+    grid-row: 4/5;
+    background-color: blue;
+    justify-content: space-around;
+}
+
