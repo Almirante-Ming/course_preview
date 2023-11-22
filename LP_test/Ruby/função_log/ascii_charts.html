@@ -1,0 +1,237 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      File: README
+      
+        — Documentation for ascii-charts (0.9.3)
+      
+    </title>
+    <link rel="stylesheet" href="/static/gems/ascii-charts/0.9.3/css/style.css?1700124800" type="text/css">
+    <link rel="stylesheet" href="/static/gems/ascii-charts/0.9.3/css/common.css?1700124800" type="text/css">
+    <link rel="stylesheet" href="/static/gems/ascii-charts/0.9.3/css/custom.css?1700124800" type="text/css">
+    <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-DKFNF5C40V&amp;cx=c&amp;_slc=1"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" charset="utf-8">
+      pathId = "README"
+      relpath = '/';
+      docsPrefix = '/gems/ascii-charts/0.9.3';
+      listPrefix = '/list/gems/ascii-charts/0.9.3';
+      searchPrefix = '/search/gems/ascii-charts/0.9.3';
+    </script>
+    <script type="text/javascript" charset="utf-8" src="/static/gems/ascii-charts/0.9.3/js/jquery.js?1700124800"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/gems/ascii-charts/0.9.3/js/app.js?1700124800"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/gems/ascii-charts/0.9.3/js/autocomplete.js?1700124800"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/gems/ascii-charts/0.9.3/js/rubydoc_custom.js?1700124800"></script>
+    </head>
+    <body>
+    <div class="nav_wrap">
+    <iframe id="nav" src="/list/gems/ascii-charts/0.9.3/class?1"></iframe>
+    <div id="resizer"></div>
+    </div>
+    <div id="main" tabindex="-1">
+    <div id="header">
+    <form class="search" method="get" action="/search/gems/ascii-charts/0.9.3">
+    <input name="q" type="search" placeholder="Search" id="search_box" size="30" value="" autocomplete="off" class="ac_input">
+    </form>
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+        $('#search_box').autocomplete($('#search_box').parent().attr('action'), {
+          width: 200,
+          formatItem: function(item) {
+            var values = item[0].split(",");
+            return values[0] + (values[1] == '' ? "" : " <small>(" + values[1] + ")</small>");
+          }
+        }).result(function(event, item) {
+          var values = item[0].split(",")
+          $('#search_box').val(values[1]);
+          location.href = values[3];
+          return false;
+        });
+      });
+    </script>
+    <div id="menu">
+    <a href="/gems" target="_top">Libraries</a> »
+    <span class="title">ascii-charts <small>(0.9.3)</small></span>
+    »
+    <a href="/gems/ascii-charts/0.9.3/index">Index</a> »
+    <span class="title">File: README</span>
+    </div>
+    <div id="search">
+    <a class="full_list_link" id="class_list_link" href="/list/gems/ascii-charts/0.9.3/class">
+    <svg width="24" height="24">
+    <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+    <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+    <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+    </svg>
+    </a>
+    </div>
+    <div class="clear"></div>
+    </div>
+    <div id="content"><div id="toc"><p class="title hide_toc"><a href="#"><strong>Table of Contents</strong></a></p><ol class="top"><li><a href="#features">Features</a></li><li><a href="#unfeatures">Unfeatures</a></li><li><a href="#install">Install</a></li><li><a href="#summary">Summary</a></li><li><a href="#changelog">Changelog</a></li></ol></div><div id="filecontents"><h1 id="ascii-charts">ASCII Charts</h1>
+    <p>A Ruby library for generating plain text x,y cartesian plots and histograms that can be displayed in a terminal session.</p>
+    <h2 id="features">Features</h2>
+    <ul>
+    <li>Very simple API, your data may already in the correct format to be plotted</li>
+    <li>Dynamically scales the y-axis</li>
+    <li>Simple configuration options, including chart title</li>
+    </ul>
+    <h2 id="unfeatures">Unfeatures</h2>
+    <ul>
+    <li>Data must be pre-sorted</li>
+    <li>x axis will not be continuous if your data isn't</li>
+    <li>Only x,y point graphs and bar histograms supported</li>
+    <li>Minimal configuration options</li>
+    </ul>
+    <h2 id="install">Install</h2>
+    <pre class="code ruby"><code class="ruby">$ sudo gem install ascii_charts
+    </code></pre>
+    <h2 id="summary">Summary</h2>
+    <pre class="code ruby"><code class="ruby"><span class="id identifier rubyid_require">require</span> <span class="tstring"><span class="tstring_beg">'</span><span class="tstring_content">ascii_charts</span><span class="tstring_end">'</span></span>
+    </code></pre>
+    <p>Display a simple graph</p>
+    <pre class="code ruby"><code class="ruby">## data must be a pre-sorted array of x,y pairs
+    puts AsciiCharts::Cartesian.new([[0, 1], [1, 3], [2, 7], [3, 15], [4, 4]]).draw
+    
+    15|      *   
+    14|          
+    13|          
+    12|          
+    11|          
+    10|          
+     9|          
+     8|          
+     7|    *     
+     6|          
+     5|          
+     4|        * 
+     3|  *       
+     2|          
+     1|*         
+     0+----------
+       0 1 2 3 4 
+    </code></pre>
+    <p>Display the same graph as an histogram</p>
+    <pre class="code ruby"><code class="ruby">## as a histogram
+    puts AsciiCharts::Cartesian.new([[0, 1], [1, 3], [2, 7], [3, 15], [4, 4]], :bar =&gt; true, :hide_zero =&gt; true).draw
+    
+    15|      *   
+    14|      *   
+    13|      *   
+    12|      *   
+    11|      *   
+    10|      *   
+     9|      *   
+     8|      *   
+     7|    * *   
+     6|    * *   
+     5|    * *   
+     4|    * * * 
+     3|  * * * * 
+     2|  * * * * 
+     1|* * * * * 
+     0+----------
+       0 1 2 3 4 
+    </code></pre>
+    <p>Draw a function (e^x)</p>
+    <pre class="code ruby"><code class="ruby">## draw y = e^x for 0 &lt;= x &lt; 10
+    puts AsciiCharts::Cartesian.new((0...10).to_a.map{|x| [x, Math::E ** x]}, :title =&gt; 'y = e^x').draw
+    
+              y = e^x          
+    
+    8500.0|                    
+    8000.0|                  * 
+    7500.0|                    
+    7000.0|                    
+    6500.0|                    
+    6000.0|                    
+    5500.0|                    
+    5000.0|                    
+    4500.0|                    
+    4000.0|                    
+    3500.0|                    
+    3000.0|                *   
+    2500.0|                    
+    2000.0|                    
+    1500.0|                    
+    1000.0|              *     
+     500.0|            *       
+       0.0+*-*-*-*-*-*---------
+           0 1 2 3 4 5 6 7 8 9 
+    </code></pre>
+    <p>Draw a normal distribution</p>
+    <pre class="code ruby"><code class="ruby">## draw a normal distribution with a mean of 10 and a variance of 3 for 0 &lt;= x &lt; 20
+    puts AsciiCharts::Cartesian.new((0...20).to_a.map{|x| [x, (1/Math.sqrt(2*Math::PI*3)) * (Math::E ** -(((x-10)**2)/(2*3)))]}, :title =&gt; 'Normal Distribution', :bar =&gt; true).draw
+    
+                           Normal Distribution                       
+    
+    0.24|                         *  *  *  *  *                      
+    0.22|                         *  *  *  *  *                      
+     0.2|                         *  *  *  *  *                      
+    0.18|                         *  *  *  *  *                      
+    0.16|                         *  *  *  *  *                      
+    0.14|                         *  *  *  *  *                      
+    0.13|                         *  *  *  *  *                      
+    0.12|                         *  *  *  *  *                      
+     0.1|                         *  *  *  *  *                      
+    0.08|                      *  *  *  *  *  *  *                   
+    0.06|                      *  *  *  *  *  *  *                   
+    0.04|                   *  *  *  *  *  *  *  *  *                
+    0.02|                   *  *  *  *  *  *  *  *  *                
+     0.0+-*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*-
+          0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 
+    </code></pre>
+    <p>Draw two series with custom markers</p>
+    <pre class="code ruby"><code class="ruby">xs1 = (1..10).to_a
+    ys1 = (1..10).to_a
+    ys2 = (1..10).to_a.map { |i| i*(1/2.0) }
+    
+    graph = AsciiCharts::Cartesian.new(
+      [xs1, ys1, ys2],
+      markers: ['👋', '👍']
+    )
+    
+    10.0|                            👋
+    9.5|
+    9.0|                         👋
+    8.5|
+    8.0|                      👋
+    7.5|
+    7.0|                   👋
+    6.5|
+    6.0|                👋
+    5.5|
+    5.0|             👋              👍
+    4.5|                         👍
+    4.0|          👋           👍
+    3.5|                   👍
+    3.0|       👋        👍
+    2.5|             👍
+    2.0|    👋     👍
+    1.5|       👍
+    1.0| 👋  👍
+    0.5| 👍
+    0.0+------------------------------
+    1  2  3  4  5  6  7  8  9 10
+    </code></pre>
+    <h2 id="changelog">Changelog</h2>
+    <p>Please see the <a href="https://github.com/paulRbr/ascii_charts/blob/master/CHANGELOG.md">CHANGELOG.md</a> file for details</p>
+    </div></div>
+    <div id="footer">
+    Generated on Thu Nov 16 21:17:13 2023 by
+    <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+    0.9.34 (ruby-3.2.2).
+    </div>
+    <script type="text/javascript">
+    window.yard_library_name = 'ascii-charts';
+    window.yard_library_version = '0.9.3';
+    </script>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-7172246-5', 'auto');
+      ga('send', 'pageview');
+      </script>
+    </div>
+    
+    <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg></body></html>

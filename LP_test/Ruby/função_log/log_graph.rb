@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
+require 'ascii_charts'
 
-require 'ascii_charts.rb'
 
 puts "digite o valor do logaritimando: "
 val = gets.chomp.to_f
@@ -8,10 +8,14 @@ val = gets.chomp.to_f
 puts "Digite o valor da base: "
 bas = gets.chomp.to_f
 
+mt = []
+
+
 if val > 0 && val != 1;
 
-  res = Math.log(val, bas)
-  puts "o logarítmo de #{val}, na base #{bas}, é:  #{res}"
+  res = Math.log10(val)  ## a base deve ser fixa.
+  puts "o logarítmo de #{val} é:  #{res}"
+
 
 else
   puts "digite valores válidos !"

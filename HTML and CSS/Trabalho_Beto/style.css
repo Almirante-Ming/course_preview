@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 100vh;
+    grid-template-areas: "azul verde branco";
+  }
+  
+  header, footer {
+    grid-column: span 3;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  header {
+    background-color: #3498db; /* Azul */
+    color: #fff;
+    grid-area: azul;
+  }
+  
+  header h1 {
+    font-size: 2em;
+  }
+  
+  header span {
+    color: #2ecc71; /* Verde */
+  }
+  
+  main {
+    grid-area: verde;
+    padding: 20px;
+  }
+  
+  /* Estilos adicionais para o conteúdo principal */
+  h1, h2, p {
+    color: #333;
+  }
+  
+  .green-section {
+    background-color: #2ecc71; /* Verde */
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .blue-section {
+    background-color: #3498db; /* Azul */
+    color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  footer {
+    background-color: #fff; /* Branco */
+    color: #333;
+    grid-area: branco;
+  }
+  
+  footer a {
+    color: #3498db; /* Azul */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
