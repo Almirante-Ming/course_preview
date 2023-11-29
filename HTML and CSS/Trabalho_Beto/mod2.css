@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.parent {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    }
+    
+    .div1 { grid-area: 1 / 1 / 12 / 3; }
+    .div2 { grid-area: 1 / 3 / 2 / 10; }
+    .div3 { grid-area: 2 / 3 / 12 / 10; }
+    .div4 { grid-area: 1 / 8 / 2 / 10; }
+    .div5 { grid-area: 10 / 8 / 12 / 10; }
+    .div6 { grid-area: 7 / 8 / 10 / 10; }
+    .div7 { grid-area: 2 / 8 / 7 / 10; }
+    .div8 { grid-area: 2 / 3 / 5 / 5; }
+    .div9 { grid-area: 2 / 5 / 5 / 8; }
+    .div10 { grid-area: 5 / 3 / 11 / 8; }
+    .div11 { grid-area: 11 / 3 / 12 / 8; }
+    .div12 { grid-area: 1 / 1 / 7 / 3; }
