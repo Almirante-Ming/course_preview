@@ -16,5 +16,5 @@ graph = calc_pitch(f, f0, p0)
 data = (0...10).to_a.map { |x| [x, graph] }
 
 #cria o gráfico
-chart = AsciiCharts::Cartesian.new(data, title: 'y = e^x')
+chart = AsciiCharts::Cartesian.new(data, title: 'P=P0+12*Math.log2(F/F0)')
 puts chart.draw
