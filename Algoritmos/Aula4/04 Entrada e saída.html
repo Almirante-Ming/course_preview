@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .katex {
+            /* o padrão é 1.21, vc pode remover essa configuração se quiser deixar o padrão */
+            font-size: 1.0em;
+        }
+
+        table.custom,
+        table.custom td,
+        table.custom th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        ol.excs {
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="entrada-e-saida">
+    <h1>Entrada e saída</h1>
+    <q>Quem não comunica se trumbica. &ndash; Chacrinha.</q>
+    <h2>Comunicação com o mundo exterior</h2>
+    <p>Até agora, aprendemos algumas instruções em Python para realizar operações aritméticas. No entanto, nossos programas são como caixas fechadas - tudo o que acontece dentro deles permanece lá, sem interação com o mundo exterior. Para tornar nossos programas úteis, precisamos de uma maneira de fazê-los <b>enviar</b> e <b>receber</b> informações do mundo exterior. Isso pode incluir outros programas, arquivos que o programa lê ou escreve e, é claro, o usuário - a pessoa interagindo com o programa que desenvolvemos.</p>
+    <p>Portanto, um programa pode ser visto como uma caixa preta que recebe dados de <b>entrada</b>, os processa e produz uma <b>saída</b>. Para quem interage com o programa, não é necessário saber como ele realiza o processamento - basta fornecer os dados de entrada e esperar pela saída correta. Podemos comparar esse processo com a respiração: inspiramos os gases da atmosfera, nosso corpo os processa e exala os gases alterados.</p>
+    <p>Outra analogia comum é a culinária. Para fazer um bolo, seguimos uma receita (algoritmo) para combinar os ingredientes (entrada) e produzir um bolo (saída). Os ingredientes e o bolo final não fazem parte da receita em si - eles vêm de fora.</p>
+
+    <h2>Saída de dados</h2>
+    <p>O comando <code>print</code> é usado em Python para exibir informações no terminal. Dizemos "escrever no terminal" ou simplesmente <b>escrever</b>. Para usar o comando <code>print</code>, basta escrever <code>print()</code> e colocar o conteúdo que deseja exibir entre parênteses. Por exemplo:</p>
+    <pre><code class="python">print("Olá, mundo!")</code></pre>
+    <p>Isso exibirá a mensagem "Olá, mundo!" no terminal.</p>
+    <p>Você também pode usar o comando <code>print</code> para exibir o valor de variáveis. Por exemplo:</p>
+    <pre><code class="python">x = 10
+print(x)</code></pre>
+    <p>Isso exibirá o valor da variável <code>x</code>, que é 10, no terminal.</p>
+    <p>Como uma expressão aritmética gera um resultado, você pode colocá-la dentro do <code>print</code> para exibir diretamente o resultado da expressão:</p>
+    <pre><code class="python">x = 10
+print(x * 3 / 2 - x) # 5.0</code></pre>
+    <p>Você pode exibir vários dados em um único comando <code>print</code>, separando-os por vírgulas. Neste caso, ele automaticamente insere um espaço entre os dados, exibindo tudo em uma única linha. Por exemplo:</p>
+    <pre><code class="python">x = 5
+y = 10
+print("A soma de", x, "e", y, "é", x + y)</code></pre>
+    <p>Isso exibirá <code>A soma de 5 e 10 é 15</code>. Observe que o comando <code>print</code> inseriu espaços entre cada <b>argumento</b> para criar uma mensagem bem formatada.</p>
+    <p>O comando <code>print</code> é de uma categoria de comandos chamada de <b>função</b>. Pense em uma função como se fosse uma expressão aritmética, onde os operandos são os <b>argumentos</b> e os operadores são as <b>vírgulas</b>. Os argumentos de uma função sempre devem estar entre parênteses, precedidos pelo nome da função. E, semelhante a uma expressão aritmética, a maioria das funções também resulta em um valor, que pode ser atribuído a uma variável. Chamamos esse resultado de <b>valor retornado</b> ou simplesmente <b>retorno</b>. Entretanto, a função <code>print</code> é uma exceção, já que não resulta em um valor que possa ser atribuído a uma variável. Tomei a liberdade de adiantar um pouquinho o assunto de funções, mas, por hora, você não precisa entender a fundo esse conceito, o estudaremos mais para frente. Basta saber que certos comandos que usam parênteses são chamados de funções, que argumentos separados por vírgulas vão dentro dos parênteses das funções, e que as funções podem retornar valores.</p>
+    <p>A função <code>print</code> é uma ferramenta útil para exibir informações durante a execução de um programa e ajudar a entender como ele está funcionando.</p>
+
+    <h2>Entrada de dados</h2>
+    <p>O comando <code>input</code> é usado em Python para receber informações do teclado. Dizemos "ler do teclado" ou simplesmente <b>ler</b>. Para usar o comando <code>input</code>, basta escrever <code>input()</code> e atribuir esse comando a uma variável, que receberá o valor que o usuário digitar no teclado. Por exemplo:</p>
+    <pre><code class="python">x = input()</code></pre>
+    <p>Este comando "congela" o programa, aguardando que o usuário digite algum valor e pressione a tecla <kbd>Enter</kbd>. Após isso, o que o usuário digitou será atribuído (armazenado) à variável <code>x</code>.</p>
+    <p>Para tornar a entrada de dados mais interativa, é possível solicitar ao usuário o dado esperado, inserindo uma mensagem entre os parênteses do <code>input</code>. Por exemplo:</p>
+    <pre><code class="python">nome = input("Qual é o seu nome? ")
+print("Olá,", nome, "!")</code></pre>
+    <p>Nesse caso, o programa solicitará ao usuário que informe seu nome, o qual será armazenado na variável <code>nome</code>. Em seguida, o programa exibirá uma saudação personalizada, usando o nome fornecido pelo usuário. Observe que inserimos um espaço no final da solicitação, para ela não ficar colada ao que o usuário digitar, apenas por questões de formatação.</p>
+    <p>O comando <code>input</code> também é uma função, mas diferentemente do <code>print</code>, só aceita um argumento, mas resulta em um valor, que é aquilo que o usuário digitou. Observe que o valor retornado pelo <code>input</code> é do tipo <i>string</i>, logo, os operadores aritméticos não funcionam como você talvez espere:</p>
+    <pre><code class="python">n1 = input('Digite um número: ')
+n2 = input('Digite outro número: ')
+soma = n1 + n2
+print('A soma dos números digitados é', soma)</code></pre>
+    <p>O operador de adição, quando operado em strings, realiza a operação de <b>concatenação</b>, que é "engatar" o final do primeiro operando no início do segundo operando.</p>
+    <p>Portanto, se você quiser que o Python interprete o retorno do <code>input</code> como um número inteiro, deve usar a função <code>int</code> para isso.</p>
+    <pre><code class="python">n1 = int(input('Digite um número: '))
+n2 = int(input('Digite outro número: '))
+soma = n1 + n2
+print('A soma dos números digitados é', soma)</code></pre>
+
+    <p>Da mesma forma, use a função <code>float</code> para interpretar uma string como um número real e a <code>bool</code> para interpretar como booleano:</p>
+    <pre><code class="python">numero1 = 3.4 # isso é um número!
+
+numero2 = "2.5" # não se deixe enganar, isso não é um número!
+
+numero3 = float(numero2) # agora sim, um número!
+
+# claro, você pode usar float diretamente com o input
+numero4 = float(input('Digite um número decimal: '))
+
+acerto = numero1 + numero3 + numero4 # ótimo
+
+erro = numero1 + numero2 # não vai dar bom...</code></pre>
+    <p>Juntos, os comandos <code>input</code> e <code>print</code> podem ser usados para criar simples programas interativos que se comunicam com o usuário.</p>
+
+    <h2>Mais um pouco sobre comentários</h2>
+    <p>Computadores interpretam e executam códigos, mas eles não têm a capacidade de adivinhar tua intenção. Um simples erro no código, como não fechar um parêntese, e teu computador não saberá o que fazer.</p>
+    <p>Além disso, a programação muitas vezes é uma atividade colaborativa. Em uma empresa, o programa é desenvolvido em equipe. É essencial garantir que teu código seja correto tanto para a máquina quanto <b>compreensível</b> para outros programadores.</p>
+    <p>À arte de explicar o que teu código faz, damos o nome de <b>documentação</b>. Uma maneira comum de documentar sistemas é adicionar comentários diretamente no código-fonte…</p>
+
+    <p>Todas as linguagens de programação permitem que você insira comentários em teu código. Comentários são linhas que fazem parte do código, mas são ignoradas pelo computador. Eles servem exclusivamente para os programadores explicarem o propósito de determinadas partes do código.</p>
+    <p>Dica: tenha o hábito de adicionar comentários à medida que escreve o código.</p>
+
+    <h3>Tipos de comentários</h3>
+    <p>Há dois tipos de comentários: comentários simples e comentários em bloco.</p>
+    <p>Os comentários simples começam com uma cerquilha (<code>#</code>) e se estendem até o final da linha. Geralmente, são usados para pequenas anotações que cabem em uma única linha.</p>
+    <p>Os comentários em bloco começam com três aspas (simples <code>'''</code> ou duplas <code>"""</code>) e terminam com as mesmas três aspas (se você começou com as aspas simples, deve terminar com aspas simples). Eles são usados para escrever comentários mais extensos que ocupam várias linhas.</p>
+
+    <pre><code class="python">'''
+Programa de exemplo de uso de comentários.
+Autor: Pedro Henrique
+Data: 08/08/2018
+'''
+
+# Solicita ao usuário que digite dois números
+print("Digite dois números...")
+
+# Lê os números que o usuário digita
+a, b = map(int, input().split())
+
+# Determina qual número é maior e qual é menor
+maior = a if a > b else b
+menor = b if a > b else a
+
+# Escreve o maior e o menor número
+print("Maior:", maior)
+print("Menor:", menor)</code></pre>
+
+    <p>Você pode não entender todos os comandos deste programa, mas ao ler os comentários, você pode ter uma ideia do que cada um deles está fazendo.</p>
+
+    <p>Principalmente em nossos primeiros programas, é comum incluir muitos comentários para ajudá-lo a se familiarizar com o Python.</p>
+    <p>Entretanto, tenha cuidado para não sobrecarregar teu código com comentários redundantes ou desnecessários, como o exemplo a seguir:</p>
+
+    <pre><code class="python"># Exibe "Gosto de programar"
+print("Gosto de programar")
+    </code></pre>
+    <p>Dica: Comentários podem ser usados para testar teu código ou ignorar “temporariamente” um erro no teu código! Colocar cerquilha (<code>#</code>) no início de uma instrução fará com que o computador a ignore!</p>
+
+    <h2>Exercícios</h2>
+    <p>Para cada exercício, elabore um programa que resolva à questão.</p>
+    <ol class="excs">
+        <li>Dadas a base e a altura de um retângulo, qual sua área? $A=base\cdot altura$</li>
+        <li>Dado o raio de um círculo, qual sua área? $A=πr^2$</li>
+        <li>Dado um inteiro, qual o seu antecessor e o seu sucessor?</li>
+        <li>Dados dois inteiros, quantos inteiros há no intervalo fechado entre eles?</li>
+        <li>A família Silva vai passar as férias na Europa e quer saber quantos euros vale o dinheiro em real que ela levará. Dados um valor na moeda real e a cotação do euro, qual o valor correspondente em euros?</li>
+        <li>Joãozinho fez sua viagem até os Estados Unidos. Porém, chegando lá, descobriu que a temperatura é medida em graus Fahrenheit, e não em Celsius. Dada a temperatura em graus Fahrenheit, qual a temperatura correspondente em graus Celsius? $C=\dfrac{(F-32)\cdot 5}{9}$</li>
+        <li>Dadas quatro notas de um estudante, qual sua média aritmética?</li>
+        <li>Dados o salário de um funcionário e o percentual de aumento, qual o valor do aumento e o novo salário?</li>
+        <li>Ler dois números e armazená-los nas variáveis $a$ e $b$. Em seguida, trocar o valor das variáveis, ou seja, $a$ deve receber o valor de $b$ e vice-versa. Por fim, escrever os valores de $a$ e $b$. (obs.: essa é a operação de troca, ou swap, e é muito utilizada em vários algoritmos)</li>
+        <li>Joãozinho fará uma viagem de carro e quer saber quantos $\$$ ele gastará em gasolina. Dados três decimais $q$, $d$, $p$, que são, respectivamente, o consumo do carro medido em quilômetros por litro (Km/l), a distância total que será percorrida (Km) e o preço do litro da gasolina ($\$$/l), quantos $\$$ Joãozinho gastará em gasolina para viajar?</li>
+    </ol>
+
+</div>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom>thead>tr>th,
+        table.custom>tbody>tr>td,
+        table.custom>tbody>tr>th {
+            /* tabela centralizada e com bordas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        table pre {
+            /* Remove a margem interna de tags pre dentro de tabelas */
+            margin: 0;
+            padding: 0;
+        }
+
+        table.align-left th,
+        table.align-left td {
+            /* alinha à esquerda as células da tabela */
+            text-align: left;
+        }
+
+        ol.excs {
+            /* lista de exercícios */
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            /* lista de exercícios */
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="while">
+    <h1>Operadores lógicos</h1>
+    <q>Um bug muitas vezes entra por uma porta que você não sabia que deixou aberta.</q>
+
+    <p>Considere o seguinte trecho de código para verificar se uma idade está entre 18 e 64 anos:</p>
+    <pre><code class="python">if idade >= 18:
+    if idade &lt; 65:
+        ... # aqui vai seu código
+</code></pre>
+    <p>Embora funcione, instruções aninhadas não são muito legíveis. Utilizando operadores lógicos, podemos simplificar esse tipo de verificação.</p>
+    <p>Exemplos de operações lógicas:</p>
+    <ul>
+        <li>SE estiver com sede E tiver água, ENTÃO beba!</li>
+        <li>SE tiver carro OU tiver carona, ENTÃO vá ao show!</li>
+        <li>SE NÃO tiver máscara, ENTÃO fique em casa!</li>
+        <li>SE tiver nota boa E NÃO faltou, ENTÃO aprovou!</li>
+        <li>SE NÃO tiver guarda-chuva E chover, ENTÃO espere a chuva passar!</li>
+    </ul>
+    <h2>Operador Conjuntivo</h2>
+    <p>Para assegurar que duas condições são verdadeiras, utilize o operador <code>and</code> (E condicional):</p>
+    <pre><code class="python">if idade >= 21 and idade &lt; 65:  ...</code></pre>
+    <p>Apesar de opcional, parênteses redundantes podem tornar a expressão mais clara:</p>
+    <pre><code class="python">if (idade >= 21) and (idade &lt; 65): ...</code></pre>
+    <h2>Operador Disjuntivo</h2>
+    <p>Para assegurar que uma das duas ou ambas as condições são verdadeiras, utilize o operador <code>or</code> (OU condicional).</p>
+    <pre><code class="python">if horas > 40 or vendas > 25000.00: ...</code></pre>
+    <h2>Operador de negação</h2>
+    <p>O operador unário <code>not</code> (NÃO lógico) “inverte” o valor de uma expressão lógica.</p>
+    <p>O operador de negação é colocado antes de uma condição.</p>
+    <pre><code class="python">if not masculino: ...</code></pre>
+    <p>Diferentemente de outras linguagens de programação, no Python, o operador de negação tem menor prioridade que os operadores aritméticos. Portanto, as duas expressões seguintes são equivalentes:</p>
+    <pre><code class="python">if not (n % 2 == 0): ...</code></pre>
+    <pre><code class="python">if not n % 2 == 0: ...</code></pre>
+    <p>Na maioria dos casos, é possível evitar o operador de negação mudando o operador relacional e tornando a expresão mais legível:</p>
+    <pre><code class="python">if n % 2 != 0: ...</code></pre>
+    <p>Qual seria a versão do seguinte trecho de código sem usar o operador <code>not</code>?</p>
+    <pre><code class="python">if not n &lt;= 0: ...</code></pre>
+
+    <h2>Tabela verdade</h2>
+    <p>
+    <table class="custom">
+        <thead>
+            <tr>
+                <th>A</th>
+                <th>not A</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>V</td>
+                <td>F</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>V</td>
+            </tr>
+        </tbody>
+    </table>
+    </p>
+
+    <p>
+    <table class="custom">
+        <thead>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>A and B</th>
+                <th>A or B</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>V</td>
+                <td>V</td>
+                <td>V</td>
+                <td>V</td>
+            </tr>
+            <tr>
+                <td>V</td>
+                <td>F</td>
+                <td>F</td>
+                <td>V</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>V</td>
+                <td>F</td>
+                <td>V</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>F</td>
+                <td>F</td>
+                <td>F</td>
+            </tr>
+        </tbody>
+    </table>
+    </p>
+    <p>Os operadores lógicos geram o valor <code>True</code> para verdadeiro e o valor <code>False</code> para falso.</p>
+
+    <pre><code class="python">if idade >= 21 and idade &lt; 65:  ...
+if horas > 40 or vendas > 25000.00: ...
+if !masculino: ... </code></pre>
+
+    <p>Uma condição que usa os operadores <code>and</code> ou <code>or</code> utiliza a avaliação em curto-circuito — a avaliação termina assim que encontra a resposta.</p>
+    <p>Considere a expressão</p>
+    <pre><code class="python">(i != 0) and (10 / i == 2)</code></pre>
+    <p>A condição dependente <code>(10 / i == 2)</code> deve aparecer após o operador <code>and</code> para evitar a possibilidade de divisão por zero.</p>
+
+    <h2>Prioridades</h2>
+    <table class="custom">
+        <tbody>
+            <tr>
+                <th>Operadores</th>
+                <th>Significado</th>
+            </tr>
+            <tr>
+                <td><code>()</code></td>
+                <td>Parênteses</td>
+            </tr>
+            <tr>
+                <td><code>**</code></td>
+                <td>Expoente</td>
+            </tr>
+            <tr>
+                <td><code>+x</code>, <code>-x</code>, <code>~x</code></td>
+                <td>Positivo unário, Negativo unário, NOT bitwise (Negação bit a bit)</td>
+            </tr>
+            <tr>
+                <td><code>*</code>, <code>/</code>, <code>//</code>, <code>%</code></td>
+                <td>Multiplicação, Divisão, Divisão inteira, Módulo</td>
+            </tr>
+            <tr>
+                <td><code>+</code>, <code>-</code></td>
+                <td>Adição, Subtração</td>
+            </tr>
+            <tr>
+                <td><code>&lt;&lt;</code>, <code>&gt;&gt;</code></td>
+                <td>Operadores de deslocamento bit a bit (Shift bitwise)</td>
+            </tr>
+            <tr>
+                <td><code>&amp;</code></td>
+                <td>AND bitwise (E bit a bit)</td>
+            </tr>
+            <tr>
+                <td><code>^</code></td>
+                <td>XOR bitwise (OU exclusivo bit a bit)</td>
+            </tr>
+            <tr>
+                <td><code>|</code></td>
+                <td>OR bitwise (OU bit a bit)</td>
+            </tr>
+            <tr>
+                <td><code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>is</code>, <code>is not</code>, <code>in</code>, <code>not in</code></td>
+                <td>Comparadores, Identidade, Operadores de pertencimento</td>
+            </tr>
+            <tr>
+                <td><code>not</code></td>
+                <td>NOT lógico (Negação lógica)</td>
+            </tr>
+            <tr>
+                <td><code>and</code></td>
+                <td>AND lógico (E lógico)</td>
+            </tr>
+            <tr>
+                <td><code>or</code></td>
+                <td>OR lógico (OU lógico)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Suponha que um professor queira recompensar seus alunos que tenham bom desempenho e tenham perdido poucas aulas. Além disso, a recompensa exige que os alunos ingressem em três organizações escolares ou participem de duas atividades esportivas. A avaliação poderia ficar assim:</p>
+    <pre><code class="python">if nota > 9 and faltas &lt;= 3 and (atividades >= 3 or esportes >=  2):
+    ...</code></pre>
+
+    <p>Para tornar o código mais legível, você pode envolver a condição do <code>if</code> entre parênteses e acrescentar quebras de linhas entre os operadores:</p>
+    <pre><code class="python">if (nota > 9 and faltas &lt;= 3
+    and (atividades >= 3 or esportes >= 2)):
+    ...</code></pre>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Quanto vale a expressão para cada valor das variáveis?
+            <table class=custom>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>horas</th>
+                        <th>vendas</th>
+                        <th>faltas</th>
+                        <th>horas &lt; 20 or vendas &lt; 1200 and faltas &gt; 15</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>a)</td>
+                        <td>17</td>
+                        <td>1000</td>
+                        <td>20</td>
+                        <td>T or T and T → T or T → T</td>
+                    </tr>
+                    <tr>
+                        <td>b)</td>
+                        <td>15</td>
+                        <td>350</td>
+                        <td>12</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>c)</td>
+                        <td>16</td>
+                        <td>1200</td>
+                        <td>22</td>
+                        <td>T or F and T → T or F → T</td>
+                    </tr>
+                    <tr>
+                        <td>d)</td>
+                        <td>15</td>
+                        <td>1500</td>
+                        <td>15</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>e)</td>
+                        <td>20</td>
+                        <td>1100</td>
+                        <td>40</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>f)</td>
+                        <td>40</td>
+                        <td>900</td>
+                        <td>15</td>
+                        <td>F or T and F → F or F → F</td>
+                    </tr>
+                    <tr>
+                        <td>g)</td>
+                        <td>32</td>
+                        <td>5000</td>
+                        <td>38</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>h)</td>
+                        <td>21</td>
+                        <td>1300</td>
+                        <td>14</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <h4>Para os exercícios de 2 a 11, responda apenas com SIM ou NÃO.</h4>
+        <li>Dados dois números, algum deles é ímpar?</li>
+        <li>Dados dois números, ambos são pares?</li>
+        <li>Dado um número, ele é múltiplo de 3 ou 5, mas não simultaneamente pelos dois?</li>
+        <li>Dados dois números, um deles é múltiplo do outro?</li>
+        <li>Dados três números, todos são múltiplos de 10?</li>
+        <li>Dados dois números, algum deles NÃO é múltiplo de 5?</li>
+        <li>Dados três números, todos são múltiplos de 5 ou de 3?</li>
+        <li>Dados três números, nenhum deles é múltiplo de 5 e de 3?</li>
+        <li>São bissextos todos os anos múltiplos de 400, exemplo: 1600, 2000, 2400, 2800...
+            <p>São bissextos todos os múltiplos de 4, exceto se for múltiplo de 100 mas não de 400, exemplo: 1996, 2000, 2004, 2008, 2012, 2016, 2020... Já 1900 não é bissexto, pois apesar de ser múltiplo de 4, não é múltiplo de 400 e é múltiplo de 100.</p>
+            <p>Não são bissextos os demais anos.</p>
+            <p>Dado um número inteiro representando um ano qualquer, este ano é bissexto?</p>
+        </li>
+        <li>Para construir um triângulo é necessário que a medida de qualquer um dos lados seja menor que a soma das medidas dos outros dois e maior que a diferença absoluta entre os outros dois. Dados três números, eles formam os lados de um triângulo válido?</li>
+        <li>Dados três números representando os lados de um triângulo, ele é equilátero, isósceles ou escaleno?</li>
+        <li>Dada uma data, qual a estação do ano correspondente (Primavera, Verão, Outono, Inverno)?</li>
+
+    </ol>
+</div>

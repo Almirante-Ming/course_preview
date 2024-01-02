@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["python"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom>thead>tr>th,
+        table.custom>tbody>tr>td,
+        table.custom>tbody>tr>th {
+            /* tabela centralizada e com bordas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        table pre {
+            /* Remove a margem interna de tags pre dentro de tabelas */
+            margin: 0;
+            padding: 0;
+        }
+
+        table.align-left th,
+        table.align-left td {
+            /* alinha à esquerda as células da tabela */
+            text-align: left;
+        }
+
+        ol.excs {
+            /* lista de exercícios */
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            /* lista de exercícios */
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="continue-break">
+    <h1>Continuando e terminando loops</h1>
+    <q>Você só perde quando para de tentar!</q>
+
+    <h2>A instrução <code>break</code></h2>
+    <p>A instrução <code>break</code> finaliza o loop. Portanto, ela só é válida dentro de um loop.</p>
+
+    <p>Qual a saída caso o usuário digite 10 e 5?</p>
+    <pre><code>a = int(input())
+b = int(input())
+for i in range(a + 1):
+    print(i, end=' ')
+    if i == b:
+        break
+    print(a - i)
+print("fim do programa")</code></pre>
+
+    <p>O que o seguinte programa faz?</p>
+    <pre><code>num = 0
+media = 0
+total = 0
+
+print("Digite 10 números não negativos:")
+while total &lt; 10:
+    num = float(input())
+    if num &lt; 0:
+        break
+    media += num
+    total += 1
+
+if total > 0:
+    media /= total
+    print("Média dos números válidos:", media)
+else:
+    print("Nenhum número válido inserido.")</code></pre>
+
+    <p>Observe que em todos os casos, o uso do <code>break</code> é condicionado por um <code>if</code>. Caso contrário, o loop se encerraria após a primeira iteração.</p>
+
+    <h2>A instrução <code>continue</code></h2>
+
+    <p>Dependendo do que você quiser fazer, as vezes pode não ser interessante executar todo o corpo do loop antes de iniciar um novo ciclo.</p>
+    <p>A instrução <code>continue</code> força o início de um novo ciclo independentemente do que ainda resta do ciclo atual.</p>
+    <p>Na instrução <code>while</code>, a condição de terminação é avaliada logo após a execução de <code>continue</code>.</p>
+    <p>Na instrução <code>for</code>, logo após a execução de <code>continue</code>, primeiramente a variável contadora é atualizada, e então a condição de terminação é avaliada.</p>
+    <p>O que acontece nos dois códigos anteriores se substituirmos o <code>break</code> por <code>continue</code>?</p>
+
+    <p>Qual a saída do seguinte código?</p>
+
+    <pre><code>for i in range(1, 11):
+    print(i,"é", end=" ")
+    if i % 2 == 1:
+        print("ímpar")
+        continue
+    print("par")</code></pre>
+
+    <p>Os dois códigos seguintes fazem a mesma coisa? Quais suas saídas?</p>
+
+    <table class="custom align-left">
+        <tr>
+            <td>
+                <pre><code>i = 1
+while i &lt;= 10:
+    print(f"{i} ", end='')
+    if i % 4 == 0:
+        print("pula")
+        continue
+    print(i)
+    i += 1
+print("fim!")</code></pre>
+            </td>
+            <td>
+                <pre><code>
+for i in range(1, 11):
+    print(f"{i} ", end='')
+    if i % 4 == 0:
+        print("pula")
+        continue
+    print(i)
+
+print("fim!")</code></pre>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Debate sobre o uso de break/continue</h3>
+    <p>Muitos autores advertem os leitores a evitar <code>break</code> e <code>continue</code>, pois esse salto do fluxo de execução pode tornar a lógica difícil de entender.</p>
+    <p>Por exemplo, um <code>break</code> no meio de uma lógica complicada pode ser esquecido, ou pode não ser óbvio sob quais condições um <code>break</code> deve ser acionado.</p>
+    <p>No entanto, usado criteriosamente, <code>break</code> e <code>continue</code> pode ajudar a tornar os loops mais legíveis, mantendo o número de blocos aninhados baixo e reduzindo a necessidade de lógica de loop complicada.</p>
+
+    <h3>Exercícios</h3>
+    <ol class="excs">
+        <li>Dada uma sequência de 10 inteiros, qual a soma dos múltiplos de 3 e a soma dos múltiplos de 2? Entretanto, múltiplos de 6 não devem ser contabilizados na soma. Utilize <code>continue</code>.</li>
+        <li>Dada uma sequência de inteiros, que termina com 10 números ou com um múltiplo de 6. Qual a soma dos múltiplos de 3 e a soma dos múltiplos de 2? O múltiplo de 6 deve ser contabilizado na soma. Utilize <code>break</code>.</li>
+        <li>Gerar uma senha numéria aleatória entre 0 e 9999. Dar dez chances para o usuário acertar a senha, informando se o chute é maior ou menor que a senha. Quando o usuário acertar a senha ou chutar dez vezes, escrever a quantidade de tentativas e se ele acertou ou não a senha. Utilize <code>break</code>.</li>
+        <li>Dado um horário entre 00:01 e 23:59, quais são os horários de minuto em minuto até as 00:00 no formato HH:MM?</li>
+        <li>Dado um número $n$, quais os primos menores que $n$?</li>
+        <li>Ler um natural $n$, seguido por $n$ sequências de naturais, cada sequência finalizada com um zero. Escrever o maior número de cada sequência.</li>
+        <li>Dado um natural N, qual o triângulo de Floyd com N linhas? Exemplo, para N=6, o triângulo de Floyd é:
+            <pre>
+1
+2 3
+4 5 6
+7 8 9 10
+11 12 13 14 15
+16 17 18 19 20 21</pre>
+        </li>
+        <li>Dado um natural $n$, desenhar com asteriscos um triângulo isósceles de altura $n$. Exemplo, para $n=5$, a saída deve ser:
+            <pre>
+           *
+         * * *
+       * * * * *
+     * * * * * * *
+   * * * * * * * * *
+</pre>
+        </li>
+        <li>Um matemático italiano da idade média conseguiu modelar o ritmo de crescimento da população de coelhos através de uma seqüência de naturais que passou a ser conhecida como seqüência de Fibonacci. Um número na sequência de Fibonacci é a soma dos dois números anteriores a ele. Os dez primeiros números da sequência de Fibonacci são 0 1 1 2 3 5 8 13 21 34. Dado um natural N, quais os N primeiros números da sequência de Fibonacci?</li>
+        <li>Dado um natural N, seguido por uma sequência de N inteiros, qual o comprimento do maior segmento crescente da sequência? Exemplos de entrada→saída: 9 5 10 3 <u>2 4 7 9</u> 8 5 → 4; 5 10 8 7 5 2 → 1.</li>
+    </ol>
+</div>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('dividendo-divisor').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYsAAAC2CAYAAAAoc6FMAAA1hklEQVR4nO2dB3hUxdeHJaETEiCUQEJP6B2UXkU60qRLkyaCFFEURJCOSgelioCAdFB6UaRK7zX0kkIJkBAIJEC+vOj8v+uaZHezd7Ob3fM+z31y+53JzsxvypkzyaOjo98QBEEQhPhIbusACIIgCPaPiIUgCIJgFBELQRAEwSgiFoIgCIJRRCwEQRAEo4hYCIIgCEYRsRAEQRCMImIhCIIgGEXEQhAEQTCKiIUgCIJgFBELQRAEwSi6i8Wnn346YerUqf1evHjxr3fPnTu3e7du3ebp/T1b4qhxddR4CfaLpDn7R3exmDBhwqfjxo0bfPnyZd8PPvhg/oEDByrEd/+GDRsacV90dHSyOXPm9GjWrNlavcNkrW+aG9ekgqPGS7BfnKncSKpYpRsqRYoUUYULFz7v6ekZYuzeDz/8cNa9e/eysN+jR485ifED6PlNc+KalHDUeAn2izOVG0kRm49ZJEuWLDq2fUf7piAI+iHlRuJjc7GYN29eN/okadrNmjXrQ0f9piAI+iHlRuJjc7GoW7fu1lu3buV09G8KgqAfUm4kPlYVC2dqqjlqXB01XoL9ImnOPrGqWLi6ur605vvtCUeNq6PGS7BfJM3ZJ1YVi9SpUz+z5vvtCUeNq6PGS7BfJM3ZJxaJxe7du6stWbKk/d69e6sEBgbmCA8Pd0uXLt0TTN8KFCjgf+3atbxxPdupU6eFixYt6qg9V7BgwYsXLlwopI49PDxCw8LC3GN7nmvnzp0rkiNHjkB1jgGo3r17fx8ZGZnS8N5Hjx5lMOWb1oirllevXrksW7aszcqVK1seOXKkHKZ4mAwSjypVquzt1avXzHLlyh1R9wcEBHgTxidPnqRT53x8fG7Td8pA259//lmDd+3cubPm9evX86RKleo5z3/++effvPPOO9sTK16wf//+SupdhDs0NNTD3d09zNvbO4C4dejQ4eeKFSv+Zer7BMfEGcqN+/fvZ54+ffrHGzdubHjp0iW/p0+fpuV9mTNnvs+zRYoUOTdo0KBvM2bM+DC25xOal44ePVqW68+ePUutzuXJk+e6+p++fPnSdf369Y0XLlzY6a+//qr4/fff927RosXquOKhJUFi8fjx4/QE9tdff23CMT9yo0aNNhCRqKioFBRst2/f9rlz5062uN5BYKdNm9b3l19+aUsBGds9ISEhnhSC9erV20Ihyzm+O3LkyGH8Awzvx1Khc+fOC/hxeObmzZu5Nm3a1ICBKVO/aY24KvjRmzRp8is/KMd16tTZRsFOQuL98+fP/4Bt8ODB48aOHTuEe/gOCYVnypcvf5Bzd+/ezUriHT169FDiqv0GieT3339/m//b8uXLW7/33nurrB0vMjsZas2aNc05Llas2Jl27dotzZAhw6OgoKDsW7ZsqTdz5sxebITnp59+6uLm5hZu7L2CY+Es5QaVwPr1629GMLJly3andevWy7Nnzx708OHDjHv27Kn622+/vctGnjEUC0vzUtmyZY8ilJQXSkz4Ln8J//Dhw0doywwqnMbiozBbLJiOTyGnZli2adNmGVPyY8v8JASUNa53obT8M+IMXPLkL6gdN2/efM2qVave4xz/7Jw5c96K7xn+4fzgVatW3cOPZs43rRVXMkKtWrX+8Pf3L0BLYvXq1S0aN268Xl1n9iphpaXAft68ea917959Ltfowy1RosQpdS81oO3bt7/DJCFqKWQ6MgWJlAxBZuH4k08+mcT/zsXF5ZW14kVNhXBTA+KY2lSfPn1maO8hvISFWgy/Y3BwsBeZmd8qrvcKjoWzlBtU1qipIxQlS5Y8Sb4wjOPQoUNHjxkz5kvDZ/XKS5QvpUqVOqGOEY933333N1oU/A8ohxDks2fPFjUWHy1mi8U333zzufrB+WdQwyVw5r7HHD777LPv1I9OVwvdLiS2uO7Hxwx/+ada8l0940orAKFgv2/fvtO0QgH0006ePHlA6dKlj3P8dQzUduL6HjULw0RYqVKl/WXKlDlGYueYrioSRPHixU9bK16EWSXu999/f7Fh4oaUKVNGkvBPnTpVgkzL/TzH75qQbwpJD2cpN/74449aCA77PXv2nB2bGPbr12/qt99+O8jwvLXyEq2Ht99++3fmhqjut6tXr+YrVKjQBXPiZpZYoGoEVB1/8cUX4639g8Nbb711qFq1arvp6+R44sSJA+P60VFaEkX+/PmvoKYJ/aaecaWJTb+oOsa/TGz3URvgx6Qfl+3gwYPl6X8051vcnytXrpsqwdKs14qFnvGiJqQyGKiWUGxgDjlgwIDJJHCOeY5MKZYvjo8zlRs3btzIrfa14wZasmTJco9uJrqm1Dlr56WuXbv+qBWufPnyXR0xYsRwLy+vYFPjZpZYUDNQ/Yl0bTRo0GCTOc9bAsqpfnS6W+iuieFPw/tQTxIn6m3Y/WIOesb15MmTJWmWsp82bdqn+L+J614/P79LCAX7x44dK2OuWAAD4Eosnj9/nkp7Te94IUbsk1ArVKhwIL77a9euvUPtM37D87SEEvp9IWngTOWG1q8V4sQYJQWz4X10tWmPbZGXGBs1536zxOLw4cNvqv3cuXPfYHTenOctoWHDhhuxIMCSgWO8VBr+6PzY/OgMBnXp0uUnS76nZ1z5IdU+iSm+SUf0jap9JTDmEt/79YwXmU/tI1A0keO7P3369I9Vy0k9L2Lh+DhTuUEhjmUXY5QU4nS5qQF09uN6LinkJbPEQgUMtKZniQEFID7vVRcO1grnz58vrK2lY/1DDYbahKXWNnrGlQFntc84gqkzVCMiItJY8t3Y0DNeWGWpfTKaKc9kypTpgQqD8uApODbOVG6Qvn/88ceuWF/R/cyg+ZQpU/qz+fr6XsYyCkGiu0v7XFLIS2aJhdZ2OU2aNBH6Byd+2rdvvwRLAv5BDNrQzNOOBWDehlXAxx9/PN3Sb+kZV0xj1X7WrFnvmho+a8xJ0DNeZAS1b6wmpNBOuNI+LzguzlRuAIKAGGCZiDgxHsF51urACmr8+PFfYIJLOFS+SQp5ySyx0EbCsC88MeD7WBIxQMbx4sWL3+efjy0zk1hoijGAFZ+JnDnfUvuWxpVmqdqn1kDCteR9lqBnvGgKm/su7aCf9nnBcXGmckPB/CnmUtBi4O+6deuaMkcC4WCbMWNGHwQKSybuTwp5ySyx0E4gMWWyljVgbgE/NBN8+KdiZYFZql7msgo946od9LJ114ue8dJaUqiJP8bQjsPQyrLk+0LSwJnKDUNI44xZsDGAzUxxxINrfJsWBrPWk0JeMkssihYtelbtX7lyJT//+MSuHTIAjFnZpEmTPuGY+QYdO3ZchCla5cqV97355puH9fiOnnHVmq6SEBj4YtaqHuE0Fz3jZeiWhJpOfH59mImOiWJszycVsGuni0Fr9ijEjzOVG7gHYUIs4wmG1xi45nuY9GLpSJcYLjcQi6SQl8wSC8w4GTAikjSlmIXMKL+VwhYn2BhTM2AA6cGDB5kwxWOGqJ61Az3jihUE3U8kJI7x+YJfGL3Cag56xgsRxLoF23IyCE16ZofGdf+OHTtqq32a/IaTBZMCqr8ZKxtbhyWp4EzlBn7fcLfDnI3YrmMWyzwOxIJj5Y4kKeQls8SCQDFlf+vWrXU5xs8ImYZJJtYJXuyg0PQx/vzzzx04praCewxsmvX6hp5xpc8U6wg1MWnUqFFfMa3fFoWlnvHCHp0M2L9//ykcz549u2d8CVz1zwL27DIhzzlwpnID6GbCAjKutcS13Ue46+FvUshLZrv7IJDY89JMYuIXLiaobeGAi4FcbJYxD922bVsdpqRbI9CAOZz60cEa/zA944r7DmpUyssmTV8mxbRq1WoFNQoGu6hRkJCYik//ZlxOAO0pXliQrF27ttmuXbuqr1ixohUWXCrBK5Q/m3379lXmGHckhvcIjo0zlRvEhXxBgW/Y3YanWgbY2aeyqJ18Z+95yWyxwD55w4YNjSjI6FbBHEwVasxOVmaiqDh2xWoZQlScfjbtpDP63LQJg4ksx48fL43a8q74woFjPbxCUlvhnXG50DDEnG/qGVf6MHH41bRp03XYedNvO2TIkLFs1Cp4H/MqlJkdzsjUtzhnmIEIM32fuCRX52jmE0bV3QX4oyKOWossPeNF2HH6hqdMxJDaEZ5zceRG1xviyHX1jpYtW67kurQqnAtnKjcAD6+bN2+uT1cXXhkYVMfbK60OusFwyYMgaGeL65WX6FrTTgQGJkbiTigul+imkCAX5Til4sfG8yH/EP4J/KAMyFCAUdDRJ4n7XKbX8wy1CJyJ4XobJ3rUrHlG+15q09Q+6N+sWbPmTvr+4gsHk2j40bE0MDZghkO9hHzT0rgqcz1gIIsERyLBTbNazwKR4H0kZGpctDbUgBsJhOe061kAPm/wr7NgwYLOuDCmRUImM4wf61ogSCQqBvSsES+ECIdt1HZwEMcgMN+jBcVsXTIG/bRkAr0GEoWkhzOUGxTgFN7kBZ6lpcT4BfdRYaxevfou4oGvJm0FTmFpXsI1Oa0Nwwm9qksLqynExtS5HFoSvPgR/XHDhg0byRbXPTSr4prooq39JhQSn6n+2LHISOg3LY2rFrqbKNzZTPk2M15NmXDDoirmxk/PeAGZis2cMAjOhaOXG8QPq6v4HAGaQkLzEutZaCcB64lVl1UVBEEQHAMRC0EQBMEoIhaCIAiCUUQsBEEQBKOIWAiCIAhGEbEQBEEQjCJiIQiCIBhFxEIQBEEwioiFIAiCYBQRC8FuwBVKz549Zx84cKACx8yG1XrojAtmuOuxPgJrC2gdu+kJPrqUvyBcReDmBd9EzNDHFUPbtm1/McUVCk4nccSXkDDgkwgPAgl5VhBELASbg9+rESNGDMczKU7QbB0ePaGAxiX3d99995lh3BAMNpy+EXec2k2ZMqV/fMKnh7sLQUgIDpUxhaTH+vXrG+MHiEVfEvoOvHWqdQHMAZfwOLNTx1oPvnqA/6EuXbr8xGJX6hwO5YoUKXKOlfZYgAdnc2rNZRzGXbt2LS9rNcfm6I3w4q1YHefJk+e6OWHm25bGSXBeRCwEm8BazB999NEPLDOpzhUqVOgCnjyXLl3azpx34SKadQLMDQO1eNxAs89iVKVLlz5u7jviY9q0aX21QoFH0gkTJnyK51B1DsHAo+rEiRMHcowbe9Y5UcdaaFVoHeBt2rSpAa6/9QyzIMSFiIVgEygUlVDQj84ys3giZW1kc8UiIbBOwpdffjmGfTc3t/BZs2Z9qOf7aQGMHj16qDpmhTbGLAzvw201AkILAdHgHC68WdCGFea09xp2QVmyNoEgmIuIhYVsPXS97ZLt5wfmyubunze7x7ncXu4X83i5X8iVLb1/yuSuunZrOCIsND9v3rxurFOeWN+kds74gHLlTCGtre3rAS0KNTifJk2aiBkzZvSJ735WUmQdh6CgoOx0S/3www8fjRs3brD2nocPH2bUHrMgjp5hdnaeRb5Iey0otIj/rUclLwc8Kn759sMSxfNn+eujpiW/tHXY7AERCwupWtJnvU+W9FeuBYcWvhEUVgjxuB4UWjgw5EmerBnSBOTx8riQJ7v7+b9FxONC3ph9j3SpYl2b15mg6+jbb78dxBKRib1qHq2X3bt3V2Mf//+9e/f+Xu9vrFu3rqnaZ0W4uNZjVrCQFQv/KIHgeUOx0LYsaImwaJC+oXYeAu+H50UQLt1+VAJRuBTwqERwyJNcMXn1gp93xlP5fTKcrlI8x8aCuTLp2jWZlBGxsJC0qZKHF83reYhNe/7Fy1cpSJBXA0OL3rjzuMDJy/cq/7rnSrfrwaGFkru6RMW0Qs7nzuZ+MXdM4szr5XGe1kh2z3Q3XFySOcVyo6z2ZYvvYn00dOjQ0ewzME73k3ZpSz3A6kmt9AZqlTJjsOKaEgjGYDCR1bZ4tC0L6YIyjafPotK/biUgDLcelkQULt9+VDxdmhRhfj4ZTiEMNUrnXNutUfGRebJ7XHB1SSamxXEgYmElEAS6ptgMr4WERXhdCworfCM4rCCtkINng+rcuBNWMCTsWbbXApItvb9qkfCXLq00qZL/ZwlGwXxYDlYVuiyrSTeY3t9gPERZOIGp3zCcZ3Hu3LkiWrHQtiykC+rfvIqOdgm4F57fP0YQ/u5CehTTWnhY4kFMnqJ7uIBPxpO+MeJQu1zuFX4+GU+5p0v5wNZhTmqIWNgAT/c0wWzlCmbbqT0f8fxFOkTjbxEJK/zn8VvNbtw5W5CWiad76jsISUzt53UrhG4turR4j63ioXj5Kjp5SGiEV9aMaW/bOizxcejQobcYF2CfCXGjRo36yhrfuXjxYkHtMRPpTHkOAWCd5RjcOaZ1Ua9evS3qumHLghbMb7/99i5ruh8+fPjN4OBgL8xrWWKXMSCexXQ3trWe9WDPyYDGVUt6r7fGu+Mj7GlkxktKFF53JT0sSQs+Y/rUd1VroV75PEs+9in1uU/W9JddkiXTteXorIhY2BG0HgrlynSMTXv+1ato16CQJ7kZF7keHFbowo0HZbceut4uJoMUialRuf4tIn+3QnJ7pb+YL6YmlSOz2zVaN4kR7oB7j/N1Gb/1ry87lO9Rq0yu1YnxzYSASaoyPWWfxeut8Z3AwMAcap8JdubMLmdGtxIL7XtA27JAOBhvYda74TuYIc62cePGhkx2nD17ds/mzZuvSVBkYuHJsyj3MT8fnPPH0Zstds9o7WYtQw4qIVScVBfS678xrYXwp1EeMa2E077eGU6TVxpXyrcgv3eGM+lSpwizRjiEvxGxSAIwjuGdxe0qW5Xi3hu110KfPPekS4uxEAbYT1y6W5X9u48ivL1jBCOmBXJBtUQQEbrF3NKkCNUzfAhY2JPITJ/P2rOqSZX8Pw5sXa6fvXWb7dixo/Yff/xRi/1s2bLdYSKgtb7FjHS1z0C+Oc9q78eNifaatmWhnVfCQDdzVGiVYIHFNVoYXOOYAXassZjXkpD4aPG/9bDUF7P3rLh19/HryYy0gAvkzHjC0vc+ePwsK11H/jGthCu3/24xkK5ordJaoAupaVXfuexn93S7nizZGzLBMJERsUjiYFlVyjfLXjbt+cgXL1PdCH5cUHVrHTgbVHf57xf7coxY/N0K+VtIlJh4ZUqXIPNRxErt/7r3Stfjl+5VHd2tUvvCuT11Hw9IKF999dUotT9w4MCJ5hbi5qAVC3MtljCzVfuGYmE4zyJ//vxXMLlt0aLFau1zTPSbOnVqP0yC6aqiNdW3b99ppUqVOlGpUqX9ZkfoH1btutRr8oqjkyKjXqZW5yjUzRGLqBevUmKeeun2wxL/WCOVZB+DEMYS/LwznCrpl2Vvy5oFvs+Xw+Ns6pTJrfY7CeYhYuGg0DXwuv82ZtOej45+I9mdh09yUmtjI+PuOnG76dWYvxHPotwQDbq18ubwOPe6eytGSHJmS38pvq4GBEh7fPNOWIEPxm/b37NJiWEd6xb51tZ9xnv37q2inBNSeHft2vXHxPq2uS42tDO0DZ+tWLHiX0rkGJfAqosJhYbvYKIf3U/ly5c/iNXZy5cvXdmY+Mj/wtw40O00euGBeTuO3mxpeI3uoTcq5P05tufuPnzqo8xTGVdg//bdx/l9sqa/QhcSrYV2tQtNZt/ex7sEEQung+Y7LQi2CkWyb9NeC4+I8qAL67WQBIUW3nLoejvEhPGSbDGZ+XUrJLvHeayz8v0zAZGWDS0Xw+9QU/x+zYlxWHqN+KBSR1sWBtSy1T7eXSlMrfk9bQEeERGRxpxntfcbCoG5XWcNGjTY9OGHH85iRjjH+/btq4zvqRiumfoOw24nQzBFVZPZLsbcq7qQ6E5izEy1FioWzb6lQ50i39FaSJHc5T9+rwT7R8RC+B90TxXLm/kgm/Y8Bf/te+H5EZDrMa2Ik5fuVVm353J3RIKMH/YkMmNc7zxy8U7NtiM3nrTV4HdAQID32rVrm6ljPfrtjaEd0NZ2SZmCtutJD7frmAcrsYBdu3ZVN1UsVuy82GfqymMTIl+8ShXXPWeu3S9fe8Cq+8wbooXwejJbCe8NfjkznsyUPrVVDAgE2yBiIRiFGqIa2zC8Ri2y7YiNp2J7TmHLwe/ly5e3pguGfby0WmNehSFYNKl9Cv/Q0FAPTHVNeRYrJrXv4+NjcWusRIkSp5h0qAa8cSdi7Jn4up3+c29ElPuW71rk8PRIHWRpWAX7RsRCsIjHTyMzGLsHk8bKxXNsqlA0x9ZECNK/WLZsWRu1n1izxnFBrj2+evVqPlM82lKQa7uhihYtetbSsCAUuAZR742MjExp9JlkyV6+82bu5cxy3ns6sCFzaOK7/2rQo8KeHl4iFg6OiIVgEdc1llBaMrilul+jVM51uFJ4s3C2323hVJEuKCarqePEEgtaMHQhqbUnDh48WN4UsWBMQe0zuF2sWLEzloaFlo1WgBgYN/YMLT+6DNkwiDh/I6Tc3tMBDfedDmzAPue092PR9GYhL5NcmghJFxELwSK0llAMmlcv5fMrhQymvLb2c4UbdLWPG/QqVarsje9+vaCgZ/b0ypUrX3fjbNu2rQ4DzcaeY9EjtY8lU5YsWe6pY7qnsOjCXxQiOGbMmC9NMctlqVjtMfMxzIvLG9FF8ngeZuvRuMTXuKrZeyqw4b4zAQ0wXnj6/IUbpq/mvFNImohYCBbx8lW0a+d6RcfXLJNzDfMq7GmyFIO5ap+V9PReCS8+mDGtxILVAG/dupXTcH0KLcyN0K53wUQ67fXTp08XZ/EkdUxXlykmwLg6V/vMxahcufI+c+OiBfcyjD2xMWfimP+d6hg/WPJOIWkgYiFYxMDWZfvbOgxxcfz48dJqPzHXywAmyuXLl+8q4xVMjOvevftcVraLy8Ntr169Zqr1NXBnjhWT9joeaZl5zgqDHDPJsEaNGn8yMS+uMCxYsKCz1lU6YdDTrTmWcOWLZN9e/o03tuv1TsF+EbEQHBZ/f/8Cat9w0NnasD7F+PHjv2jVqtUKjrdu3VqXpVtZalW7Xvj169fzfPrppxNWr17dQp0bOXLkMEPrKQp5VhJUa28wGI5Y4Ayxffv2S/ieuhdB+e677z6bNGnSJ+oca34PGTJkrDXjLDg2IhZCokNhVr169V2xXdP6P8K9RVx97KyuF98YBN9QA8xg7Yl4sUG3EbOmWeSJY8YuiI+fn98lLy+vYNbWQNCUWSvQoohrLgjnGYNYvHjx+xwzjoFXWQQEz7aMcfBOfENpZ4LjzZYWBi0Ta8dZcFxELIREJyoqKoWhG+/YYH5EXPcZ+k0yxHAJUlPnOegNrQsKcbqNnj179tqn0qVLl/zYtPfRMmBNcLUwU1wsWrSoI4KD3yfVbcXf8+fPF2YzvB9BXbhwYSe6xPSMl+B8iFgIDom2VQG2Egsso+hmYsCaFsGGDRsaYdEUEhLiyZoUDHrjlqNDhw4/+/r6XjblfYgKLZClS5e2w5sug994l2VshFYE70QkaNkklgWY4PiIWAiJDjOTtd0k1oBV56z9DXNg7gWtBmMtB1OhS2nAgAGT2fR4nyAYQ8RCEARBMIqIhSAIgmAUEQtBEATBKCIWgiAIglFELARBEASjiFgIgiAIRhGxEARBEIwiYiEIgiAYRcRCEARBMIqIhSAIgmAUEQtBEATBKCIWgiAIglFELARBEASjiFgIgiAIRhGxEAQzYCW6LVu21AsICPC2dVisSbt27Za6ubmF2zocgv0gYiEIZsDypcHBwV6RkZEpbR0Wa8JiTbYOg2BfiFgIghmsWLGila3DIAi2QMRCEARBMIqIhSAIgmAUEQtBEATBKCIWgiAIglFELARBEASjiFgIgiAIRhGxEARBEIwiYiEIgiAYRcRCEARBMIqIhSAIgmAUEQtBEATBKCIWgiAIglFELARBEASjiFgISYaTJ0+WXLhwYae9e/dWuXr1ar7Q0FCPtGnTPs2aNevd0qVLH69fv/7mNm3aLEuTJk2ErcOaEKKjo5Nt27atzvLly1sfPHiwfGBgYI7w8HA31pXw8vIKLlWq1InGjRuvb968+ZrUqVM/s3V4BedCxEKwe0JCQjx79+79PYWo4bWwsDB3tsuXL/uuXLmy5Zdffjlm3rx53Ro0aLDJFmFNKKdPny7epUuXn44ePVrW8NqjR48ysF24cKHQsmXL2uTMmfPW7NmzeyKOtgir4JyIWAh2zZ07d7LVrFlz5/nz5wtrz/v6+l6mRfH48eP0FKJRUVEpOB8UFJT93Xff/W3VqlXvNW3adJ1NAm0m+/fvr0TBj+ipcylSpIgqWLDgRQ8Pj9CHDx9m9Pf3L/DixYvX+fXWrVs5aWEgHLJIkZBYiFgIdk2HDh1+1gpFp06dFo4YMWI4K9apcwjG9OnTP/46BkTj5cuXrt26dZtXo0aNPzNkyPDIJgE3EVoMLVu2XKmEgu4l4terV6+Z6dOnf6zu4/qMGTP6aOPYo0ePOcQxc+bM920XA8FZELEQ7BbWut6+ffs76njQoEHffvPNN58b3kehOmTIkLFZsmS5RwHKObquli5d2u6jjz76ITHDbC4IAGMT7CdLlix63bp1TevWrbvV8D53d/cw4ogw9OzZczbnaHHQNUcXXWKHW3A+RCwEu2XRokUd1X6OHDkCR40a9VV899OaGD169NCbN2/m4njnzp017V0slixZ0l7t08KITSi0EEdaF3S3cXzgwIEKIhZCYiBiIdgtt2/f9kmZMmVkDCnpo2c/vvupmZcrV+6IEgtVY7dXnj9/noq/mTJlekB3VJMmTX419oyLi8ur4sWLn1ZiQQvK2uEUBBCxEOyW3bt3V+Mv3S0IgbnPM0isf6j0I1WqVM/VeMyrV69cMJ015bmIiIg0ah+hsVb4BEGLiIVg92TMmPGhqfdeunTJT+1jTWSdEOkPLQZT7rt3716WQ4cOvaWOq1atusd6oRKE/0fEQnAYTpw4UYr5CurY0cxKnzx5kq5du3ZLVfeVj4/P7ffff3+xrcMlOAciFoJDQDfOxx9/PF0dly9f/mDt2rV32DJMlkK3FDO4ma2OVdi0adP6MseCa1hFrV27tlm6dOme6PW9V6+iXSMiX6RLlzpFmF7vFBwHEQvBIRgwYMBk3ICwz1jADz/88FFCxjnsAUyG45qdjXsTWhcjR44clj179iBLvhP65Lnn6av3K5y+cr/iySv3Kp+/8aDsmO6V21Yp7r3RkvcKjomIhZCkofbN/Atq3erc3Llzu5cpU+aYLcNlDYoVK3YGM9kWLVqsZk6JOc/SargS+KiYEodTV+9XvHknrID2HheXZC9L+2WVMRAhVkQshCQLVkFdu3b98ZdffmnLMS2JKVOm9GfWt63DZgnM4vb29g5ACBmnYPY2+2fOnCnGzO4+ffrMwI/UhAkTPsUdSHzvWvb7hX57TgU0OnMtpPzTZ1Hp47u3YM5Mx6ULSogLEQshSXLjxo3c+H5iUJtjzGTnz5//gSMM+OLCgzkm6phxCxwMMkkRr7u4+sBZIt1ubJ6eniFxvatKCZ8Nq3Zd6mVMKKBswax/6hQFwQERsRCSHBSQuOnGjJRjCss1a9Y0r1at2m5bh80a4KK8evXqu9g6d+68AI+6CAgOFHFvsnr16hZxPeuTxe3K/M/rVvps5q41x/zvVo/vO2ULZvtT98ALDoOIhZCkoEZNvz2zujlmNjP+lPLly3fV1mFLDJhXweD2J598MoljRPLKlSv5Y7gS1zPu6VI+mNH/7TqjFx2Yt+nAtQ6x3cN4xYb9VzvfexjhTQsjVzZ3f2vFQUiaiFgICSLqxauUwQ+e5IrZcgeFPMkdGfUy9Xs1CljVDxPeWPGLpI6bNWu29ueff+6gp/loUqBVq1YrlFgALa34xAJSJHeJ/LpLpU45s6a/PGf9qa+jo9/412xxX+8MpysVy7H56MU7NeZtPP1VdHS0S0xLYyetjbIFsu2Kee6SteIjJA1ELIRYofBHBIIQg/tP8iAMgSHheWLO5QmMOQ4Jjcj+KqZAUfcP71yxizXDw6JGY8eOHaKOP/vss+/wQJtUzWMBf1CMvQQHB3s9ePAgU9u2bX8x5TnW8dAem+ofKlmyN6K7NSo+0juz21VaGZEvXqVS194q7LXj3cr557NxfOvuY9+j/ndqIB5zfjv99RtvRCfTiMefiI4ZURUcABELIVa2Hb7RZsSCv34y5d7CuT2PNKiYd5G1wsJaFVqhmDRp0ifMq7DW9xILBqz79es3VR3TxcSsbGPPIS7aY3PcoUD9CnkXe3mmu/npD7vWhj2JzMQ5Wg/aexADtqZVfOdx/G/xODUiRqRflYsRj9IFsu4W8XAORCyEWGlUKd+C7UdutNp/JrB+fPdRWx3QqswnLjGFhzXCsW/fvspaYXAUoYBKlSrt1x4jHqxZYey5zZs3/+s3KVSo0AVzv13aL+vuBYPrVeg3beemgPvheUv6Ztkb3/2G4sEcjaMX7/5HPFTLwzuLm1OMITkTIhZCnHzZoXyP1l9vOBMeEeUR1z1vl8290loTubD4ad++/RJMRTlmToWjCAXgTr1o0aJnYyjK8bhx4wazJCyT7+J6Btfk2nU96JJ66623DiXk+4xDzP+ibsUfN54Zmj5tykfmPMsAOFuzar6vF5tS4nHofHDtmetOjnZ1TfYC0RDxcBxELIQ4yZox7e3+LcsOpH87tuspU7g+69ui9CBrfZ9WBH367OPaggl31vqWrWDcpVGjRhvYRxzpihozZsyXTCzULquK9Re+oBir0c7BGDZs2EhXV9eXCf1+BrdU9we2Ltvfoki88V/xuB4cVui4/91qSjySu7pEIRyvu65iWjUiHkkPEQshXhjw3Hzg2vv0Vxte61Cn8ITsnuluxPKYxTx9+jTtxIkTB2qPqYmb+x6WHS1ZsuRJfUOnHw0bNtw4fPjwEVh6ccygN6bBjGX4+vpeZg1xRATX68rbrKJNmzbLmNFtm5DHTx4v9wtsWvGgy2r/2cB6M9aeGJfC1SVSiQd/Y9LRdRsHWTCCiIUQL1sPXW93JeBR8ZTJXZ5rrWeyZEgT2LFe0W+s9V1cXLCp49DQUA82c9+jXSjIXsEcGGEYOHDgxLt372bl3IsXL5Iz6S62+3GUiHXY4MGDx5m6DoatUeLRorrfLI614jF9zfHxqVK4RjDI/rrbSsTDLhGxEGIlJCzCa9ziQ7Nu3wvPP61/rbrnb4SU41hd/6hZqSFpUyUPt2UYHQnclDArnUl2mzZtanDs2LEyWD3RqsDTLCvilShR4hSuQOiiMteRoL1hKB7XgkKLHPW/W/1f4qFpeXhlSnfT1mF2dkQshP+w5eD19pNXHJ1EF8K4HlVbMaGrUK5Mx3Ycudny8IXgtzGVbVghn9VMZcHLyyvY1GVGHQVEAdFwBP9W5pI3u8c5tveq+73uVnstHjEtj72nAhpNW3X8u1QpXZ+KeNgWEQvhf9wPjcg+fsmhmQH3wvNN7VezPgKhrmEiO7Rj+e5tR246yYAox7YMq+DY/E88ahT4gdnm14NDC2vFI03q5OHK2qpMgay7RDysj4iF8BoGsaesPDZR25owvCdHZrdrcz59p3rBXBmP2yKMgnNCxcRQPGh5HLkYXHPXidtNpq48NkErHrQ+sOSzdbgdDRELJ4fWBGMRQSHheQxbE7EhQiHYGsQjXw6Ps2ytahacYSgedKEyb4QWR5kC2XaJeOiDiIUTgwdSamXNq/nNHt+zasvYWhOCYO/EJh6sCki3lVY8/jdJMEY8sOazdbiTGiIWTgitibE/H5yNx9hp/WrVk9aC4EggHnjRZWtdq+B0JR5HLt6p+fuxmy0mLDsy1T1dyociHuYhYuFk0JqYsvLoxBbVCsz65sNq70lrQnB0tOLRplbBaXhLvhoYWlQrHh5uqUJYxwM37TVK5Vxn6zDbIyIWTsL/tyae5pre7+260poQnBWcXhqKBxNP6ba6EhBaTMQidkQsnICNf13tiLlh8+p+0poQBAMQDz+fjCfZbB0We0bEwoG59ygix7jFr1sTOWVsQhAESxCxcFBOXr5XedDM3Wta1PCbGdOaaCGtCUEQLEHEwkHJ753hzPT+teoWyJnxhK3DIghC0kfEwkFxS5MiVIRCEAS9ELEQBMGu2bBhQ6MPPvhgPo4l58yZ06NZs2ZrbR0mZ0TEQhAEu+bDDz+cde/evSzs9+jRY46IhW0QsRAEwa5JlixZdGz7QuIiYiEIgl0zb968bjHMoxtq1qxZH9o6PM6KiIWd0bFjx0UPHz7MuH79+sa2Dosg2AN169bdeuvWrZy2DkdCcKT8LGJhR1y5ciX/0qVL27F0pq3DIgiCZThafhaxsCO++eabz1++fOlq63AIgmA5jpafRSzshMDAwByLFi3qaOtwCIJgOY6Ynx1OLI4ePVq2SpUqe589e5ZancuTJ8/1a9eu5WUfpaf/cOHChZ3++uuvit9//33vFi1arNa+49WrVy7Lli1rs3LlypZHjhwph9leihQponLkyBHIu3v16jWzXLlyR2L7/v379zNPnz79440bNza8dOmS39OnT9N6eHiEZs6c+X7BggUvFilS5NygQYO+zZgx40Pu37t3b5W5c+d2x5b8+fPnqTj3+++/v621+qDPdsuWLfUMv7V///5KS5Ysac87AgICvENDQz3c3d3DvL29Awhnhw4dfq5YseJf+vxnhaTGjRs3cv/4449dd+7cWfPy5cu+Dx48yJQ8efIXpJFMmTI98PPzu0Sa7N279/e5cuWKdQ1rPdOYueHp1KnTQsMCl+sXLlwoFN93zM2/xIv3PnnyJJ065+Pjc5txEgbV//zzzxq8i3Bfv349T6pUqZ7z/Oeff/7NO++8s137bUvysyXlTmLgcGJRtmzZo2FhYe6IhkrEDDDx95dffmk7fPjwERTi6n4Sg/Z5Ek6TJk1+5XmO69Sps40fiEL/119/bTJ//vwP2AYPHjxu7NixQ7TP8gPXr19/M4KRLVu2O61bt16ePXv2IL6/Z8+eqr/99tu7bGQCJRY3b97MxX758uUPbt68uT7ncubMeat58+Zr1HsLFy58Xvud8PBwN96xZs2a5hwXK1bsTLt27ZZmyJDhUVBQUHYS4syZM3uxvffee6t++umnLm5ubuF6/p8F+4VCZ9iwYSO//fbbQVFRUSlIXw0bNtxIpYm8QZqjADt37lwR7qfAMxQLPdNYQsNDhW7atGl9ybcUlKbEPSH5F+FDBHmGfMi5u3fvZkWoRo8ePVRbXgAVUcKLeCxfvrw18VfXEpKfExruxMbhxAJQ41KlSp1QxyTId9999zdaFPxwtWrV+uPOnTvZzp49W1T7HDULrvn7+xfgHatXr27RuHHj9er6uHHjBiMG1DTYz5s377Xu3bvP5RoJiBYKQlGyZMmT1DAMM8/QoUNHjxkz5kvtOTIgGzUKlbgKFCjgP2XKlP6xxY2WEWHg/RzTiunTp88M7T2RkZEpP/nkk0m0mlatWvVecHCwFwmbWlxC/p9C0oLZzhS07FMALViwoDOFvPYe0vrHH388nULe8Hm905gl4aFVjlCZEm9L8q+rq+vLEiVKnNLGb/v27e8wIZBWh6enZwiiR4Vw5MiRw0JCQjw55n+AELi4uLziOXPzs6XhTkwcUiwMofXw9ttv/46NNk06zl29ejVfoUKFLmjvoxbBD8Z+3759p2l/MEidOvWzyZMnDyhduvRrV99fx9C5c+cF/MB//PFHLWoVnO/Zs+fs2GpZ/fr1m0rtypK48H2Vid9///3FhpkYUqZMGUkGP3XqVAlaNNzPc5999tl3lnxbsH8WL178viqYKeRWrFjRivRgeF+6dOme0IUUm1jomcb0CI+pWJJ/Y3sfrSbDfFypUqX9ZcqUOVa1atU9HNNVRaWzePHip+0l3NbCKcQCunbt+qP2h8+XL9/VESNGDPfy8grmmOYxk3/UdWpDsb2HFguCwwAW28GDB8vTn0h/rLpHO16iJUuWLPdo1tM1lZA4UOObOnVqP3UcX+2CPtIBAwZMJiNzzHPUgqhBJeTbgv1DpYiCRx3Tpx5bwayg4EuTJk2E9pyeaUyP8JiKpfnXnG9xP91kqnJ4+/Ztn4SKRWKG21KcRixig/4/tX/y5MmSdCGxnzZt2qex9SsqGIjjB2P/2LFjZfjRaKaq6xMnThxIcxtBMny2UaNGGxIaXsJIwmSfDFmhQoUD8d1fu3btHWqfPlGep1aU0O8L9g013IsXLxZUx4Y1VEMYqKWgosavzumZxvQIj6lYmn/N/R4D4Eos1EB2QkjscFuCU4uFFn40tU/BH58PGvpR1b76ock0NKXpfyTTMG6BiwKai+zrEUb6S9U+iTW+WhqkT5/+saqNqOdFLByXAwcOVFD7tJixwDP2DP3r2mM905ge4TEVS/Ovuejloyqxw20JIhb/wICV2qcf0tTEEBERkYa/mP5hFki/K01LrEkY1GLz9fW9jGVUly5dfsqfP/+VhIYRCw21bzhAGBeES2Vk5blTcEwYZFb7dHkm5B16pjE9wmMqluZfW5GUwi1i8Q+YqKn9rFmz3sUyw5TntDbmCAJigLXEpk2bGqjZm9iUYwU1fvz4LzABpJvKWI0tNhAgtW/q8wyOxfa84Hho5wnQpZOQd+iZxvQIj6nokX9tQVIKt4jFP9CFpPapUWHmmpD3YBvNXApqaPxdt25dU2zSEQ62GTNm9MG8EOsGc99Nk1/tm9pPqh1s1z4vOB5aA46EVgz0TGN6hMdU9Mq/iU1SCreIxT9oB6j16K6hlsCYBRsDhsxKRTy4htUILQzsr815p7LcAjXR0Bjavk3CZM73hKSFNn2Q5pgHoOz/E/IOS9OYHuExFb3zb2KRlMItYvEPWtM3MgmD1MzsNPX5R48eZSAz0H9reI2BQkxm33rrrUNYMWBSiKsRc8XC0EUBNTptF4AhzErV9hvb0lWAYH1IX2qfmjxzILSTU01BzzSmR3hMxdL8ayuSUrhFLP4BiyWagRT6HOMPBx9Opj7PjE1cAODXJbbrmCEyixyx4BhhMTeMJKzcuXPfYE4Hz+O3h5mfcd2/Y8eO2mqfmeuWTBwS7B9mOmOuzYRTjplUNnv27J7mvEPPNKZHeEzF0vxrK5JSuEUs/oHBPCyZmJXK8ahRo75iir05BSzdTFg3aJuWWrTNdUNbcm3/rrJzN4QmPJOg+vfvP4VjMl58GVk7LsLscZmQ59hgSUNBg4sKjnFoh+eCVq1arTD1HXqmMT3CYyp65F89MSU/g72FOz5ELDQwjR6/LJgB0myuXLnyPibukbipbTEwTW2LQp/aEolA60QMfzJYM5DBDAeT8ZSJ6wP2SQiGk52YcKP2mciEaxJmz5L5CA8zW3FQxvvXrl3bbNeuXdVxnYBVhMrY2nAwk3bfvn2VOcY1geE9gmPSo0ePOfgkwvkc3Z1t2rRZxj4zg+kWUumSNEI6Pn78eGksclq2bLlSvUPPNKZHeEzF0vyrJ6bmZ3sLd3w4pFi8ePEiuXayCxw+fPhN+kvVDxQbjDfgDK1p06brzp8/X/jx48fphwwZMpaNGhczLLFvViaxOA40/NHwkEnmaNCgwSYSDBYleK2k1cH8C9wEkAENB/poaVCDw8cUxwyAU1MjkRAfnLXxPZ7D/TkeQUlg1ALxRomnTpqzJDiuq2UoyXRcl1aFc0BtnvRFQU63D+mH1drYuK7GH7QWTLjh0BbOeqYxS8PDeAhjHeoa5rgICvmF/Kj9liX5l3Pa7wDfQdC0Zr8IHqbwqtsI8OtEuLSWTabmZ0vDnZg4nFjg4pdajuGkFdWUxlqDRB6XDTmDziQaEjg1IOVXnveRsPFMiQ8bVP/NN988rJ4jcZNZqGnh5mDbtm11GL8gs5AYqlevvgt3B/io0iYqLXwTR2x4u8QrLm7OcR5G4sB9iLqP50lsfAs3yjhxI7NSK2FtAASJ8REyuzaMgnNA2sZEm5o+6QLfTVRYKOAo7EiPpHOVjmMbdNYzjSUkPOQhatgMoGvfRa2aGeLkq5o1a+5knFB7PSH5F/HjOe28EKhWrdpunPXhJZeZ5dTsmWBrGCbEjYKduLHmtjpvan5OaLgTG4cTC9az0E50SQg0+5SrYVOfYZyCZqYlroN5BwnO1PvJTGwJ/Z7g2FCwWbr2gZ5pzJzwFC1a9Ky29m4O5uZf3JWYMg8EdyXmhMnc/JyQcicxcTixEARBEPRHxEIQBEEwioiFIAiCYBQRC0EQBMEoIhaCIAiCUUQsBEEQBKOIWAiCIAhGEbEQBEEQjCJiIQiCIBhFxEIQBEEwioiFIAiCYBQRC0EQBMEo/wdP0R0KB/eXXQAAAABJRU5ErkJggg=='
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false},],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom td,
+        table.custom th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        ol.excs {
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="resto-da-divisao">
+    <h1>Resto da divisão</h1>
+    <q>O resto é consequência.</q>
+    <p>No Python, o operador <code>%</code> realiza a operação de resto da divisão, que algumas pessoas também chamam de módulo. Já o operador <code>//</code> realiza o “piso” da divisão entre dois números, isto é, resulta no maior inteiro menor ou igual ao resultado da divisão. Essa operação é equivalente à divisão inteira quando são usados números positivos:</p>
+    <p>
+        <img id='dividendo-divisor' alt='dividendo e divisor'>
+    </p>
+    <pre><code class="python">dividendo = 17
+divisor = 5
+cociente = dividendo // divisor
+resto = dividendo % divisor
+print(dividendo, '=', divisor, '*', cociente, '+', resto)
+# 17 = 5 * 3 + 2</code></pre>
+    <p>Observações:</p>
+    <ul>
+        <li>Atente-se para a fórmula, numa divisão inteira, <code>dividendo = divisor * cociente + resto</code>.</li>
+        <li>O resto sempre será menor que o divisor.</li>
+        <li>O resto de um número dividido por dez é seu último dígito.</li>
+        <li>O cociente de um número dividido por dez são todos os seus dígitos menos o último.</li>
+        <li>O resto da divisão de um número menor por um número maior é sempre o número menor.</li>
+        <li>A divisão inteira (<code>//</code>) sempre gera números inteiros, mesmo que o resultado seja atribuído a uma variável de ponto flutuante.</li>
+    </ul>
+
+    <p>Em Python, o operador <code>//</code> realiza o “piso” da divisão. Em outras linguagens como o Java, não há o operador <code>//</code>, mas na divisão entre inteiros, a parte decimal é truncada (descartada). Logo, o comportamento ao realizar divisão inteira em números negativos no Python é diferente em relação à outras linguagens.</p>
+    <p>Divisão de números inteiros negativos em linguagens como o Java:</p>
+    <pre><code class="java">int result = -5 / 2;  // Result: -2</code></pre>
+    <p>Operação de piso da divisão no Python:</p>
+    <pre><code class="python">result = -5 // 2  # Result: -3</code></pre>
+
+    <p>Com o operador de resto da divisão, podemos saber se um número é múltiplo ou divisor de outro número. Por exemplo, para saber se uma variável é par ou ímpar, verificamos se seu resto é 0 ou 1, respectivamente:</p>
+    <pre><code class="python">par = 10
+impar = 15
+
+resto1 = par % 2
+resto2 = impar % 2
+
+print(resto1, resto2)</code></pre>
+
+    <p>Ao realizar divisões inteiras sucessivas por 10, obtendo o resto a cada divisão, conseguimos decompor um número em seus algarismos:</p>
+    <pre><code class="python">num = 123
+unidade = num % 10
+num = num // 10
+dezena = num % 10
+num = num // 10
+centena = num % 10
+
+print(centena, dezena, unidade)</code></pre>
+
+    <h2>Dia juliano</h2>
+    <p>O dia juliano é a contagem contínua de dias desde o início do período juliano e é usado principalmente por astrônomos e em software para calcular facilmente os dias decorridos entre dois eventos.</p>
+    <p>O período juliano começou no dia juliano 0, que no calendário gregoriano proléptico, começou ao meio-dia de 24 de novembro de 4714 a.C.</p>
+    <p>Curiosidade: nessa data, três ciclos plurianuais começaram (os Ciclos Solar, Lunar e de Indicção), predecessores de qualquer data na história registrada.</p>
+    <p>Por exemplo, o número do dia juliano em 01/01/2000, ao meio dia do horário universal (UT), é 2.451.545.</p>
+
+    <h3>Data gregoriana para dia juliano</h3>
+    <p>Para realizar cálculos entre datas, consideramos apenas números inteiros, inclusive para os cocientes das divisões entre os números, descartando a parte decimal.</p>
+    <p>Para converter uma data gregoriana para seu dia juliano, a partir do dia 23 de novembro de 4714 a.C., usamos a seguinte fórmula:</p>
+    <p>$$\begin{align*}
+        a &= \left(14 - \text{M}\right) \div 12 \\
+        y &= \text{Y} + 4800 - a \\
+        m &= \text{M} + 12 \cdot a - 3 \\
+        \text{J} &= \text{D} + \left(153 \cdot m + 2\right) \div 5 + 365 \cdot y + y \div 4 - y \div 100 + y \div 400 - 32045
+        \end{align*}$$</p>
+    <p>Onde $J$ é o número do dia juliano, e $D$, $M$ e $Y$ são, respectivamente, o dia, mês e ano de uma data gregoriana.</p>
+
+    <h3>Dia juliano para dia da semana</h3>
+    <p>Para saber o dia da semana a partir de um dia juliano, usamos a seguinte fórmula, começando do domingo como dia zero, sendo <code>%</code> o resto da divisão:</p>
+    <p>$W1 = (J + 1) \% 7$</p>
+    <table class="custom">
+        <tr>
+            <th>W1</th>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+        </tr>
+        <tr>
+            <td>Dia da semana</td>
+            <td>Dom</td>
+            <td>Seg</td>
+            <td>Ter</td>
+            <td>Qua</td>
+            <td>Qui</td>
+            <td>Sex</td>
+            <td>Sáb</td>
+        </tr>
+    </table>
+    <p>Mas se o horário for depois da meia-noite UT (e antes do meio-dia UT), então já está no próximo dia da semana.</p>
+    <p>Já considerando a segunda-feira como dia 1 e domingo como dia 7, usamos a seguinte fórmula:</p>
+    <p>$W0 = J \% 7 + 1$</p>
+    <table class="custom">
+        <tr>
+            <th>W0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+        </tr>
+        <tr>
+            <td>Dia da semana</td>
+            <td>Seg</td>
+            <td>Ter</td>
+            <td>Qua</td>
+            <td>Qui</td>
+            <td>Sex</td>
+            <td>Sáb</td>
+            <td>Dom</td>
+        </tr>
+    </table>
+
+    <h3>Dia juliano para data gregoriana</h3>
+    <p>Para realizar cálculos entre datas, consideramos apenas números inteiros, inclusive para os cocientes das divisões entre os números, descartando a parte decimal.</p>
+    <p>Para converter um dia juliano para sua data gregoriana, a partir do dia 0, usamos a seguinte fórmula:</p>
+    <p>
+        $$\begin{aligned}
+        f &= J + 1401 + (4 \cdot J + 274277) / 146097 \cdot 3 / 4 + (-38) \\
+        e &= 4 \cdot f + 3 \\
+        g &= e \% 1461 / 4 \\
+        h &= 5 \cdot g + 2 \\
+        D &= h \% 153 / 5 + 1 \\
+        M &= (h / 153 + 2) \% 12 + 1 \\
+        Y &= e / 1461 - 4716 + (12 + 2 - M) / 12
+        \end{aligned}$$
+    </p>
+    <p>Onde $J$ é o número do dia juliano, e $D$, $M$ e $Y$ são, respectivamente, o dia, mês e ano da data daquele dia juliano.</p>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Dado um número inteiro, qual é o quociente da divisão desse número por dois e por três?</li>
+        <li>Dados dois números inteiros, qual é o resto e o quociente da divisão do primeiro pelo segundo?</li>
+        <li>Dados dois números inteiros $m$ e $n$, qual é o primeiro múltiplo de $m$ maior que $n$? Por exemplo, para $m=17$ e $n=50$, o primeiro múltiplo de $17$ após $50$ é $51$.</h2>
+        <li>Dado um número inteiro representando um tempo em segundos, qual é o tempo em horas, minutos e segundos?</li>
+        <li>Dada uma data, qual é o seu dia juliano?</li>
+        <li>Dado um dia juliano, qual é a data correspondente?</li>
+        <li>Dado um dia juliano, qual é o dia da semana?</li>
+        <li>Dada uma data, qual é o dia da semana correspondente?</li>
+        <li>Dada a data e o número de dias decorridos, qual é a nova data?</li>
+        <li>Dado o valor do saque realizado pelo cliente de um banco, quantas notas de cada valor serão necessárias para atender ao saque com a menor quantidade de notas possível? Podem ser utilizadas notas de $\$100$, $\$50$, $\$20$, $\$10$, $\$5$, $\$2$ e $\$1$.</li>
+    </ol>
+</div>

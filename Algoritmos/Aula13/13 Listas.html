@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["python"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+
+    <style>
+        img {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom>thead>tr>th,
+        table.custom>tbody>tr>td,
+        table.custom>tbody>tr>th {
+            /* tabela centralizada e com bordas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        table pre {
+            /* Remove a margem interna de tags pre dentro de tabelas */
+            margin: 0;
+            padding: 0;
+        }
+
+        table.align-left th,
+        table.align-left td {
+            /* alinha à esquerda as células da tabela */
+            text-align: left;
+        }
+
+        ol.excs {
+            /* lista de exercícios */
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            /* lista de exercícios */
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            /* estilizar as linhas de código da extensao highlightjs-line-numbers */
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<div id="lists">
+    <h1>Listas</h1>
+    <q>Ir além do limite é tão incerto quanto não alcançar o objetivo. — Confúcio</q>
+
+    <h2>Introdução</h2>
+    <p>Se você tem uma lista de itens, armazená-los em variáveis individuais pode ficar assim:</p>
+    <pre><code>fruta1 = "pera";
+fruta2 = "pêssego";
+fruta3 = "pitanga";</code></pre>
+    <p>E se você não tem 3, mas 300 itens? A solução é <!--array-->o tipo de dados <code>list</code> do Python!</p>
+    <p>Uma <code>list</code>, como o nome indica, é uma variável que permite armazenar uma lista de valores, e não apenas um único valor.</p>
+    <p>Cada item da lista também pode ser chamado de elemento ou valor.</p>
+    <p>Ao invés de se referir a cada um dos itens por um nome diferente, você se refere a eles pelo nome da lista e os distingue por um índice, que é um número natural.</p>
+    <p>Também há o tipo de dados <code>array</code>, também chamado de vetor, que possui características semelhantes à listas, mas que não é tão versátil quanto listas.</p>
+
+    <h2>Declarando listas</h2>
+    <p>Você pode declarar uma lista com itens:</p>
+    <pre><code>frutas=['abacate', 'banana', 'caqui', 'damasco', 'figo']</code></pre>
+    <p>Ou declarar uma lista vazia para posterior adição de itens:</p>
+    <pre><code>legumes=[]</code></pre>
+
+    <p>Arrays em geral são homogêneos, podem conter apenas itens de um mesmo tipo. Por exemplo, você não pode ter um array que tenha um número e uma string. Mas listas em Python são heterogêneas, isto é, você pode colocar qualquer tipo de dados em uma mesma lista:</p>
+    <pre><code>itens_diversos = ['uma palavra', 23, 9.5, True, ['uma', 'lista']]</code></pre>
+    <p>Apesar de listas serem heterogêneas, na prática, elas acabam por armazenar apenas dados homogêneos.</p>
+
+    <h2>Abstração</h2>
+    <p>Uma lista é composta de vários itens. Pense numa lista como uma rua com várias casas. Os itens são moradores das casas da rua. E cada casa tem um endereço, um número, que na lista chamamos de índice ou posição.</p>
+
+    <table>
+        <tr>
+            <td><u>Código</u></td>
+            <td><u>Memória</u></td>
+        </tr>
+        <tr>
+            <td>
+                <pre><code>limeira = ["Cebolinha", "Mônica", "Cascão", "Magali"]
+
+print("A rua Limeira possui quatro casas. \
+Dentre os moradores, estão o Cebolinha, \
+no endereço de número 0, \
+e a Magali, no número 3.")</code></pre>
+            </td>
+            <td>
+                <table style="border-collapse: collapse; text-align: center;">
+                    <tr>
+                        <td>limeira</td>
+                        <td style="width: 1em;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;">Cebolinha</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;">Mônica</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;">Cascão</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;">Magali</td>
+                        <td>3</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <p>No seguinte exemplo, uma variável numérica comum ocupa apenas um espaço na memória, já uma variável de lista ocupa vários espaços na memória, cada qual com seu índice.</p>
+    <table>
+        <tr>
+            <td><u>Código</u></td>
+            <td><u>Memória</u></td>
+        </tr>
+        <tr>
+            <td>
+                <pre><code>x = 10
+y = 9.8
+n = [4, 1, 7, 9]
+            </code></pre>
+            </td>
+            <td>
+                <table style="border-collapse: collapse; text-align: center;">
+                    <tr>
+                        <td style="width: 2em;">x</td>
+                        <td style="width: 1em;"></td>
+                        <td style="width: 2em;">n</td>
+                        <td style="width: 1em;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;">10</td>
+                        <td></td>
+                        <td style="border: 1px solid black;">4</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>y</td>
+                        <td></td>
+                        <td style="border: 1px solid black;">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;">9.8</td>
+                        <td></td>
+                        <td style="border: 1px solid black;">7</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td style="border: 1px solid black;">9</td>
+                        <td>3</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Manipulando listas</h2>
+    <p>Para atribuir um item específico de uma lista a uma variável:</p>
+    <pre><code>var = lista[i] //acessando o i-ésimo item da lista</code></pre>
+    <p>Para atribuir um valor a um item específico de uma lista:</p>
+    <pre><code>lista[i] = var //modificando o i-ésimo item da lista</code></pre>
+    <p>O <code>i</code>, chamado de índice, ou posição, deve ser um número <!--natural-->inteiro.</p>
+    <p>O primeiro item está no índice zero.</p>
+    Para uma lista com <code>N</code> itens, o último item está no índice <code>N-1</code>.
+    <p>Pode colocar qualquer expressão entre os colchetes, desde que seu resultado seja um número inteiro dentro do intervalo de índices válidos da lista.</p>
+
+    <p>Qual o valor de cada variável?</p>
+    <pre><code>v = []
+
+v[1]=10
+v[2]=5
+v[0]=7
+
+a = v[0] + v[2]
+b = v[ v[0] - 5 ]
+c = 3 * v[a / 4 - 2]</code></pre>
+
+    <p>Qual a saída do seguinte código?</p>
+    <pre><code>c = [42, 23, 15, 39, 91, 42, 71, 64, 41, 63, 17, 70]
+
+a = 5
+b = 6
+
+c[a + b] += 2
+
+x = c[0] + c[1] + c[2]
+
+y = c[7] / 2
+
+z = c[11] + 1
+
+print(x, y, z)</code></pre>
+
+    <h3>Acessando itens</h3>
+    <p>Considere o seguinte trecho de código:</p>
+    <pre><code>qtd = 10  # comprimento da lista
+nomes = ["maria", "ana", "francisca", "antonia", "adriana",
+         "jose", "joao", "antonio", "francisco", "luiz"]</code></pre>
+
+    <p>Você pode imprimir a lista inteira:</p>
+    <pre><code>print("Imprimindo a lista de uma vez:")
+print(nomes)</code></pre>
+
+    <p>Ou então imprimir separadamente cada item da lista:</p>
+    <table>
+        <tr>
+            <td>
+                <pre><code>print("\nImprimindo item por item:")
+
+for i in range(qtd):
+    print(nomes[i], end=" ")
+
+</code></pre>
+            </td>
+            <td>
+                <pre><code>print("\n\nImprimindo item por item:")
+
+for i in range(0, qtd - 2):
+    print(nomes[i], end=", ")
+print(nomes[qtd - 2], "e", nomes[qtd - 1])</code></pre>
+            </td>
+            <td>
+                <pre><code>print("\n\nImprimindo item por item:")
+print(nomes[0], end="")
+for i in range(1, qtd - 1):
+    print(",", nomes[i], end="")
+print(" e", nomes[qtd - 1])</code></pre>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Preenchendo listas</h3>
+    <p>Para preencher uma lista com valores digitados pelo usuário:</p>
+    <pre><code>N = 5
+nums = []
+
+for i in range(N):
+    num = int(input(f"Informe o {i + 1}º número: "))
+    nums.append(num)
+
+print("Você digitou os seguintes números:")
+for i in range(N):
+    print(nums[i], end=" ")</code></pre>
+
+    <h3>Modificando listas</h3>
+    <p>Você pode modificar os itens de uma lista:</p>
+    <pre><code>qtd = 10
+nomes = ["maria", "ana", "francisca", "antonia", "adriana",\
+         "jose", "joao", "antonio", "francisco", "luiz"]
+
+print("Nomes:", nomes)
+
+print("\nAlterando...\n")
+
+for i in range(qtd):
+    nomes[i] = nomes[i].upper()
+
+print("Nomes alterados:", nomes)</code></pre>
+
+    <h2>Visão geral</h2>
+    <ul>
+        <li>Uma lista é como se fosse várias variáveis com o mesmo nome (o nome da lista).</li>
+        <li>Você distingue entre as "variáveis" da lista (seus itens) com um índice numérico (posição do item na lista).</li>
+        <li>O primeiro item da lista está no índice 0 e o restante conta a partir daí.</li>
+        <li>Você acessa/modifica um item da lista pelo seu índice.</li>
+        <li>Os índices da lista ficam dentro dos colchetes.</li>
+        <li>Atenção: não coloque um índice maior do que o comprimento da lista para não dar erro!</li>
+        <li>Diferentemente de arrays convencionais, que possuem um comprimento fixo definido na sua inicialização, listas em Python possuem comprimentos dinâmicos. Elas podem crescer ou diminuir seu comprimento conforme itens são adicionados ou excluídos.</li>
+    </ul>
+
+    <h2>O comprimento da lista</h2>
+    <p>Para saber quantos itens há em uma lista, use a função <code>len</code>, abreviação de <i>length</i> (comprimento, em inglês):</p>
+    <pre><code>frutas = ["pequi", "pera", "pêssego", "pitanga", "pinha", "pitaia"]
+legumes = ["caxi", "cebola", "cenoura", "chuchu"]
+
+qtd_frutas = len(frutas)
+qtd_legumes = len(legumes)
+
+print(f"\nEu tenho {qtd_frutas} frutas:")
+for i in range(qtd_frutas):
+    print(frutas[i], end=" ")
+
+print(f"\n\nTambém tenho {qtd_legumes} legumes:")
+for i in range(qtd_legumes):
+    print(legumes[i], end=" ")</code></pre>
+
+    <p>Qual a saída?</p>
+    <pre><code>frutas = ["pequi", "pera", "pêssego", "pitanga"]
+legumes = ["caxi", "cebola", "cenoura"]
+
+a = frutas[2]
+b = legumes[1]
+c = len(frutas)
+d = len(legumes)
+e = 3
+f = frutas[e]
+g = frutas[e - 2]
+
+print(a, b, c, f)
+print(d, e, g)</code></pre>
+
+    <p>Qual a saída?</p>
+
+    <pre><code>frutas = ["pequi", "pera", "pêssego", "pitanga", "pinha", "pitaia"]
+legumes = ["caxi", "cebola", "cenoura", "chuchu"]
+n = [9, 1, 3, 0, 7, 2, 6]
+
+a = len(frutas)
+b = len(legumes)
+c = len(n)
+d = frutas[0]
+e = legumes[1]
+f = n[2]
+g = frutas[f]
+h = legumes[b - 1]
+i = frutas[n[3]]
+
+print(a, d, g)
+print(b, e, h)
+print(c, f, i)</code></pre>
+
+    <h2>A instrução <code>for</code>-each</h2>
+    <p>Listas em Python fazem parte de uma classe de dados chamada de iteráveis. Iterar uma lista significa percorrer cada item da lista. </p>
+    <p>A instrução <code>for</code>-each, permite iterar pelos itens de uma classe iterável sem utilizar um contador.</p>
+    <p>Sua vantagem é que Evita a possibilidade de ultrapassar o limite da classe iterável.</p>
+    <p>A sintaxe de uma instrução for-each é:</p>
+    <pre><code>for it in iterable:
+    instruções...
+        </code>
+    </pre>
+    <p>Onde <code>it</code> é o item atual da lista <code>iterable</code>.</p>
+    <!-- O tipo do parâmetro deve ser consistente com o tipo de item no array. -->
+    <p>Exemplo:</p>
+    <pre><code>array = [87, 68, 94, 100, 83, 78, 85, 91, 76, 87]
+
+total = 0
+
+for number in array:
+    total += number
+
+print("Total of array items:", total)</code></pre>
+
+    <p>A instrução for-each não pode ser utilizada para modificar itens em um array. Se precisar modificar itens, utilize a tradicional instrução for.</p>
+    <p>Observe no seguinte exemplo que nada adianta modificar a variável <code>e</code> achando que os itens da lista serão afetados:</p>
+    <table>
+        <tr>
+            <td>Quando você faz isso…</td>
+            <td>… Na verdade significa isso</td>
+        </tr>
+        <tr>
+            <td>
+                <pre><code>arr = [4, 3, 2, 1]
+
+for e in arr:
+    e = e * 2
+
+print(arr)</code></pre>
+            </td>
+            <td>
+                <pre><code>arr = [4, 3, 2, 1]
+
+for i in range(len(arr)):
+    e = arr[i]  # `e` é uma cópia de `arr[i]`
+    e = e * 2
+print(arr)</code></pre>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Ler uma lista de n itens. Escrever os n itens normalmente em uma linha e do último para o primeiro em outra linha.</li>
+        <li>Ler uma lista de n números e dois índices x e y. Escrever a soma dos itens nos índices x e y.</li>
+        <li>Ler uma lista de n números. Escrever os itens dos índices ímpares da lista.</li>
+        <li>Ler uma lista de n números. Escrever os itens ímpares da lista.</li>
+        <li>Seja a função $y = -2x + 10$. Ler um número inteiro $n$ e preencher uma lista com os valores de $y$ para todos os valores de $x$ no intervalo de números inteiros entre $1$ e $n$. Escrever a lista resultante.</li>
+        <li>Ler uma lista de n itens e dois índices x e y. Permutar os itens de x e y, e escrever a lista resultante.</li>
+        <li>Ler uma lista de n itens e um valor x. Escrever o primeiro índice em que x se encontra na lista. Caso x não se encontre, escrever "Não encontrado!".</li>
+        <li>Ler uma lista de n números. Escrever o índice do maior item. Caso haja empate, escrever o de menor índice.</li>
+        <li>Ler uma lista de n itens, seguida por uma sequência de índices que se encerra com um índice inválido. Para cada índice, escrever seu item.</li>
+        <li>Ler uma lista de n itens, seguida por uma sequência de itens que se encerra com um item que não existe na lista. Para cada item, escrever seu índice.</li>
+        <li>Ler um natural $n$, indicando a capacidade máxima de itens em uma lista, seguido por uma série de duplas $i$ e $x$. Cada dupla representa um índice $i$ e seu respectivo item $x$ na lista. Encerrar a leitura ao encontrar um índice inválido. Caso não seja fornecido um determinado índice, considerar seu item como zero. Escrever a lista resultante.</li>
+        <li>Ler uma lista de n itens, seguida por uma sequência de itens que se encerra com um item ausente na lista. Para cada item, substituir sua primeira ocorrência na lista por zero. Escrever a lista resultante.</li>
+        <li>Dada uma lista de n itens, há itens repetidos na lista?</li>
+        <li>Ler uma lista de n números e um número m. Escrever os números da lista que são menores que m em uma linha, e os maiores que m em outra linha.</li>
+        <li>Ler uma lista de n números. Escrever os números menores que a média aritmética em uma linha e os maiores em outra linha.</li>
+        <li>Ler uma lista de n itens. Permutar os itens da primeira metade com os da segunda metade da lista. Caso n seja ímpar, o item do meio fica na mesma posição. Escrever a lista resultante.</li>
+        <li>Ler uma lista de n números. Compactar a lista, movendo todos os zeros para o final. Escrever a lista resultante. Exemplo, dado a lista 13 0 90 0 0 57 0 99 0 40 escrever 13 90 57 99 40 0 0 0 0 0.</li>
+        <li>Ler duas listas ordenadas de n e m números, respectivamente. Escrever uma terceira lista ordenada contendo os números das outras duas listas. (Obs.: Essa operação faz parte de um importante algoritmo de ordenação chamado mergesort).</li>
+        <li>Ler uma lista de n números e um número m. Reorganizar a lista de modo que seus números menores que m fiquem à esquerda de seus números maiores que m. Escrever a lista resultante. (Obs.: Essa operação faz parte de um importante algoritmo de ordenação chamado quicksort).</li>
+        <li>Ler um natural n seguido por n números. Escrever os n números em ordem crescente.</li>
+    </ol>
+</div>

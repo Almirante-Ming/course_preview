@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+        }, false);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script defer>hljs.configure({ cssSelector: "code", languages: ["console"] }); hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <!-- retire o atributo output para, ao copiar uma fórmula, copiar tanto no formato html quanto no formato mathml, entretanto, a fórmula sai duplicada -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left: '`', right: '`', display: false}],output:'html'});"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        table.custom,
+        table.custom td,
+        table.custom th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        ol.excs {
+            padding-inline-start: 0em;
+            counter-reset: excs;
+            list-style: none;
+        }
+
+        ol.excs>li::before {
+            counter-increment: excs;
+            content: counters(excs, ".") ". ";
+        }
+
+        ol.excs>li {
+            /* Change this to adjust the line color and thickness */
+            border-left: 2px solid #000;
+            /* Optional: Add padding to create some space between the bar and content */
+            padding-left: 10px;
+
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        ol.section {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        ol.section li::before {
+            counter-increment: section;
+            content: counters(section, ".") ". ";
+        }
+
+        td.hljs-ln-numbers {
+            color: #ccc;
+            border-right: 1px solid #999;
+            padding-right: 5px;
+        }
+
+        td.hljs-ln-code {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<div id="operacoes-aritmeticas">
+    <h1>Operações aritméticas</h1>
+    <q>A caridade é o processo de somar alegrias, diminuir males, multiplicar esperanças e dividir a felicidade.</q>
+    <h2>Tipos primitivos</h2>
+    <p>Dados são valores brutos. Informação é o resultado da organização e interpretação desses dados de maneira significativa. Os computadores têm a capacidade de manipular e armazenar grandes volumes de dados com alta performance, permitindo que os seres humanos se dediquem a outras tarefas onde seu conhecimento é indispensável. Na programação, os dados são categorizados em diferentes tipos. Os tipos mais básicos de dados são chamados de <b>tipos primitivos</b>. A diferença entre tipos primitivos e outros tipos de dados, é que eles representam um único valor de dados. Por exemplo, o número 23 é primitivo, enquanto que uma data, como 23/07/2023, é composta por mais de um valor primitivo. Os tipos primitivos mais comuns são:</p>
+    <p><b>Inteiro:</b> Tipo de dados que pertence ao conjunto dos números inteiros. Chamado de <b>int</b>, abreviação de inteiro. Exemplos:</p>
+    <ul>
+        <li>Ele tem 3 irmãos.</li>
+        <li>A escada possui 8 degraus.</li>
+        <li>Está fazendo -3ºC hoje!</li>
+    </ul>
+    <p><b>Real:</b> Tipo de dados que pertence ao conjunto dos números reais. Chamado de <b>float</b>, abreviação de número de ponto flutuante, em alusão ao separador decimal que pode flutuar entre a direita e esquerda do número. Exemplos:</p>
+    <ul>
+        <li>Ela tem 1,73 metro de altura.</li>
+        <li>Meu saldo bancário é de R$ 215,20.</li>
+        <li>No momento estou pesando 82,5 kg.</li>
+    </ul>
+    <p><b>Lógico:</b> Tipo de dados que pode assumir apenas duas situações, sim ou não, verdadeiro ou falso. Chamado de <b>boolean</b>, em homenagem a Boole, criador da álgebra booleana. Exemplos:</p>
+    <ul>
+        <li>Ele foi aprovado.</li>
+        <li>A lâmpada está desligada.</li>
+        <li>A porta está trancada.</li>
+    </ul>
+    <p><b>Caractere:</b> Tipo de dados que representa uma unidade de informação que corresponde a um símbolo, como uma letra, um número ou um sinal de pontuação. Chamado de <b>char</b>, abreviação de <i>character</i>. Exemplo: a letra 'a', o dígito '3', ou o símbolo '#'. Observe, então, que 'oi' não é um caractere, mas uma combinação de dois caracteres, logo, não é um tipo primitivo. Chamamos de <b>string</b> a combinação de dois ou mais caracteres, que é um tipo de dados presente em todas as linguagens, inclusive Python, mas que não é tipo primitivo.</p>
+
+    <h2>Variáveis</h2>
+    <p>Uma variável é um espaço na <b>memória</b> do computador reservado para armazenar valores que são usados durante a execução de um programa. Como o nome indica, os valores armazenados em uma variável podem mudar ao longo do tempo. Por exemplo, você pode definir uma variável para armazenar a idade de uma pessoa e atualizá-la à medida que a pessoa envelhece.</p>
+    <p>Podemos imaginar a memória do computador como um armário cheio de gavetas de tamanho fixo. Cada gaveta pode armazenar um valor de um determinado tipo de dados. Se o valor for muito grande, pode ser necessário usar várias gavetas para armazená-lo. As gavetas representam as variáveis e o armário representa a memória do computador.</p>
+    <p>As variáveis são armazenadas na memória do computador enquanto o programa está em execução. Quando o programa termina, as variáveis deixam de existir e o espaço de memória que ocupavam fica disponível para ser usado por outros programas. Isso significa que um espaço de memória que foi usado por um programa para armazenar uma variável do tipo <code>int</code> pode ser usado posteriormente por outro programa para armazenar uma variável de um tipo diferente, como <code>float</code>.</p>
+    <p>Cada variável pode armazenar apenas um valor por vez. Por exemplo, você não pode armazenar dois números em uma única variável.</p>
+    <p>Você pode usar tantas variáveis quanto necessário em seu programa, desde que haja espaço suficiente na memória do computador para armazená-las. Como a memória do computador pode conter muitas variáveis, é importante diferenciá-las usando <b>identificadores</b>, que são nomes exclusivos atribuídos às variáveis.</p>
+
+    <h3>Declarando variáveis</h3>
+    <p><b>Declarar</b> uma variável é solicitar ao computador um espaço na memória para armazenar um tipo de dados. <b>Atribuir</b> um valor à uma variável é armazenar um dado naquele espaço da memória reservado à sua variável. Em Python, a instrução (comando) para declarar uma variável é:</p>
+    <pre><code class="python">identificador = valor</code></pre>
+    <p>Sendo <code>identificador</code> um nome exclusivo para sua variável, e <code>valor</code> o dado atribuído à variável. Exemplos:</p>
+
+    <pre><code class="python">idade = 30    # int
+altura = 1.75 # float
+destro = True # boolean
+sexo = 'M'    # char</code></pre>
+    <p>Observações:</p>
+    <ul>
+        <li>O sinal de igual (<code>=</code>) é usado para atribuir um valor a uma variável.</li>
+        <li>O separador decimal em Python, bem como em praticamente todas as linguagens, é o ponto (<code>.</code>), e não a vírgula.</li>
+        <li>Variáveis do tipo <code>boolean</code> podem armazenar apenas dois tipos de valor, <code>True</code>, ou <code>False</code>.</li>
+        <li>O valor de variáveis do tipo <code>char</code> deve estar sempre entre aspas, para não serem confundidas com identificadores.</li>
+        <li>A cerquilha (<code>#</code>) é usada para indicar o início de um <b>comentário</b> no código. Comentários são textos que não são executados pelo computador e servem para fornecer explicações ou informações adicionais para quem está lendo o código.</li>
+    </ul>
+
+    <p>Regras de identificação de variáveis:</p>
+    <ul>
+        <li>Deve começar com uma letra.</li>
+        <li>Pode ter letras, números ou sublinhados depois do primeiro caractere.</li>
+        <li>Letras minúsculas são distinguidas de letras maiúsculas.</li>
+        <li>Não pode usar palavras reservadas da linguagem (como <code>while</code>, ou <code>if</code>).</li>
+        <li>Cada variável deve ter um identificador único.</li>
+    </ul>
+
+    <p>Exemplos de identificadores válidos:</p>
+    <p>• meuDado • ano94 • nome_sobr • quant • Salario</p>
+    <p>Exemplos inválidos:</p>
+    <p>• 94ano • meu Dado • nome,sobr</p>
+
+    <p>Existem algumas convenções de declaração de identificadores. Dentre elas, as principais são: <code>snake_case</code>, que separa cada palavra por um sublinhado; <code>camelCase</code> que começa com a primeira palavra em minúsculo, e o início de cada próxima palavra em maiúsculo; e <code>PascalCase</code>, que deixa em maiúsculo apenas o início de cada palavra. No Python, a convenção adotada para variáveis é <code>snake_case</code>.</p>
+    <p>Dica: Escolha nomes significativos para suas variáveis. Quando os nomes das variáveis refletem claramente o que elas representam, é mais fácil entender o propósito e a lógica do código sem ter que ler comentários ou documentos adicionais. Isso também torna o código mais fácil de manter e modificar, por ser um código legível e compreensível.</p>
+
+    <h2>Expressões aritméticas</h2>
+    <p>Podemos usar operadores aritméticos para realizar operações com as nossas variáveis numéricas. Os operadores aritméticos em Python são:</p>
+    <table class="custom">
+        <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td>Adição</td>
+            <td><code>x + y</code></td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Subtração</td>
+            <td><code>x - y</code></td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Multiplicação</td>
+            <td><code>x * y</code></td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>Divisão</td>
+            <td><code>x / y</code></td>
+        </tr>
+        <tr>
+            <td>//</td>
+            <td>Divisão inteira</td>
+            <td><code>x // y</code></td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>Módulo (resto da divisão)</td>
+            <td><code>x % y</code></td>
+        </tr>
+        <tr>
+            <td>**</td>
+            <td>Exponenciação</td>
+            <td><code>x ** y</code></td>
+        </tr>
+    </table>
+
+    <p>Você pode combinar tantos operadores, variáveis e valores quanto quiser, desde que seja uma expressão válida. Ao valores, também chamamos de literais ou constantes (o valor 10 sempre será 10, daí o nome constante ;p). Uma expressão aritmética sempre resulta em um valor. Você atribui o resultado de uma expressão aritmética a uma variável, caso contrário, ela acaba sendo uma instrução inócua, sem efeito prático:</p>
+    <pre><code class="python">p1 = 7.2
+p2 = 8.3
+t = 5
+mp = (p1 + p2) / 2
+mf = mp * 0.6 + t * 0.4
+
+capital = 1400
+taxa_de_juros = .07
+tempo = 24
+montante = capital * (1 + taxa_de_juros) ** tempo
+juros = montante - capital
+
+dividendo = 11
+divisor = 4
+quociente = dividendo // divisor
+resto = dividendo % divisor</code></pre>
+
+    <p>Em Python, não existe uma maneira nativa de definir uma constante, ou seja, um valor que não pode ser alterado durante a execução do programa. No entanto, é comum usar letras maiúsculas para nomear variáveis que devem ser tratadas como constantes e não devem ser alteradas. Por exemplo:</p>
+    <pre><code class="python">PI = 3.14</code></pre>
+    <p>Neste exemplo, <code>PI</code> é uma variável que representa o valor de π. Embora tecnicamente seja possível alterar o valor de <code>PI</code>, a convenção de usar letras maiúsculas indica que essa variável deve ser tratada como uma constante e não deve ser alterada.</p>
+    <!-- <p>Uma constante é um valor que não pode ser alterado durante a execução do programa. Constantes são usadas para armazenar valores que são usados em várias partes do programa e que não devem ser modificados. Por exemplo, você pode definir uma constante para armazenar o valor de pi (3.14159) e usá-la em cálculos matemáticos em seu programa. Como o valor de pi é sempre o mesmo, faz sentido armazená-lo como uma constante para evitar erros e tornar o código mais legível.</p>
+        <p>Por exemplo, suponha um programa para calcular a área de circunferências. Na fórmula `\pi r^2`, o valor `\pi` é constante, e o valor `r` é variável.</p> -->
+    <p>Em Python, você não pode utilizar diferentes tipos de dados em uma mesma expressão aritmética, com exceção de inteiros, reais, e booleanos. No caso, em expressões aritméticas, o valor booleano <code>True</code> é considerado como 1 e <code>False</code> como 0.</p>
+    <pre><code class="python">inteiro = 10
+decimal = 5.4
+booleano = True
+caracter = 'b'
+
+# você pode misturar esses tipos de dados apenas
+válido = inteiro * decimal - booleano # 53.0
+
+# você não pode misturar outros tipos de dados
+inválido = caracter + inteiro # erro!</code></pre>
+    <h2>Prioridade e associatividade</h2>
+    <p>A prioridade e a associatividade dos operadores determinam a ordem em que as operações são realizadas em uma expressão.</p>
+    <p>A prioridade dos operadores determina qual operador é executado primeiro se houver mais de um operador em uma expressão. Por exemplo, na expressão <code>2 + 3 * 4</code>, a multiplicação tem prioridade mais alta do que a adição, então a multiplicação é realizada primeiro e o resultado é <code>14</code>. Se quisermos que a adição seja realizada primeiro, podemos usar parênteses para alterar a ordem das operações: <code>(2 + 3) * 4</code> resulta em <code>20</code>.</p>
+    <p>A associatividade dos operadores determina a direção em que uma expressão é avaliada quando há vários operadores com a mesma prioridade. Por exemplo, na expressão <code>2 - 3 - 4</code>, a subtração é associativa à esquerda, então a expressão é avaliada da esquerda para a direita e o resultado é <code>-5</code>. Se quisermos que a subtração seja realizada da direita para a esquerda, podemos usar parênteses para alterar a ordem das operações: <code>2 - (3 - 4)</code> resulta em <code>3</code>.</p>
+    <p>Se uma expressão contiver parênteses aninhados, como <code>((x / (y - w)) * z)</code>, a expressão no conjunto mais interno dentro dos parênteses (<code>y - w</code>, nesse caso) é avaliada primeiro.</p>
+    <p>Dica: Você pode usar parênteses redundantes para tornar a expressão mais clara. Por exemplo, na expressão <code>2 + (3 * 4)</code>, fica mais claro que a multiplicação deve ser realizada antes da adição.</p>
+    <p>Aqui está a tabela com os operadores vistos até o momento, ordenados pelo de maior prioridade para o de menor prioridade:</p>
+    <table class="custom">
+        <tr>
+            <th>Operador</th>
+            <th>Associatividade</th>
+        </tr>
+        <tr>
+            <td>( )</td>
+            <td>De dentro para fora</td>
+        </tr>
+        <tr>
+            <td>**</td>
+            <td>Da direita para a esquerda</td>
+        </tr>
+        <tr>
+            <td>* / % //</td>
+            <td>Da esquerda para a direita</td>
+        </tr>
+        <tr>
+            <td>+ -</td>
+            <td>Da esquerda para a direita</td>
+        </tr>
+        <tr>
+            <td>=</td>
+            <td>Da direita para a esquerda</td>
+        </tr>
+    </table>
+
+    <p>Se não houver um operando à esquerda do <code>+</code> ou do <code>-</code>, eles são interpretados como operadores unários, isto é, operam em apenas um operando, diferentemente dos operadores aritméticos, que são binários. Neste caso, eles possuem maior prioridade que os operadores aritméticos. Exemplo:</p>
+    <pre><code class="python">x = 3
+y = 4
+result1 = x + -y  # -1
+result2 = -x + y  # 1
+result3 = -x * -y # 12
+</code></pre>
+    <p>Já a associatividade dos operadores unários é da direita para a esquerda. Isto é, quando há vários operadores unários consecutivos, eles são aplicados da direita para a esquerda. Exemplo:</p>
+    <pre><code class="python">x = 3
+result = - - - x # -3
+# equivalente a:
+# result = (- (- (- x)))</code></pre>
+
+    <h2>Passado, presente, futuro</h2>
+    <p>Algoritmos seguem uma sequência de passos, um após o outro. Isso significa que, ao executar uma determinada instrução, todas as instruções anteriores já foram executadas, e a instrução atual não pode alterar as instruções anteriores. Além disso, as variáveis de tipos primitivos são independentes entre si. Isso quer dizer que, se você atribui o valor de uma variável <code>x</code> a outra variável <code>y</code> e, posteriormente, atribuir outro valor à variável <code>y</code>, a variável <code>x</code> permanecerá inalterada.</p>
+    <p>Portanto, para atualizar o valor de uma variável, você pode atribuí-la a si própria. Por exemplo:</p>
+    <pre><code class="python">x = 10
+y = 20
+z = x # neste momento, z vale 10
+z = y # agora, z vale 20, mas x continua valendo 10
+z = z * 2 # agora, z vale 40</code></pre>
+
+    <h2>Exercícios</h2>
+    <ol class="excs">
+        <li>Qual o valor de cada variável ao final do algoritmo?
+            <pre><code class="python">a = 'x'
+b = a
+c = 'b'
+a = 'y'</code></pre>
+        </li>
+        <li>Qual o valor de cada variável ao final do algoritmo?</li>
+        <pre><code class="python">a = 8 / 2 * (2 + 2)
+b = 5 + 2 * 4 / 2 % 3 + 10 - 3
+c = 18 + 2 * 40 / 10 % 6 - 7 * 3</code></pre>
+        <li>Escreva as seguintes equações na forma pythônica:
+            <ol type="a">
+                <li>`m=\dfrac{a+b+c+d+e}{5}`</li>
+                <li>`y=mx-b`</li>
+                <li>`y=ax^2+bx+c`</li>
+            </ol>
+        </li>
+        <li>Supondo que <code>A</code>, <code>B</code> e <code>C</code> sejam variáveis de tipo inteiro, com valores iguais a 5, 10 e -8, respectivamente, e <code>D</code> seja uma variável de tipo real com valor 1.5. Quais os resultados das expressões aritméticas a seguir?
+            <ol type="a">
+                <li><code>2 * A % 3 - C</code></li>
+                <li><code>(-2 * C) ** 0.5 // 4</code></li>
+                <li><code>(28 // 3 // 3) + (8 ** 2) / 2</code></li>
+                <li><code>(38 % 4 * (3 ** 3)) * -1</code></li>
+                <li><code>(-C) ** 2 + (D * 10) / A</code></li>
+                <li><code>(A ** (B / A)) ** 0.5 + C * D</code></li>
+            </ol>
+        </li>
+    </ol>
+</div>
