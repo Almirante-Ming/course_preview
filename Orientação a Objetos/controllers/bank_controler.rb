@@ -1,5 +1,5 @@
-#criação da classe
 
+#criação da classe
 class Cliente
   attr_accessor :saldo, :extrato
 
