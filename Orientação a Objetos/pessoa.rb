@@ -13,7 +13,7 @@
 ##        return ...
 ##    end
 ## end
- 
+
 ## implantação em ruby:
 require Date
 
@@ -23,11 +23,11 @@ class Person
         @nickname = nickname.to_s
         @year_born = year_born.to_i
     end
-    
+
     def full_name
         return "#{@name} #{@nickname}"
     end
-    
+
     def year_old
         return DateTime.now.year - @year_born
     end
