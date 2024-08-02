@@ -1,4 +1,4 @@
-class Animal(nome, idade, cor)
+class Animal
   def initialize
     @nome=nome
     @idade=idade
@@ -6,7 +6,7 @@ class Animal(nome, idade, cor)
   end
 end
 
-class Felino(Animal(), familia)
+class Felino(Animal())
   def initialize
     @familia=familia
   end
