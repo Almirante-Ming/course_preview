@@ -1,4 +1,7 @@
 import math
+from ex2 import Ponto2D
+# nao consegui fazer funcionar corretamente o circulo como tipo Ponto2D
+
 class Circulo:
     def __init__(self, raio:float, centro:float=0.0):
         self.__raio = raio
@@ -35,10 +38,10 @@ class Circulo:
         self.__centro = cn
         return f'o centro do circulo foi movido de {ca}, para {cn}'
     
-    def area(self, raio:float):
-        ar = 3.14 * (raio*raio)
+    def area(self):
+        return math.pi * (self.raio**2)
 #---------------------------------------------
-c1=Circulo(3.14,30)
+# c1=Circulo(3.14,10.0)
 # print(c1)
 
 # c1.inflar(6.28)
@@ -53,5 +56,4 @@ c1=Circulo(3.14,30)
 # c1.mover(6.28)
 # print(c1.raio)
 # print(c1.centro)
-c1.area(30)
-print(c1.area)
+# print(c1.area())
