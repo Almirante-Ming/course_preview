@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>adicionar novo clliente</h2>
+    <input type="text" id="nome" placeholder="nome">
+    <input type="number" id="idade" placeholder="idade">
+    <button onclick="adicionarCliente()">adicionar</button>
+    <div id="listaClientes"></div>
+    <br/>
+
+    <script>
+        let clientes = [];
+
+        function adicionarCliente() {
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            clientes.push({nome, idade});
+            mostrarClientes();
+        }
+
+        function mostrarClientes() {
+            const lista = document.getElementById('lista');
+            lista.innerHTML = '<h3>Clientes:</h3>';
+            clientes.forEach(cliente => {
+                const item = document.createElement('div');
+                item.innerHTML = `${cliente.nome} - ${cliente.idade}`;
+                lista.appendChild(item);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+body {
+    background-image: url('/recep.jpg'); /* Substitua pela URL da sua imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.banner {
+    height: 300px; /* Altura fixa para a área de boas-vindas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    margin-top: 60px; /* Para evitar sobreposição com o cabeçalho fixo */
+}
+
+.welcome-text {
+    position: absolute;
+    bottom: 20px; /* Ajuste conforme necessário */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armazenar Contatos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/contatos.css">
+    <script src="./script/contatos.js" defer></script>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2>Informações de Contato</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone:</label>
+                <input type="tel" class="form-control" id="phone" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+
+        <h3 class="mt-5">Contatos Armazenados</h3>
+        <ul id="contactList" class="list-group"></ul>
+    </div>
+
+</body>
+</html>
