@@ -1,0 +1,1 @@
+-- mostre todas as disciplinas e o nome do professor que e resposavel por ela, o resultado deve ser ordenado pelo nome da disciplina e sem repeticoes

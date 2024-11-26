@@ -1,0 +1,1 @@
+-- mostre as disciplinas que tem carga horaria superior 60 horas e que sao ministradas por professores de matematica

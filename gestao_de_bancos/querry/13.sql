@@ -1,0 +1,1 @@
+-- lsite o nome de trodos os alunos que tiveram aula com os professores de humanas

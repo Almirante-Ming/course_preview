@@ -1,0 +1,1 @@
+-- mostre a soma dos salarios dos professores de humanas e dos que nao sao de humanas
