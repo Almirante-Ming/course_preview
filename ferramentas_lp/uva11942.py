@@ -26,8 +26,11 @@ tc = int(input())
 print("Lumberjacks:")
 for i in range(9):
     lumberjack = input().split()
+    
+    asc=True
     if int(lumberjack[i]) > int(lumberjack[i+1]):
-        print("Unordered")
+        asc=False
         break
+    
     
 

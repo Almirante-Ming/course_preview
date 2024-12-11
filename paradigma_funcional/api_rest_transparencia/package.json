@@ -1,0 +1,15 @@
+{
+  "name": "api_transparencia",
+  "version": "1.0.0",
+  "description": "GIT E GITHUB\r Guia prático",
+  "main": "app.js",
+  "scripts": {
+    "test": "node -t",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
