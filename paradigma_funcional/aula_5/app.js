@@ -1,8 +1,16 @@
 const express = require('express');
-const db = require('./db_conector');
-const Pessoa = require('./models/pessoa');
+const path = require('path');
 const app = express();
 const port = 3101;
+const cors = require('cors');
+
+const db = require('./db_conector');
+const Pessoa = require('./models/pessoa');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use(express.json());
 
@@ -15,6 +23,11 @@ db.authenticate()
         console.log(`Não foi possível se conectar ao banco: ${err}`);
     });
 
+
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
 app.get('/api/dados', (req, res)=> {
     Pessoa.findAll()
         .then(pessoas => {
@@ -25,7 +38,7 @@ app.get('/api/dados', (req, res)=> {
         });
 })
 
-app.post('/api/dados', async (req, res) => {
+app.post('/api/cad', async (req, res) => {
     const dados = req.body;
 
     if (!dados.nome || !dados.idade || !dados.profissao) {
