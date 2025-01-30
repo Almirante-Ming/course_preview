@@ -1,5 +1,9 @@
-0 36
-5 6
-10 66
-11 134
-11 62
+pretty
+women
+walking
+down
+the
+street
+e
+nw
+et

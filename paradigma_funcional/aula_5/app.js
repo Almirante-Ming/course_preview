@@ -9,9 +9,9 @@ const Pessoa = require('./models/pessoa');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 db.authenticate()
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/api/dados', (req, res)=> {
+app.get('/api/dados', (req, res) => {
     Pessoa.findAll()
         .then(pessoas => {
             res.send(pessoas);
