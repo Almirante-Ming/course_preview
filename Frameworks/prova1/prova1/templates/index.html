@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoas</title>
+    <script>
+        function toggleCpfTitular() {
+            const tipo = document.getElementById("tipo").value;
+            const cpfTitularDiv = document.getElementById("cpf_titular_div");
+            cpfTitularDiv.style.display = tipo === "dependente" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <form method="post" action="/">
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" onchange="toggleCpfTitular()">
+            <option value="titular">Titular</option>
+            <option value="dependente">Dependente</option>
+        </select><br><br>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf"><br>
+
+        <div id="cpf_titular_div" style="display:none;">
+            <label for="cpf_titular">CPF do Titular:</label>
+            <input type="text" id="cpf_titular" name="cpf_titular"><br>
+        </div>
+
+        <label for="tipo_plano">Tipo do Plano:</label>
+        <input type="text" id="tipo_plano" name="tipo_plano"><br>
+
+        <label for="pagamento">Pagamento:</label>
+        <input type="text" id="pagamento" name="pagamento"><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>

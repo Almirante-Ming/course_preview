@@ -1,0 +1,89 @@
+❯ cd projects/course_preview/seguranca_software
+❯ mkdir p2
+❯ cd p2
+❯ code .
+
+❯ gpg --keyserver keyserver.ubuntu.com --recv-keys 013B9C5FF1B319E6
+gpg: key 013B9C5FF1B319E6: public key "LuizSegato(Prova_CA) <luiz.santos@ifms.edu.br>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1 
+
+❯ gpg --output certificado_digital_bob.txt --decrypt Certificado_Digital_Bob.txt.gpg
+gpg: Signature made Sun Jul  6 20:02:35 2025 -04
+gpg:                using RSA key 88FC583EF3F22111C97145D3013B9C5FF1B319E6
+gpg:                issuer "luiz.santos@ifms.edu.br"
+gpg: Good signature from "LuizSegato(Prova_CA) <luiz.santos@ifms.edu.br>" [unknown]
+gpg: WARNING: The key's User ID is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 88FC 583E F3F2 2111 C971  45D3 013B 9C5F F1B3 19E6
+
+❯ cat certificado_digital_bob.txt
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=TvAA
+-----END PGP PUBLIC KEY BLOCK-----
+
+❯ mv certificado_digital_bob.txt certificado_digital_bob.asc
+
+❯ gpg --import certificado_digital_bob.asc
+gpg: key 7F1B7EC5F11C021F: public key "LuizSegato(Prova_Bob) <luiz.santos@ifms.edu.br>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+
+❯ gpg --output Chave_Simetrica_Prova.txt --decrypt Chave_Simetrica_Prova.txt.gpg
+gpg: Signature made Sun Jul  6 21:15:52 2025 -04
+gpg:                using RSA key A2D8D20E8D7EEB05688883BD7F1B7EC5F11C021F
+gpg:                issuer "luiz.santos@ifms.edu.br"
+gpg: Good signature from "LuizSegato(Prova_Bob) <luiz.santos@ifms.edu.br>" [unknown]
+gpg: WARNING: The key's User ID is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: A2D8 D20E 8D7E EB05 6888  83BD 7F1B 7EC5 F11C 021F
+
+❯ cat Chave_Simetrica_Prova.txt
+@!%Parangaricutirimirruaro%!@$Nao contavam com minha astucia$^Suspeitei desde o principio^+Meus movimentos sao friamente calculados+*Palma, palma, nao criemos canico*
+
+
+❯ gpg --output Texto_Para_Decifrar.txt --decrypt Texto_Para_Decifrar.txt.gpg
+gpg: AES256.CFB encrypted data
+gpg: encrypted with 1 passphrase
+
+❯ cat Texto_Para_Decifrar.txt
+Parabens, se voce chegou ate aqui quer dizer que conseguiu realizar todo o 
+processo corretamente e decifrou o texto!
