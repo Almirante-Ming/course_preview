@@ -1,0 +1,148 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{microtype}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage{csquotes}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{setspace}
+\onehalfspacing
+
+\title{Controle de Transações em Sistemas Distribuídos}
+\author{Bruno Henrique \and Nildemar Neto \and Victor Guilherme}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este documento explora os fundamentos dos Sistemas Distribuídos (SDs), concentrando-se no desafio do Controle de Transações.
+Analisamos como o \textbf{Teorema CAP} (Consistência, Disponibilidade e Tolerância a Partições) dita as escolhas arquitetônicas em sistemas de bancos de dados tradicionais (SQL) e não-relacionais (NoSQL).
+Em seguida, aplicamos esses conceitos a modelos descentralizados como redes \textit{peer-to-peer} (P2P) e \textbf{Blockchain}, contrastando suas abordagens em termos de atomicidade, coerência e escalabilidade.
+\end{abstract}
+
+\section{Conceitos Fundamentais de Sistemas Distribuídos}
+Um \textbf{Sistema Distribuído} é uma rede que armazena dados em múltiplos nós simultaneamente \cite{61}.
+Nesses sistemas, os componentes de \textit{hardware} ou \textit{software} se comunicam e coordenam suas ações apenas trocando mensagens \cite{91}.
+Os principais desafios de projeto em SDs incluem a concorrência de componentes, a falta de um relógio global único para ordenar eventos e o tratamento de falhas de componentes independentes \cite{91, 106}.
+
+\subsection{A Necessidade de Controle de Transação}
+O \textbf{Controle de Transações} é crucial para garantir a \textbf{confiabilidade} e a \textbf{coerência} do sistema \cite{374}.
+Uma \textbf{transação} é uma sequência de operações em um servidor que deve ser executada como uma unidade indivisível (\textbf{atômica}) na presença de falhas de clientes e servidores, e de forma isolada de outras transações concorrentes \cite{348, 373}.
+Uma \textbf{transação distribuída} acessa objetos gerenciados por vários servidores diferentes \cite{406}.
+
+O controle de concorrência tem como objetivo garantir a \textbf{equivalência serial}, ou seja, que o resultado da execução concorrente seja idêntico ao de alguma ordem sequencial (serial) de execução das transações \cite{378}.
+
+Os mecanismos centrais de controle de transação incluem:
+
+\begin{enumerate}
+    \item \textbf{Coordenador de Transações:} Inicia a transação, aloca um Identificador de Transação (TID) exclusivo e garante que todos os servidores envolvidos confirmem (\textit{commit}) ou cancelem (\textit{abort}) o resultado \cite{377, 408, 406}.
+    \item \textbf{Protocolo de Confirmação de Duas Fases (2PC):} O protocolo mais comum usado para obter a confirmação atômica em transações distribuídas, garantindo que os participantes cheguem a uma decisão conjunta \cite{405, 407}.
+    \item \textbf{Controle de Concorrência:} Métodos como \textbf{Travamento} (o esquema de muitos leitores/um escritor é adotado para controle de acesso a cada objeto) \cite{380, 549}, \textbf{Controle Otimista} (utiliza versões de tentativa para objetos, e a validação é feita na fase final) \cite{381, 554} e \textbf{Ordenação por Carimbo de Tempo} (serializa acessos de acordo com o tempo de início da transação) \cite{394, 400}.
+    \item \textbf{Impasse Distribuído:} Surge quando o grafo de espera pode envolver objetos localizados em vários servidores diferentes, um risco dos esquemas de travamento em SDs \cite{389, 413}.
+\end{enumerate}
+
+\section{O Teorema CAP e a Escolha da Arquitetura}
+O \textbf{Teorema CAP} (Teorema de Brewer) é uma restrição fundamental que afirma que um sistema distribuído pode garantir apenas duas das seguintes características: \textbf{Consistência (C)}, \textbf{Disponibilidade (A)} e \textbf{Tolerância a Partições (P)} \cite{61}.
+
+\begin{itemize}
+    \item \textbf{Consistência (C):} Todos os clientes veem os mesmos dados ao mesmo tempo, exigindo que os dados gravados em um nó sejam imediatamente replicados para todos os outros \cite{62}.
+    \item \textbf{Tolerância a Partições (P):} Capacidade do sistema de continuar operando mesmo com falhas de comunicação de rede entre os nós \cite{61}.
+\end{itemize}
+
+Como a Tolerância a Partições (\textbf{P}) é um requisito inevitável em SDs, o dilema prático é escolher entre Consistência (\textbf{C}) ou Disponibilidade (\textbf{A}) durante uma partição \cite{61, 64}.
+A escolha do sistema de gerenciamento de dados reflete o compromisso com o CAP \cite{61, 63}:
+
+\subsubsection{SQL e a Escolha CP}
+Bancos de dados relacionais (RDBMS) priorizam a \textbf{Consistência estrita} (ACID), sendo a durabilidade uma das propriedades fundamentais \cite{349}.
+Um sistema teoricamente \textbf{CA} não pode existir em SDs práticos, pois as partições não podem ser evitadas \cite{64}.
+Portanto, esses sistemas tendem ao modelo \textbf{CP} (Consistência e Tolerância a Partições), onde a disponibilidade é sacrificada para garantir que os dados permaneçam consistentes durante uma falha \cite{67}.
+
+\subsubsection{NoSQL e a Escolha AP}
+Sistemas NoSQL priorizam a escalabilidade horizontal e a disponibilidade.
+
+\begin{itemize}
+    \item \textbf{AP:} Sistemas como Apache Cassandra, ou o \textbf{Dynamo} da Amazon, adotam o modelo \textbf{AP} \cite{67}.
+    O Dynamo usa operações simples de get e put, sem oferecer a garantia de isolamento ACID.
+    Para melhorar a disponibilidade, ele fornece uma forma de consistência mais fraca, o que é aceitável para algumas aplicações \cite{399}.
+    O Dynamo utiliza métodos otimistas para controle de concorrência e, se as versões de dados diferirem, a harmonização pode ser baseada em carimbo de tempo, seguindo a regra ``a última escrita vence'' \cite{400}.
+\end{itemize}
+
+\section{Controle de Transações em Redes Descentralizadas (P2P)}
+A topologia \textit{Peer-to-Peer} (P2P) é uma arquitetura descentralizada onde cada nó atua como cliente e servidor \cite{2, 28, 4}.
+
+\subsection{BitTorrent (P2P para Conteúdo)}
+O BitTorrent é um protocolo P2P amplamente conhecido, mencionado como um estudo de caso relevante em sistemas distribuídos \cite{7}.
+
+\begin{itemize}
+    \item \textbf{Controle de Consistência:} O BitTorrent foca na \textbf{integridade da transferência de dados} para garantir que os arquivos grandes sejam reconstruídos corretamente, utilizando \textit{hashes} e \textit{checksums} nos pedaços recebidos \cite{39, 17}.
+    \item \textbf{Modelo CAP (AP):} É um sistema \textbf{AP}. Prioriza a \textbf{Disponibilidade} em face de partições \cite{4}, permitindo que o download continue a partir de outros nós disponíveis, garantindo a consistência apenas eventualmente (na reconstrução e verificação final).
+\end{itemize}
+
+\subsection{Blockchain (P2P para Registros)}
+A tecnologia Blockchain utiliza uma estrutura P2P \cite{2} para criar um registro imutável baseado em \textbf{consenso distribuído} \cite{25, 30}.
+
+\begin{itemize}
+    \item \textbf{Estrutura e Imutabilidade:} A imutabilidade é alcançada pelo \textbf{encadeamento de blocos via hash}: cada novo bloco inclui o \textit{hash} do bloco anterior \cite{22}.
+    \item \textbf{Controle de Transação (Consenso):} O protocolo de consenso atua como o mecanismo de controle de transação distribuída, garantindo que todos os nós concordem sobre a validade e a ordem das transações \cite{27}.
+    A validação de transação em um nó envolve: verificar se as entradas não foram gastas (prevenção de duplo gasto), conferir assinaturas com chaves públicas correspondentes e assegurar que regras de consenso local sejam atendidas \cite{1}.
+    O Paxos é um exemplo de algoritmo de consenso usado para obter o acordo mesmo diante de volatilidade \cite{535, 536}.
+    \item \textbf{Modelo CAP (CP):} Blockchains públicas priorizam a \textbf{Consistência e a Tolerância a Partições (CP)} \cite{47, 39}.
+    A Consistência é imposta pelo consenso, o que exige que todos os nós atinjam o mesmo estado \cite{38}.
+\end{itemize}
+
+\section{Conclusão}
+O controle de transações em sistemas distribuídos é obtido através de mecanismos de coordenação e concorrência, cuja natureza é fundamentalmente moldada pelo \textbf{Teorema CAP} \cite{61}.
+A escolha do projeto depende do domínio: sistemas que exigem garantias financeiras (SQL, Blockchain) tendem ao modelo \textbf{CP} \cite{67, 425}, enquanto aplicações de alto volume e descentralizadas (NoSQL AP, BitTorrent) priorizam a \textbf{Disponibilidade} (\textbf{AP}) e a consistência eventual.
+
+\newpage
+\begin{thebibliography}{99}
+\bibitem{1} Excerpts from "Blockchain Aplicada a Redes de Computadores": Verificação de entradas, prevenção de duplo gasto e assinaturas (validação de transação).
+\bibitem{2} Excerpts from "Centralização x Descentralização - Redes P2P - GTA UFRJ": Introdução às Redes P2P.
+\bibitem{4} Excerpts from "Sistemas de redes peer to peer - IC/UFF": Esquema peer to peer.
+\bibitem{17} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Mensagens podem ser retransmitidas.
+\bibitem{22} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Encadeamento via hash (Exemplo na p. 28 sobre HTML).
+\bibitem{25} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Publicação de um recurso e URL.
+\bibitem{27} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Serviço INFO (gerenciamento de recursos).
+\bibitem{28} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Transferência de recursos entre servidores (mobilidade).
+\bibitem{38} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Princípio fim-a-fim e dilema do projetista.
+\bibitem{39} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Soma de verificação do quadro.
+\bibitem{47} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Algoritmo de roteamento (Parte 2: atualização dinâmica da topologia).
+\bibitem{53} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": BitTorrent (Estudo de caso no Capítulo 20).
+\bibitem{61} Excerpts from "O que é o Teorema CAP? | IBM": Consistência, Disponibilidade e Tolerância a Partições (definição e introdução).
+\bibitem{62} Excerpts from "O que é o Teorema CAP? | IBM": Consistência (exigindo replicação imediata).
+\bibitem{63} Excerpts from "O que é o Teorema CAP? | IBM": Bancos de dados distribuídos (SQL vs NoSQL).
+\bibitem{64} Excerpts from "O que é o Teorema CAP? | IBM": Sistemas CA (não podem existir na prática).
+\bibitem{65} Excerpts from "O que é o Teorema CAP? | IBM": MongoDB e sistemas CP.
+\bibitem{67} Excerpts from "O que é o Teorema CAP? | IBM": Bancos de dados AP (Cassandra, CouchDB).
+\bibitem{91} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Comunicação e coordenação via mensagens.
+\bibitem{106} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Semântica da invocação RPC (pelo menos uma vez/no máximo uma vez).
+\bibitem{348} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Sequência de requisições do cliente deve ser atômica.
+\bibitem{349} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Propriedades ACID (Durabilidade).
+\bibitem{373} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Regras de aquisição de trava para subtransações (atomicidade).
+\bibitem{374} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Grafo espera por (deadlock detection).
+\bibitem{377} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Coordenador de transação (inicia e gera TID).
+\bibitem{378} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Equivalência serial (concorrência).
+\bibitem{380} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Esquema de travamento (Muitos leitores/Um escritor).
+\bibitem{381} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Fase de trabalho no controle de concorrência otimista (versões de tentativa).
+\bibitem{389} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Concorrência no TS de versão múltipla (leituras que chegam tarde demais).
+\bibitem{394} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Ordenação por carimbo de tempo (carimbo de tempo de transação).
+\bibitem{399} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Dynamo usa get/put e não oferece isolamento ACID.
+\bibitem{400} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Dynamo usa regra "a última escrita vence" (Timestamp ordering).
+\bibitem{405} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Coordenador informa novo participante (join).
+\bibitem{406} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Definição de transação distribuída.
+\bibitem{407} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Protocolo 2PC hierárquico.
+\bibitem{408} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Informações mantidas pelos coordenadores de transações aninhadas.
+\bibitem{413} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Impasses distribuídos (envolvendo vários servidores).
+\bibitem{425} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Critérios de correção da replicação (linearização/consistência sequencial).
+\bibitem{535} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Descoberta de serviço Jini (multicast IP).
+\bibitem{536} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Uso de multicast IP no Jini (nomes de grupo).
+\bibitem{549} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Estratégias de memória compartilhada (DSM).
+\bibitem{554} Excerpts from "Sistemas distribuidos, 5 edicao, Coulouris e outros.pdf": Tipos de anotações em Protocol Buffers (optional, required, repeated).
+\end{thebibliography}
+
+\end{document}
