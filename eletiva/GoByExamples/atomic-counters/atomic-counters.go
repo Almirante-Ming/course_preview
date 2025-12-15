@@ -42,3 +42,6 @@ func main() {
 	// other goroutines are (atomically) updating it.
 	fmt.Println("ops:", ops.Load())
 }
+
+
+// hello world
